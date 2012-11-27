@@ -2,8 +2,8 @@
 
 cidadoAutomaticoApp.factory('cidadolei', function() {
 
-	var testLei = [
-		{
+	var testLei = {
+		"000000": {
 			title: "titulo da lei",
 			id: "000000",
 			summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut consectetur adipisicing elit, sedlabore et dolore magna aliqua...",
@@ -33,7 +33,7 @@ cidadoAutomaticoApp.factory('cidadolei', function() {
 				},
 			}
 		},
-		{
+		"000001": {
 			title: "titulo da lei",
 			id: "000001",
 			summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut consectetur adipisicing elit, sedlabore et dolore magna aliqua...",
@@ -63,7 +63,7 @@ cidadoAutomaticoApp.factory('cidadolei', function() {
 				},
 			}
 		},
-		{
+		"000002": {
 			title: "titulo da lei",
 			id: "000002",
 			summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut consectetur adipisicing elit, sedlabore et dolore magna aliqua...",
@@ -93,12 +93,15 @@ cidadoAutomaticoApp.factory('cidadolei', function() {
 				},
 			}
 		}
-	];
+	};
 
 	// Public API here
 	return {
 		getLaws: function() {
 			return testLei;
+		},
+		getLaw: function(lawId) {
+			return testLei[lawId];
 		}
 	};
 });

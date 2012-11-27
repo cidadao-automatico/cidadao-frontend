@@ -13,7 +13,7 @@
           status <span ng-bind-html-unsafe="lawStatus()"></span>
         </li>
         <li class="emailIten">
-          escreva para seu(s) representantes(s)
+          <a href="#/enviar_mensagem/{{lei.id}}">escreva para seu(s) representantes(s)</a>
         </li>
         <li class="blockIten">
           retirar da minha inbox
@@ -27,7 +27,7 @@
       <div class="ratingResults userChoice">
         <label class="grid_2">
           você 
-          <span class="rateLabel"><b class="icon-screenshot icon-white"></b>{{yourVoteStatus()}}</span>
+          <span class="rateLabel"><b class="icon-white"></b>{{yourVoteStatus()}}</span>
         </label>
         <ul class="grid_6">
           <li class="opposite {{yourVoteChosen(1)}}">contra</li>
