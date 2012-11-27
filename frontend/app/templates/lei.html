@@ -64,58 +64,7 @@
 			{{lei.votes.representantes.favorable}}%
 		  </li>
         </ul>
-        <div class="choiceDetails opposite">
-          <span>
-            <label>representantes  <strong ng-bind-html-unsafe="selectedLevel()"></strong></label>
-          </span>
-          <ul class="membersList">
-            <li class="memberContainer">
-              <img class="memberAvatar" src="img/icon-member.jpg" alt="">
-              <hgroup>
-                <h1>nome da pessoa</h1>
-                <h2>partido</h2>
-              </hgroup>
-            </li>
-            <li class="memberContainer">
-              <img class="memberAvatar" src="img/icon-member.jpg" alt="">
-              <hgroup>
-                <h1>nome da pessoa</h1>
-                <h2>partido</h2>
-              </hgroup>
-            </li>
-            <li class="memberContainer">
-              <img class="memberAvatar" src="img/icon-member.jpg" alt="">
-              <hgroup>
-                <h1>nome da pessoa</h1>
-                <h2>partido</h2>
-              </hgroup>
-            </li>
-            <li class="memberContainer">
-              <img class="memberAvatar" src="img/icon-member.jpg" alt="">
-              <hgroup>
-                <h1>nome da pessoa</h1>
-                <h2>partido</h2>
-              </hgroup>
-            </li>
-            <li class="memberContainer">
-              <img class="memberAvatar" src="img/icon-member.jpg" alt="">
-              <hgroup>
-                <h1>nome da pessoa</h1>
-                <h2>partido</h2>
-              </hgroup>
-            </li>
-            <li class="memberContainer">
-              <img class="memberAvatar" src="img/icon-member.jpg" alt="">
-              <hgroup>
-                <h1>nome da pessoa</h1>
-                <h2>partido</h2>
-              </hgroup>
-            </li>
-            <li class="callMore clearfix">
-              <a href="#">carregar todos (30)</a>
-            </li>
-          </ul>
-        </div>
+		<choice-details/>
       </div>
       
       <div class="ratingResults friendsChoice  {{detailed('amigos')}}">
@@ -144,6 +93,7 @@
 			{{lei.votes.amigos.favorable}}%
 		  </li>
         </ul>
+		<choice-details/>
       </div>
       
       <div class="ratingResults partiesChoice  {{detailed('partidos')}}">
@@ -174,22 +124,22 @@
         </ul>
         <div class="choiceDetails opposite">
           <span>
-            <label>partidos  <strong ng-bind-html-unsafe="selectedLevel()"></strong></label>
+            <label>partidos</label>
           </span>
           <ul class="grid_6 opposite partiesList">
-            <li class="" style="width:12%;">
+            <li class="" style="width:{{lei.votes.partidos.contra}}%;">
               <p>AAA</p>
             </li>
-            <li class="" style="width:24%;">
+            <li class="" style="width:{{lei.votes.partidos.halfContra}}%;">
               <p>AAA</p>
             </li>
-            <li class="" style="width:8%;">
+            <li class="" style="width:{{lei.votes.partidos.abstention}}%;">
               <p>AAA</p>
             </li>
-            <li class="" style="width:36%;">
+            <li class="" style="width:{{lei.votes.partidos.halfFavorable}}%;">
               <p>AAA</p>
             </li>
-            <li class="" style="width:20%;">
+            <li class="" style="width:{{lei.votes.partidos.favorable}}%;">
               <p>AAA</p>
             </li>
           </ul>

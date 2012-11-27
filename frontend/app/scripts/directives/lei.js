@@ -1,34 +1,27 @@
 'use strict';
 
-cidadoAutomaticoApp.directive('lei', function() {
+cidadoAutomaticoApp.directive('lei', function(cidadolei) {
 	function controller($scope, $attrs) {
-		var selected = 0;
-		var selectedCat;
+		$scope.selectedLevel = 0;
+		$scope.selectedCat;
 		$scope.show = function(cat, level) {
-			if(cat == selectedCat && level == selected) {
-				selected = 0;
-				selectedCat = undefined;
+			if(cat == $scope.selectedCat && level == $scope.selectedLevel) {
+				$scope.selectedLevel = 0;
+				$scope.selectedCat = undefined;
 			} else {
-				selected = level;
-				selectedCat = cat;
+				$scope.selectedLevel = level;
+				$scope.selectedCat = cat;
 			}
-		}
+		};
 		$scope.detailed = function(cat) {
-			if(selectedCat == cat) return "detailed";
-		}
-		$scope.selectedLevel = function() {
-			switch(selected) {
-				case 1: return "contra";
-				case 2: return "parcialmente contra";
-				case 3: return "abstren&ccedil;&atilde;o";
-				case 4: return "parcialmente a favor";
-				case 5: return "a favor";
-				return "";
-			}
+			if($scope.selectedCat == cat) return "detailed";
+		};
+		$scope.selectedLevelString = function() {
+			return cidadolei.levelString($scope.selectedLevel);
 		}
 		$scope.selectedVote = function(cat, level) {
-			if((selectedCat == cat) && (selected == level)) return "selected";
-		}
+			if(($scope.selectedCat == cat) && ($scope.selectedLevel == level)) return "selected";
+		};
 		$scope.lawStatus = function() {
 			switch($scope.lei.status) {
 				case 0: return "em vota&ccedil;&atilde;o";
@@ -53,7 +46,7 @@ cidadoAutomaticoApp.directive('lei', function() {
 				return  "avalie!";
 			} else if($scope.lei.yourvote > 0) {
 				return "votou";
-			} else {
+			} else { 
 				return "votaria";
 			}
 		};

@@ -2,6 +2,98 @@
 
 cidadoAutomaticoApp.factory('cidadolei', function() {
 
+	var testLeiDetails = [ {
+					id: 1,
+					name: "nome da pessoa",
+					partido: "partido"
+				},
+				{
+					id: 2,
+					name: "nome da pessoa",
+					partido: "partido"
+				},
+				{
+					id: 3,
+					name: "nome da pessoa",
+					partido: "partido"
+				},
+				{
+					id: 1,
+					name: "nome da pessoa",
+					partido: "partido"
+				},
+				{
+					id: 1,
+					name: "nome da pessoa",
+					partido: "partido"
+				},
+				{
+					id: 1,
+					name: "nome da pessoa",
+					partido: "partido"
+				},
+				{
+					id: 1,
+					name: "nome da pessoa",
+					partido: "partido"
+				},
+				{
+					id: 1,
+					name: "nome da pessoa",
+					partido: "partido"
+				},
+				{
+					id: 1,
+					name: "nome da pessoa",
+					partido: "partido"
+				},
+				{
+					id: 1,
+					name: "nome da pessoa",
+					partido: "partido"
+				},
+				{
+					id: 1,
+					name: "nome da pessoa",
+					partido: "partido"
+				},
+				{
+					id: 1,
+					name: "nome da pessoa",
+					partido: "partido"
+				},
+				{
+					id: 1,
+					name: "nome da pessoa",
+					partido: "partido"
+				},
+				{
+					id: 1,
+					name: "nome da pessoa",
+					partido: "partido"
+				},
+				{
+					id: 1,
+					name: "nome da pessoa",
+					partido: "partido"
+				},
+				{
+					id: 1,
+					name: "nome da pessoa",
+					partido: "partido"
+				},
+				{
+					id: 1,
+					name: "nome da pessoa",
+					partido: "partido"
+				},
+				{
+					id: 1,
+					name: "nome da pessoa",
+					partido: "partido"
+				}
+				];
+
 	var testLei = {
 		"000000": {
 			title: "titulo da lei",
@@ -102,6 +194,19 @@ cidadoAutomaticoApp.factory('cidadolei', function() {
 		},
 		getLaw: function(lawId) {
 			return testLei[lawId];
+		},
+		getDetails: function(lawId, category) {
+			return testLeiDetails; //TODO
+		},
+		levelString: function(level) {
+			switch(level) {
+			case 1: return "contra";
+			case 2: return "parcialmente contra";
+			case 3: return "abstren&ccedil;&atilde;o";
+			case 4: return "parcialmente a favor";
+			case 5: return "a favor";
+			}
+			return "";
 		}
 	};
 });
