@@ -3,7 +3,7 @@
 cidadoAutomaticoApp.directive('lei', function(cidadolei) {
 	function controller($scope, $attrs) {
 		$scope.selectedLevel = 0;
-		$scope.selectedCat;
+		$scope.selectedCat = undefined;
 		$scope.show = function(cat, level) {
 			if(cat == $scope.selectedCat && level == $scope.selectedLevel) {
 				$scope.selectedLevel = 0;
@@ -15,12 +15,14 @@ cidadoAutomaticoApp.directive('lei', function(cidadolei) {
 		};
 		$scope.detailed = function(cat) {
 			if($scope.selectedCat == cat) return "detailed";
+			return "";
 		};
 		$scope.selectedLevelString = function() {
 			return cidadolei.levelString($scope.selectedLevel);
-		}
+		};
 		$scope.selectedVote = function(cat, level) {
 			if(($scope.selectedCat == cat) && ($scope.selectedLevel == level)) return "selected";
+			return "";
 		};
 		$scope.lawStatus = function() {
 			switch($scope.lei.status) {

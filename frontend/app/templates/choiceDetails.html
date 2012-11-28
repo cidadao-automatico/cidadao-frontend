@@ -4,10 +4,10 @@
   </span>
   <ul class="membersList">
     <li class="memberContainer" ng-repeat="rep in details">
-      <img class="memberAvatar" src="img/icon-member.jpg" alt="">
+      <img class="memberAvatar" src="{{rep | deputyLogo}}" alt="">
       <hgroup>
         <h1>{{rep.name}}</h1>
-        <h2>{{rep.partido}}</h2>
+        <h2>{{rep.party}}</h2>
       </hgroup>
     </li>
     <li class="callMore clearfix">
@@ -23,11 +23,11 @@
   </div>
   <div class="modal-body">
 	  <ul class="membersList">
-    <li class="memberContainer" ng-repeat="rep in allDetails">
-      <img class="memberAvatar" src="img/icon-member.jpg" alt="">
+    <li class="memberContainer" ng-repeat="rep in showDetails">
+      <img class="memberAvatar" src="{{rep | deputyLogo}}" alt="">
       <hgroup>
-        <h1>rep.nome</h1>
-        <h2>rep.partido</h2>
+        <h1>{{rep.name}}</h1>
+        <h2>{{rep.party}}</h2>
       </hgroup>
     </li>
   </ul>
