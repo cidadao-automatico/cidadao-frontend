@@ -1,7 +1,7 @@
 'use strict';
 
-cidadoAutomaticoApp.directive('partyDetails', function(cidadolei) {
-	function controller($scope, $element, $attrs) {
+cidadoAutomaticoApp.directive('partyDetails', ["cidadolei", function(cidadolei) {
+	var controller = function($scope, $element, $attrs) {
 		$scope.$watch('selectedCat + selectedLevel', function() {
 			if($scope.selectedCat == "partidos") {
 				cidadolei.getDetails($scope.lei.id, "partidos", undefined)
@@ -12,7 +12,8 @@ cidadoAutomaticoApp.directive('partyDetails', function(cidadolei) {
 					});
 			}
 		});
-	}
+	};
+    controller.$inject = ["$scope", "$element", "$attrs"];
 
 	return {
 		templateUrl: 'templates/partyDetails.html',
@@ -20,4 +21,4 @@ cidadoAutomaticoApp.directive('partyDetails', function(cidadolei) {
 		scope: true,
 		controller: controller
 	};
-});
+}]);

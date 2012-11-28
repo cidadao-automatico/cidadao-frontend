@@ -1,3 +1,3 @@
 'use strict';
 
-cidadoAutomaticoApp.controller('SelecionarConvidarCtrl', function($scope) {});
+cidadoAutomaticoApp.controller('SelecionarConvidarCtrl', ["$scope", function($scope) {}]);
