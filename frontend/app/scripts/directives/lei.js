@@ -1,7 +1,7 @@
 'use strict';
 
-cidadoAutomaticoApp.directive('lei', function(cidadolei) {
-	function controller($scope, $attrs) {
+cidadoAutomaticoApp.directive('lei', ["cidadolei",function(cidadolei) {
+	var controller = function($scope, $attrs) {
 		$scope.selectedLevel = 0;
 		$scope.selectedCat = undefined;
 		$scope.show = function(cat, level) {
@@ -52,7 +52,9 @@ cidadoAutomaticoApp.directive('lei', function(cidadolei) {
 				return "votaria";
 			}
 		};
-	}
+	};
+
+   controller.$inject = ["$scope", "$attrs"];
 
   return {
     templateUrl: 'templates/lei.html',
@@ -62,4 +64,4 @@ cidadoAutomaticoApp.directive('lei', function(cidadolei) {
 	},
 	  controller: controller
   };
-});
+}]);
