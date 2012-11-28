@@ -1,10 +1,10 @@
 'use strict';
 
 cidadoAutomaticoApp.factory('cidadolei',
-							function($http, $q) {
+							["$http", "$q",function($http, $q) {
 								var knownLei;
 								function safeLen(vote) {
-									if(vote != undefined) return vote.length
+									if(vote != undefined) return vote.length;
 									else return 0;
 								}
 
@@ -44,7 +44,7 @@ cidadoAutomaticoApp.factory('cidadolei',
 										partidos: {contra: party_against*100/party_tot, halfContra: 0, abstention: party_abstention*100/party_tot, halfFavorable: 0, favorable: party_favorable*100/party_tot, group: perParty},
 										representantes: {contra: against*100/tot, halfContra: 0, abstention: abstention*100/tot, halfFavorable: 0, favorable: favorable*100/tot, group: perVote},
 										amigos: {contra: 10, halfContra: 10, abstention: 20, halfFavorable: 30, favorable: 30}
-										}
+										};
 								}
 
 								function fetchLaws() {
@@ -53,7 +53,7 @@ cidadoAutomaticoApp.factory('cidadolei',
 											var transform = _.map(laws.data,
 													  function(law) {
 														  var votes = $http.jsonp("https://api.scraperwiki.com/api/1.0/datastore/sqlite?format=jsondict&name=votacao_deputado_br&query=select%20*%20from%20votacao%2C%20deputados%20where%20deputado_id%3Did%20and%20type%3D'"+law.tipo+"'%20and%20year%3D'"+law.ano+"'%20and%20number%3D%22"+law.numero+"%22%20&callback=JSON_CALLBACK")
-															  .then(function(votes) { return votes.data},
+															  .then(function(votes) { return votes.data;},
 																	function() {return [];});
 														  return [law.id,
 																  {
@@ -73,7 +73,7 @@ cidadoAutomaticoApp.factory('cidadolei',
 
 								function getLaw(lawId) {
 										if(knownLei == undefined) {
-											fetchLaws()
+											fetchLaws();
 										}
 										return knownLei.then(function(law) {
 											return law[lawId];
@@ -84,7 +84,7 @@ cidadoAutomaticoApp.factory('cidadolei',
 								return {
 									getLaws: function() {
 										if(knownLei == undefined) {
-											fetchLaws()
+											fetchLaws();
 										}
 										return knownLei;
 									},
@@ -102,8 +102,9 @@ cidadoAutomaticoApp.factory('cidadolei',
 													case 4: return [];
 													case 5: return groups.S;
 													}
-												}, function() {return []});
+																		  return "";
+												}, function() {return [];});
 											});
 									}
 								};
-							});
+							}]);
