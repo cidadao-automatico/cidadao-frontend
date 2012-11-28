@@ -1,0 +1,63 @@
+<div class="alert alert-info">
+  <button type="button" class="close" data-dismiss="alert">×</button>
+  <strong>Vote!</strong> Agora vote nas leis para que o sistema aprenda suas posições e possa compará-las com as de seu(s) representante(s) através de inteligência artificial.
+</div>
+
+<nav class="reorganizers clearfix">
+  <div class="filterby grid_4">
+    <label>
+      filtro
+    </label>
+    <div class="filterbyItenstype clearfix">
+      <a href="">
+        selecionar tipo
+      </a>
+      <ul>
+        <li><a href="#">leis</a></li>
+        <li><a href="#">tópicos</a></li>
+      </ul>
+    </div>
+    <div class="filterbyStatus clearfix">
+      <a href="">
+        status
+      </a>
+      <ul>
+        <li><a href="#">em tramitação</a></li>
+        <li><a href="#">votado</a></li>
+      </ul>
+    </div>  
+  </div>
+  <div class="orderby grid_8">
+    <label>ordenar por</label>
+    <div class="orderbyType">
+      <a href="">
+        votante
+      </a>  
+      <ul>
+        <li><a href="#">representantes</a></li>
+        <li><a href="#">amigos</a></li>
+      </ul>
+    </div>
+    <div class="orderbyOpinion">
+      <a href="">
+        opinião
+      </a>
+      <ul>
+        <li><a href="#">a favor</a></li>
+        <li><a href="#">contra</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<ul class="itensList">
+  <li class="listHeader">
+    <div class="grid_4">
+      lei / resumo
+    </div>
+    <div class="grid_8">
+      opiniões
+    </div>
+  </li>
+  <lei ng-repeat="lei in laws" lei="lei" />
+<ul>
