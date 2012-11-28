@@ -43,28 +43,28 @@
           representantes 
         </label>
         <ul class="grid_6">
-          <li class="opposite {{selectedVote('representantes', 1)}}" style="width:{{lei.votes.representantes.contra|number:2}}%;"
+          <li class="opposite {{selectedVote('representantes', 1)}}" style="width:{{lei.votes.representantes.contra|number}}%;"
 			  ng-click="show('representantes', 1)">
 			{{lei.votes.representantes.contra|number:2}}%
 		  </li>
-          <li class="halfOpposite {{selectedVote('representantes', 2)}}" style="width:{{lei.votes.representantes.halfContra|number:2}}%;"
+          <li class="halfOpposite {{selectedVote('representantes', 2)}}" style="width:{{lei.votes.representantes.halfContra|number}}%;"
 			  ng-click="show('representantes', 2)">
 			{{lei.votes.representantes.halfContra|number:2}}%
 		  </li>
-          <li class="abstention {{selectedVote('representantes', 3)}}" style="width:{{lei.votes.representantes.abstention|number:2}}%;"
+          <li class="abstention {{selectedVote('representantes', 3)}}" style="width:{{lei.votes.representantes.abstention|number}}%;"
 			  ng-click="show('representantes', 3)">
 			{{lei.votes.representantes.abstention|number:2}}%
 		  </li>
-          <li class="halfFavorable  {{selectedVote('representantes', 4)}}" style="width:{{lei.votes.representantes.halfFavorable|number:2}}%;"
+          <li class="halfFavorable  {{selectedVote('representantes', 4)}}" style="width:{{lei.votes.representantes.halfFavorable|number}}%;"
 			  ng-click="show('representantes', 4)">
 			{{lei.votes.representantes.halfFavorable|number:2}}%
 		  </li>
-          <li class="favorable  {{selectedVote('representantes', 5)}}" style="width:{{lei.votes.representantes.favorable|number:2}}%;"
+          <li class="favorable  {{selectedVote('representantes', 5)}}" style="width:{{lei.votes.representantes.favorable|number}}%;"
 			  ng-click="show('representantes', 5)">
 			{{lei.votes.representantes.favorable|number:2}}%
 		  </li>
         </ul>
-		<choice-details/>
+		<choice-details category="representantes"/>
       </div>
       
       <div class="ratingResults friendsChoice  {{detailed('amigos')}}">
@@ -72,28 +72,28 @@
           amigos 
         </label>
         <ul class="grid_6">
-		  <li class="opposite {{selectedVote('amigos', 1)}}" style="width:{{lei.votes.amigos.contra|number:2}}%;"
+		  <li class="opposite {{selectedVote('amigos', 1)}}" style="width:{{lei.votes.amigos.contra|number}}%;"
 			  ng-click="show('amigos', 1)">
 			{{lei.votes.amigos.contra|number:2}}%
 		  </li>
-          <li class="halfOpposite {{selectedVote('amigos', 2)}}" style="width:{{lei.votes.amigos.halfContra|number:2}}%;"
+          <li class="halfOpposite {{selectedVote('amigos', 2)}}" style="width:{{lei.votes.amigos.halfContra|number}}%;"
 			  ng-click="show('amigos', 2)">
 			{{lei.votes.amigos.halfContra|number:2}}%
 		  </li>
-          <li class="abstention {{selectedVote('amigos', 3)}}" style="width:{{lei.votes.amigos.abstention|number:2}}%;"
+          <li class="abstention {{selectedVote('amigos', 3)}}" style="width:{{lei.votes.amigos.abstention|number}}%;"
 			  ng-click="show('amigos', 3)">
 			{{lei.votes.amigos.abstention|number:2}}%
 		  </li>
-          <li class="halfFavorable  {{selectedVote('amigos', 4)}}" style="width:{{lei.votes.amigos.halfFavorable|number:2}}%;"
+          <li class="halfFavorable  {{selectedVote('amigos', 4)}}" style="width:{{lei.votes.amigos.halfFavorable|number}}%;"
 			  ng-click="show('amigos', 4)">
 			{{lei.votes.amigos.halfFavorable|number:2}}%
 		  </li>
-          <li class="favorable  {{selectedVote('amigos', 5)}}" style="width:{{lei.votes.amigos.favorable|number:2}}%;"
+          <li class="favorable  {{selectedVote('amigos', 5)}}" style="width:{{lei.votes.amigos.favorable|number}}%;"
 			  ng-click="show('amigos', 5)">
 			{{lei.votes.amigos.favorable|number:2}}%
 		  </li>
         </ul>
-		<choice-details/>
+		<choice-details category="amigos"/>
       </div>
       
       <div class="ratingResults partiesChoice  {{detailed('partidos')}}">
@@ -101,49 +101,28 @@
           partidos 
         </label>
         <ul class="grid_6">
-		  <li class="opposite {{selectedVote('partidos', 1)}}" style="width:{{lei.votes.partidos.contra|number:2}}%;"
+		  <li class="opposite {{selectedVote('partidos', 1)}}" style="width:{{lei.votes.partidos.contra|number}}%;"
 			  ng-click="show('partidos', 1)">
 			{{lei.votes.partidos.contra|number:2}}%
 		  </li>
-          <li class="halfOpposite {{selectedVote('partidos', 2)}}" style="width:{{lei.votes.partidos.halfContra|number:2}}%;"
+          <li class="halfOpposite {{selectedVote('partidos', 2)}}" style="width:{{lei.votes.partidos.halfContra|number}}%;"
 			  ng-click="show('partidos', 2)">
 			{{lei.votes.partidos.halfContra|number:2}}%
 		  </li>
-          <li class="abstention {{selectedVote('partidos', 3)}}" style="width:{{lei.votes.partidos.abstention|number:2}}%;"
+          <li class="abstention {{selectedVote('partidos', 3)}}" style="width:{{lei.votes.partidos.abstention|number}}%;"
 			  ng-click="show('partidos', 3)">
 			{{lei.votes.partidos.abstention|number:2}}%
 		  </li>
-          <li class="halfFavorable  {{selectedVote('partidos', 4)}}" style="width:{{lei.votes.partidos.halfFavorable|number:2}}%;"
+          <li class="halfFavorable  {{selectedVote('partidos', 4)}}" style="width:{{lei.votes.partidos.halfFavorable|number}}%;"
 			  ng-click="show('partidos', 4)">
 			{{lei.votes.partidos.halfFavorable|number:2}}%
 		  </li>
-          <li class="favorable  {{selectedVote('partidos', 5)}}" style="width:{{lei.votes.partidos.favorable|number:2}}%;"
+          <li class="favorable  {{selectedVote('partidos', 5)}}" style="width:{{lei.votes.partidos.favorable|number}}%;"
 			  ng-click="show('partidos', 5)">
 			{{lei.votes.partidos.favorable|number:2}}%
 		  </li>
         </ul>
-        <div class="choiceDetails opposite">
-          <span>
-            <label>partidos</label>
-          </span>
-          <ul class="grid_6 opposite partiesList">
-            <li class="" style="width:{{lei.votes.partidos.contra|number:2}}%;">
-              <p>AAA</p>
-            </li>
-            <li class="" style="width:{{lei.votes.partidos.halfContra|number:2}}%;">
-              <p>AAA</p>
-            </li>
-            <li class="" style="width:{{lei.votes.partidos.abstention|number:2}}%;">
-              <p>AAA</p>
-            </li>
-            <li class="" style="width:{{lei.votes.partidos.halfFavorable|number:2}}%;">
-              <p>AAA</p>
-            </li>
-            <li class="" style="width:{{lei.votes.partidos.favorable|number:2}}%;">
-              <p>AAA</p>
-            </li>
-          </ul>
-        </div>  
+		<party-details/>
       </div>
     </div>
   </li>

@@ -94,6 +94,7 @@ cidadoAutomaticoApp.factory('cidadolei',
 											.then(function(law) {
 												return law.votes.then(function(votes) {
 													var groups = votes[category].group;
+													if(level == undefined) return groups;
 													switch(level) {
 													case 1: return _.union(groups.N, groups.O);
 													case 2: return [];

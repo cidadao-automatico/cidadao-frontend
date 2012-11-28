@@ -318,11 +318,14 @@ div.ratingResults .choiceDetails ul.partiesList {
 	float: left;
 	height: inherit;
 	outline: 1px solid;
+  min-width: 25px;
   }
 
   ul.partiesList li p {
 	padding: 13px 2px;
   }
+
+  img { width: 25px; }
 }
 
 /* linha de votação do usuário */

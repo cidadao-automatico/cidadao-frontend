@@ -4,7 +4,7 @@
   </span>
   <ul class="membersList">
     <li class="memberContainer" ng-repeat="rep in details">
-      <img class="memberAvatar" src="{{rep | deputyLogo}}" alt="">
+      <img class="memberAvatar" ng-src="{{rep | deputyLogo}}" alt="">
       <hgroup>
         <h1>{{rep.name}}</h1>
         <h2>{{rep.party}}</h2>
@@ -24,7 +24,7 @@
   <div class="modal-body">
 	  <ul class="membersList">
     <li class="memberContainer" ng-repeat="rep in showDetails">
-      <img class="memberAvatar" src="{{rep | deputyLogo}}" alt="">
+      <img class="memberAvatar" ng-src="{{rep | deputyLogo}}" alt="">
       <hgroup>
         <h1>{{rep.name}}</h1>
         <h2>{{rep.party}}</h2>
