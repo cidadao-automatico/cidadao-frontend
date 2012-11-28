@@ -26,7 +26,7 @@ cidadoAutomaticoApp.filter('levelString',
 								   switch(level) {
 								   case 1: return "contra";
 								   case 2: return "parcialmente contra";
-								   case 3: return "abstren&ccedil;&atilde;o";
+								   case 3: return "abstenção";
 								   case 4: return "parcialmente a favor";
 								   case 5: return "a favor";
 								   }
@@ -43,8 +43,8 @@ cidadoAutomaticoApp.filter('levelClass',
 								   case 4: return "halfFavorable";
 								   case 5: return "favorable";
 								   }
-							   }
-							   return "";
+								   return "";
+							   };
 						   }
 );
 
@@ -56,3 +56,13 @@ cidadoAutomaticoApp.filter('capitalize',
 								   return "";
 							   };
 						   });
+cidadoAutomaticoApp.filter('deputyLogo', function() {
+	return function(deputado) {
+		if(deputado != null) {
+			var names = deputado.name.split(' ');
+			var name = encodeURI(names[0].toLowerCase() + names[names.length-1].toLowerCase());
+			return "http://www.camara.gov.br/internet/deputado/bandep/"+name+".jpg";
+		}
+		return "./img/icon-member.jpg";
+	};
+});

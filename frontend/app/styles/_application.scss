@@ -289,6 +289,7 @@ ul.membersList {
   input[type="checkbox"] {
 	margin: 0px 4px 0px 0px;
   }
+  img { width: 17px; }
   hgroup {
 	h1 {
 	  font-weight: normal;
@@ -317,11 +318,14 @@ div.ratingResults .choiceDetails ul.partiesList {
 	float: left;
 	height: inherit;
 	outline: 1px solid;
+  min-width: 25px;
   }
 
   ul.partiesList li p {
 	padding: 13px 2px;
   }
+
+  img { width: 25px; }
 }
 
 /* linha de votação do usuário */

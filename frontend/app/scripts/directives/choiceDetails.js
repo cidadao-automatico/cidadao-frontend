@@ -2,11 +2,16 @@
 
 cidadoAutomaticoApp.directive('choiceDetails', function(cidadolei) {
 	function controller($scope, $element, $attrs) {
-		$scope.allDetails = cidadolei.getDetails($scope.lei.id, $scope.selectedCat);
-		$scope.details = _.take($scope.allDetails, 6);
-		$scope.showAll = function() {
-			jQuery($element).find('.modal').modal();
-		};
+		$scope.$watch('selectedCat + selectedLevel', function() {
+			if($scope.selectedCat != undefined && $scope.selectedCat == $attrs.category && $scope.selectedLevel != 0) {
+				$scope.allDetails = cidadolei.getDetails($scope.lei.id, $scope.selectedCat, $scope.selectedLevel);
+				$scope.details = $scope.allDetails.then(function(all) {return _.take(all, 6);});
+				$scope.showAll = function() {
+					$scope.showDetails = $scope.allDetails;
+					jQuery($element).find('.modal').modal();
+				};
+			}
+		});
 	}
 
   return {
