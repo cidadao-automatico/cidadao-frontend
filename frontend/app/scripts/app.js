@@ -19,3 +19,40 @@ var cidadoAutomaticoApp = angular.module('cidadoAutomaticoApp', [])
         redirectTo: '/'
       });
   }]);
+
+cidadoAutomaticoApp.filter('levelString',
+						   function() {
+							   return function(level) {
+								   switch(level) {
+								   case 1: return "contra";
+								   case 2: return "parcialmente contra";
+								   case 3: return "abstren&ccedil;&atilde;o";
+								   case 4: return "parcialmente a favor";
+								   case 5: return "a favor";
+								   }
+								   return "";
+							   };
+						   });
+cidadoAutomaticoApp.filter('levelClass',
+						   function() {
+							   return function(level) {
+								   switch(level) {
+								   case 1: return "opposite";
+								   case 2: return "halfOpposite";
+								   case 3: return "abstention";
+								   case 4: return "halfFavorable";
+								   case 5: return "favorable";
+								   }
+							   }
+							   return "";
+						   }
+);
+
+cidadoAutomaticoApp.filter('capitalize',
+						   function() {
+							   return function(string) {
+								   if(string != undefined)
+									   return string.charAt(0).toUpperCase() + string.slice(1);
+								   return "";
+							   };
+						   });

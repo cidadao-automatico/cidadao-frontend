@@ -122,7 +122,7 @@ cidadoAutomaticoApp.factory('cidadolei', function() {
 					abstention: 24,
 					halfFavorable: 8,
 					favorable: 36
-				},
+				}
 			}
 		},
 		"000001": {
@@ -152,7 +152,7 @@ cidadoAutomaticoApp.factory('cidadolei', function() {
 					abstention: 24,
 					halfFavorable: 8,
 					favorable: 36
-				},
+				}
 			}
 		},
 		"000002": {
@@ -182,7 +182,7 @@ cidadoAutomaticoApp.factory('cidadolei', function() {
 					abstention: 24,
 					halfFavorable: 8,
 					favorable: 36
-				},
+				}
 			}
 		}
 	};
@@ -197,16 +197,6 @@ cidadoAutomaticoApp.factory('cidadolei', function() {
 		},
 		getDetails: function(lawId, category) {
 			return testLeiDetails; //TODO
-		},
-		levelString: function(level) {
-			switch(level) {
-			case 1: return "contra";
-			case 2: return "parcialmente contra";
-			case 3: return "abstren&ccedil;&atilde;o";
-			case 4: return "parcialmente a favor";
-			case 5: return "a favor";
-			}
-			return "";
 		}
 	};
 });

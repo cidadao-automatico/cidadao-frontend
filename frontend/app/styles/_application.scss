@@ -1,3 +1,9 @@
+$opposite_color: rgba(236,28,36,0.9);
+$halfOpposite_color: rgba(244,119,124,1);
+$abstention_color: rgba(200,200,200,1);
+$halfFavorable_color: rgba(136,211,146,1);
+$favorable_color: rgba(57,181,74,0.9);
+
 body, label {
   color: #4D4D4D;
   font-family: 'Helvetica', 'Arial', sans-serif;
@@ -380,35 +386,35 @@ div.userChoice ul li {
 div.ratingResults {
   ul {
 	li.opposite {
-	  background: rgba(236,28,36,0.9);
+	  background: $opposite_color;
 	}
 	li.halfOpposite {
-	  background: rgba(244,119,124,1);
+	  background: $halfOpposite_color;
 	}
 	li.abstention {
-	  background: rgba(200,200,200,1);
+	  background: $abstention_color;
 	}
 	li.halfFavorable {
-	  background: rgba(136,211,146,1);
+	  background: $halfFavorable_color;
 	}
 	li.favorable {
-	  background: rgba(57,181,74,0.9);
+	  background: $favorable_color;
 	}
   }
   .choiceDetails.opposite ul, .choiceDetails.opposite ul li {
-	outline-color: rgba(236,28,36,0.9);
+	outline-color: $opposite_color;
   }
   .choiceDetails.halfOpposite ul, .choiceDetails.halfOpposite ul li {
-	outline-color: rgba(244,119,124,1);
+	outline-color: $halfOpposite_color;
   }
   .choiceDetails.abstention ul, .choiceDetails.abstention ul li {
-	outline-color: rgba(200,200,200,1);
+	outline-color: $abstention_color;
   }
   .choiceDetails.halfFavorable ul, .choiceDetails.halfFavorable ul li {
-	outline-color: rgba(136,211,146,1);
+	outline-color: $halfFavorable_color;
   }
   .choiceDetails.favorable ul, .choiceDetails.favorable ul li {
-	outline-color: rgba(57,181,74,0.9);
+	outline-color: $favorable_color;
   }
 
   /* buttons rating status */

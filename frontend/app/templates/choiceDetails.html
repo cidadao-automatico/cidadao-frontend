@@ -1,13 +1,13 @@
-<div class="choiceDetails opposite">
+<div class="choiceDetails {{selectedLevel | levelClass}}">
   <span>
-    <label>representantes  <strong ng-bind-html-unsafe="selectedLevelString()"></strong></label>
+    <label>{{selectedCat | capitalize}}  <strong>{{selectedLevel | levelString}}</strong></label>
   </span>
   <ul class="membersList">
     <li class="memberContainer" ng-repeat="rep in details">
       <img class="memberAvatar" src="img/icon-member.jpg" alt="">
       <hgroup>
-        <h1>rep.nome</h1>
-        <h2>rep.partido</h2>
+        <h1>{{rep.name}}</h1>
+        <h2>{{rep.partido}}</h2>
       </hgroup>
     </li>
     <li class="callMore clearfix">
@@ -19,7 +19,7 @@
 <div class="modal hide fade">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h3>Representantes  <strong ng-bind-html-unsafe="selectedLevelString()"></strong></h3>
+    <h3>{{selectedCat | capitalize}}  {{selectedLevel | levelString}} lei &ldquo;{{lei.title}}&rdquo;</h3>
   </div>
   <div class="modal-body">
 	  <ul class="membersList">

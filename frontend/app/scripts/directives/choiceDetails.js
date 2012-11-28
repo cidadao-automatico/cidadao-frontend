@@ -6,7 +6,7 @@ cidadoAutomaticoApp.directive('choiceDetails', function(cidadolei) {
 		$scope.details = _.take($scope.allDetails, 6);
 		$scope.showAll = function() {
 			jQuery($element).find('.modal').modal();
-		}
+		};
 	}
 
   return {
