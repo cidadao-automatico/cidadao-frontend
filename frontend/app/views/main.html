@@ -59,5 +59,8 @@
       opiniões
     </div>
   </li>
-  <lei ng-repeat="lei in laws" lei="lei" />
+  <div class="wait" ng-hide="!laws.length">
+	Loading
+  </div>
+  <lei ng-repeat="lei in laws" lei="lei"/>
 <ul>
