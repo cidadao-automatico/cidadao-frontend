@@ -213,21 +213,26 @@ div.ratingResults {
 	height: 16px;
 	overflow: hidden;
 	padding-top: 2px;
+    @include transition-property(width);
+    @include transition-duration(2s);
   }
 
   /* detalhes das votações */
   .choiceDetails {
-	display: none;
+    @include transition-property(height);
+    @include transition-duration(2s);
+    height: 0;
 	float: left;
 	margin: 5px 0px 3px;
-	height: 152px;
+    overflow: hidden;
+
 
 	span {
 	  background: none;
 	  outline: 1px solid #CCC;
 	  display: inline;
 	  float: left;
-	  height: inherit;
+	  height: 100%;
 	  margin: 0px 1px;
 	  padding: 0px 4px;
 	  width: 114px;
@@ -251,6 +256,7 @@ div.ratingResults {
 div.ratingResults.detailed {
   .choiceDetails {
 	display: block;
+    height: 152px;
   }
   > ul li {
 	opacity: 0.15;
