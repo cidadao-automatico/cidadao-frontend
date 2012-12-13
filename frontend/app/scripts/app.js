@@ -7,13 +7,17 @@ var cidadoAutomaticoApp = angular.module('cidadoAutomaticoApp', [])
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/enviar_mensagem/:leiId', {
+      .when('/pl/:leiId/enviar_mensagem', {
         templateUrl: 'views/enviar_mensagem.html',
         controller: 'EnviarMensagemCtrl'
       })
       .when('/selecionar_convidar', {
         templateUrl: 'views/selecionar_convidar.html',
         controller: 'SelecionarConvidarCtrl'
+      })
+      .when('/pl/:leiId', {
+        templateUrl: 'views/showPL.html',
+        controller: 'ShowPLCtrl'
       })
       .otherwise({
         redirectTo: '/'
@@ -48,6 +52,47 @@ cidadoAutomaticoApp.filter('levelClass',
 						   }
 );
 
+
+cidadoAutomaticoApp.filter('status', function() {
+	return function(status) {
+		switch(status) {
+				case 1: return "votado";
+				case 0: return "em vota&ccedil;&atilde;o";
+			}
+			return "unknown"; //TODO
+	};
+});
+
+cidadoAutomaticoApp.filter('voteStatusClass', function() {
+	return function(lei) {
+		if(lei.yourvote > 0) {
+			return "rated";
+		} else if(lei.yourvote < 0) {
+			return "estimated";
+		}
+		return "";
+	};
+});
+
+cidadoAutomaticoApp.filter('short',
+						   function() {
+							   return function(txt, max) {
+								   if(!max) {max = 200;}
+								   if(txt && txt.length > max) {
+									   var wrds = txt.split(' ');
+									   if(wrds.length > 0) {
+										   var str = wrds[0];
+										   var i = 1;
+										   while(str.length < max && i < wrds.length) {
+											   str += ' '+wrds[i++];
+										   }
+										   return str+"&hellip;";
+									   }
+								   }
+								   return txt;
+							   };
+});
+
 cidadoAutomaticoApp.filter('capitalize',
 						   function() {
 							   return function(string) {
@@ -58,11 +103,11 @@ cidadoAutomaticoApp.filter('capitalize',
 						   });
 cidadoAutomaticoApp.filter('deputyLogo', function() {
 	return function(deputado) {
-		if(deputado != null) {
-			var names = deputado.name.split(' ');
+		/*if(deputado != null) {
+			var names = deputado.nome.split(' ');
 			var name = encodeURI(names[0].toLowerCase() + names[names.length-1].toLowerCase());
 			return "http://www.camara.gov.br/internet/deputado/bandep/"+name+".jpg";
-		}
+		}*/
 		return "./img/icon-member.jpg";
 	};
 });

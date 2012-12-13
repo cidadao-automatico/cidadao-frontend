@@ -3,13 +3,13 @@
     <label>partidos</label>
   </span>
   <ul class="grid_6 opposite partiesList">
-    <li class="" style="width:{{lei.votes.partidos.contra|number}}%;">
+    <li ng-class="{hide:lei.votes.partidos.contra<1}" style="width:{{lei.votes.partidos.contra|number}}%;">
 	  <img  ng-repeat="party in contra" ng-src="http://www.camara.gov.br/internet/Deputado/img/partidos/{{party.party}}.gif" alt="{{party.party}}"/>
     </li>
-    <li class="" style="width:{{lei.votes.partidos.abstention|number}}%;">
+    <li ng-class="{hide:lei.votes.partidos.contra<1}" style="width:{{lei.votes.partidos.abstention|number}}%;">
 	  <img  ng-repeat="party in abstention" ng-src="http://www.camara.gov.br/internet/Deputado/img/partidos/{{party.party}}.gif" alt="{{party.party}}"/>
     </li>
-    <li class="" style="width:{{lei.votes.partidos.favorable|number}}%;">
+    <li ng-class="{hide:lei.votes.partidos.contra<1}" style="width:{{lei.votes.partidos.favorable|number}}%;" >
 	  <img  ng-repeat="party in favorable" ng-src="http://www.camara.gov.br/internet/Deputado/img/partidos/{{party.party}}.gif" alt="{{party.party}}"/>
     </li>
   </ul>
