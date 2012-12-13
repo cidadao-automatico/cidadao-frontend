@@ -1,8 +1,3 @@
-<div class="alert alert-info">
-  <button type="button" class="close" data-dismiss="alert">×</button>
-  <strong>Vote!</strong> Agora vote nas leis para que o sistema aprenda suas posições e possa compará-las com as de seu(s) representante(s) através de inteligência artificial.
-</div>
-
 <nav class="reorganizers clearfix">
   <div class="filterby grid_4">
     <label>
@@ -59,8 +54,10 @@
       opiniões
     </div>
   </li>
-  <div class="wait" ng-hide="!laws.length">
+  <li class="wait" ng-hide="!laws.length">
 	Loading
-  </div>
-  <lei ng-repeat="lei in laws" lei="lei"/>
+  </li>
+  <li  ng-repeat="lei in laws" class="listIten {{lei | voteStatusClass}}">
+	<lei lei="lei"/>
+  </li>
 <ul>

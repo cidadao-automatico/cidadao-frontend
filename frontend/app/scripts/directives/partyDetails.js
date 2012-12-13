@@ -6,9 +6,9 @@ cidadoAutomaticoApp.directive('partyDetails', ["cidadolei", function(cidadolei) 
 			if($scope.selectedCat == "partidos") {
 				cidadolei.getDetails($scope.lei.id, "partidos", undefined)
 					.then(function(all) {
-						$scope.contra = _.union(all.N, all.O);
-						$scope.abstention = _.union(all.A, all.null);
-						$scope.favorable = all.S;
+						$scope.contra = all["Não"];
+						$scope.abstention = _.union(all["Abstenção"], all["Não votou"]);
+						$scope.favorable = all["Sim"];
 					});
 			}
 		});
