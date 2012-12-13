@@ -3,68 +3,79 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>cidadão automático</title>
-		<meta name="author" content="nu[nudesign.com.br]">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>cidadão automático</title>
+	<meta name="author" content="nu[nudesign.com.br]">
 
-        <meta name="description" content=""/>
-        <meta name="viewport" content="width=device-width"/>
-        <link rel="stylesheet" href="styles/main.css"/>
-    </head>
-    <body ng-app="cidadoAutomaticoApp">
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="stylesheet" href="styles/main.css"/>
+  </head>
+  <body ng-app="cidadoAutomaticoApp">
 
-        <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+    <!--[if lt IE 7]>
+        <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
         <![endif]-->
-        
-        <!--[if lt IE 9]>
-            <script src="scripts/vendor/es5-shim.min.js"></script>
-            <script src="scripts/vendor/json3.min.js"></script>
+    
+    <!--[if lt IE 9]>
+        <script src="scripts/vendor/es5-shim.min.js"></script>
+        <script src="scripts/vendor/json3.min.js"></script>
         <![endif]-->
 
-		<header class="container_16 clearfix">
-		  <a href="index.html">
-			<img src="img/cidadao-automatico.png" alt="cidadão automático">
-		  </a>
-		  <nav class="mainNav">
-			<ul>
-			  <li><a href="#/selecionar_convidar">selecionar representantes</a></li>
-			  <li><a href="">escondidos</a></li>
-			  <li><a href="">cadastro</a></li>
-			  <li><a href="#/selecionar_convidar">convidar amigos</a></li>
-			</ul>
-		  </nav>
-		</header>
+	<header class="container_16 clearfix">
+	  <a href="index.html">
+		<img src="img/cidadao-automatico.png" alt="cidadão automático">
+	  </a>
+	  <nav class="mainNav">
+		<ul>
+		  <li><a href="#/selecionar_convidar">selecionar representantes</a></li>
+		  <li><a href="">escondidos</a></li>
+		  <li><a href="">cadastro</a></li>
+		  <li><a href="#/selecionar_convidar">convidar amigos</a></li>
+		</ul>
+	  </nav>
+	</header>
 
-        <section class="container_16 mainContent clearfix" ng-view></div>
+    <section class="container_16 mainContent clearfix">
+	  <div class="alert alert-info">
+		<button type="button" class="close" data-dismiss="alert">×</button>
+		<strong>Vote!</strong> Agora vote nas leis para que o sistema aprenda suas posições e possa compará-las com as de seu(s) representante(s) através de inteligência artificial.
+	  </div>
+	  <div class="view" ng-view>
+	  </div>
+</div>
 
-        <script src="scripts/vendor/angular.js"></script>
+<script src="scripts/vendor/angular.js"></script>
+<script type="text/javascript"  src="https://raw.github.com/mbostock/d3/master/d3.v2.js"></script>
 
-        <!-- build:js scripts/scripts.js -->
-		<script src="components/lodash/lodash.min.js"></script>
-		<script src="components/jquery/jquery.js"></script>
-		<script src="components/bootstrap-js/bootstrap.min.js"></script>
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/directives/lei.js"></script>
-        <script src="scripts/services/cidadaolei.js"></script>
-        <script src="scripts/controllers/enviar_mensagem.js"></script>
-        <script src="scripts/controllers/selecionar_convidar.js"></script>
-        <script src="scripts/directives/choiceDetails.js"></script>
-        <script src="scripts/directives/partyDetails.js"></script>
-        <!-- endbuild -->
+<!-- build:js scripts/scripts.js -->
+<script src="components/jquery/jquery.js"></script>
+<script src="scripts/moment.min.js"></script>
+<script src="scripts/jquery.tagsinput.min.js"></script>
+<script src="components/lodash/lodash.min.js"></script>
+<script src="components/bootstrap-js/bootstrap.min.js"></script>
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/main.js"></script>
+<script src="scripts/directives/lei.js"></script>
+<script src="scripts/services/cidadaoCMSP.js"></script>
+<script src="scripts/controllers/enviar_mensagem.js"></script>
+<script src="scripts/controllers/selecionar_convidar.js"></script>
+<script src="scripts/directives/choiceDetails.js"></script>
+<script src="scripts/directives/partyDetails.js"></script>
+<script src="scripts/directives/tagger.js"></script>
+<script src="scripts/controllers/showPL.js"></script>
+<script src="scripts/directives/d3link.js"></script>
+<!-- endbuild -->
 
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-		  console.log(window.BankerBox);
-		  
-            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g,s)}(document,'script'));
-        </script>
-    </body>
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<script>
+  var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+</body>
 </html>
