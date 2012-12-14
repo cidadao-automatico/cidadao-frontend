@@ -58,6 +58,14 @@ cidadoAutomaticoApp.factory('cidadolei',
 									return 0;
 								}
 
+								function getTags() {
+									return $http.jsonp("http://localhost:9000/tag?callback=JSON_CALLBACK")
+										.then(function(tags) {
+											console.log(tags);
+											return tags.data;
+										});
+								}
+
 								function fetchLaws(page) {
 									if(!page) page = 0;
 									knownLei = $http.jsonp("http://localhost:9000/pl?page="+page+"&callback=JSON_CALLBACK")
@@ -108,6 +116,7 @@ cidadoAutomaticoApp.factory('cidadolei',
 										return knownLei;
 									},
 									getLaw: getLaw,
+									getTags: getTags,
 									getDetails: function(lawId, category, level) {
 										return getLaw(lawId)
 											.then(function(law) {

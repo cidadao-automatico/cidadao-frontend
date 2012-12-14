@@ -19,6 +19,10 @@ var cidadoAutomaticoApp = angular.module('cidadoAutomaticoApp', [])
         templateUrl: 'views/showPL.html',
         controller: 'ShowPLCtrl'
       })
+      .when('/tag', {
+        templateUrl: 'views/tags.html',
+        controller: 'TagsCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
