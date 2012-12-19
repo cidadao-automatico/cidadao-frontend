@@ -68,7 +68,7 @@ cidadoAutomaticoApp.factory('cidadolei',
 
 								function fetchLaws(page) {
 									if(!page) page = 0;
-									knownLei = $http.jsonp("http://localhost:9000/pl?page="+page+"&callback=JSON_CALLBACK")
+									return $http.jsonp("http://localhost:9000/pl?page="+page+"&callback=JSON_CALLBACK")
 										.then(function(laws) {
 											var transform = _.map(laws.data.content,
 																  function(law) {
@@ -93,8 +93,8 @@ cidadoAutomaticoApp.factory('cidadolei',
 																  }).sort(function(lawa, lawb) {
 																	  return lawa[1].data-lawb[1].data;
 																  });
-											var map = _.object(transform);
-											return map;
+											laws.data.content = _.object(transform);
+											return laws.data;
 										});
 								}
 
@@ -109,12 +109,7 @@ cidadoAutomaticoApp.factory('cidadolei',
 
 								// Public API here
 								return {
-									getLaws: function() {
-										if(knownLei == undefined) {
-											fetchLaws();
-										}
-										return knownLei;
-									},
+									getLaws: _.memoize(fetchLaws),
 									getLaw: getLaw,
 									getTags: getTags,
 									getDetails: function(lawId, category, level) {
