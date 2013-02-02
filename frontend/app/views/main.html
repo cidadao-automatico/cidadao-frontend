@@ -9,7 +9,7 @@
       </a>
       <ul>
         <li><a href="#">leis</a></li>
-        <li><a href="#">tópicos</a></li>
+        <li><a href="#/tag">tópicos</a></li>
       </ul>
     </div>
     <div class="filterbyStatus clearfix">
@@ -54,10 +54,11 @@
       opiniões
     </div>
   </li>
-  <li class="wait" ng-hide="!laws.length">
+  <li class="wait" ng-show="wait">
 	Loading
   </li>
-  <li  ng-repeat="lei in laws" class="listIten {{lei | voteStatusClass}}">
+  <li  ng-repeat="lei in laws.content" class="listIten {{lei | voteStatusClass}}">
 	<lei lei="lei"/>
   </li>
 <ul>
+<paging pages="laws.paging"></paging>
