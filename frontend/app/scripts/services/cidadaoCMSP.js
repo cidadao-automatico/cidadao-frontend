@@ -2,7 +2,6 @@
 
 cidadoAutomaticoApp.factory('cidadolei',
 							["$http", "$q",function($http, $q) {
-								var knownLei;
 								function safeLen(vote) {
 									if(vote != undefined) return vote.length;
 									else return 0;
@@ -42,15 +41,37 @@ cidadoAutomaticoApp.factory('cidadolei',
 										var party_favorable = safeLen(perParty["Sim"]);
 										var party_tot = party_against + party_abstention + party_favorable;
 
-										return {
+										var toRet = {
 											partidos: {contra: party_against*100/party_tot, halfContra: 0, abstention: party_abstention*100/party_tot, halfFavorable: 0, favorable: party_favorable*100/party_tot, group: perParty},
 											representantes: {contra: against*100/tot, halfContra: 0, abstention: abstention*100/tot, halfFavorable: 0, favorable: favorable*100/tot, group: perVote},
 											amigos: {contra: 10, halfContra: 10, abstention: 20, halfFavorable: 30, favorable: 30}
 										};
+										return toRet;
 									} else {
-										return {};
+										//TODO currently returns
+										if(Math.random() > 0.5)
+											return {};
+										else {
+											var h1 = Math.random();
+											var h2 = Math.random();
+											var h3 = Math.random();
+											var c = h1*h2*100;
+											var hc = h1*100-c;
+											var hf = (100-(c+hc))*h3;
+											var f = 100-(c+hc)-hf;
+											return {
+												amigos: {
+													contra: c,
+													halfContra: hc,
+													abstention: 0,
+													halfFavorable: hf,
+													favorable: f
+												}
+											};
+										}
 
 									}
+									return {};
 								}
 
 								function voteStatus(votes) {
@@ -61,56 +82,59 @@ cidadoAutomaticoApp.factory('cidadolei',
 								function getTags() {
 									return $http.jsonp("http://localhost:9000/tag?callback=JSON_CALLBACK")
 										.then(function(tags) {
-											console.log(tags);
 											return tags.data;
 										});
 								}
 
+								function lawTransform(law) {
+									law.ano = moment(law.data).year();
+									law.id = law.tipo+law.numero+"-"+law.ano;
+									var votes = $http.jsonp("http://localhost:9000/pl/"+law.id+"/votes?callback=JSON_CALLBACK")
+											.then(function(votes) {return votes.data;},
+												  function() {return [];});
+									return [law.id,
+											{
+												id: law.id,
+												data: law.data,
+												title: law.tipo+" "+law.numero+"/"+law.ano,
+												summary: law.ementa.toLowerCase(),
+												status: votes.then(voteStatus),
+												yourvote: 0, //todo
+												rawvotes: votes,
+												votes: votes.then(aggregateVotes),
+												comissoes: law.comissoes,
+												tags: law.tags
+											}];
+								}
+
 								function fetchLaws(page) {
 									if(!page) page = 0;
-									return $http.jsonp("http://localhost:9000/pl?page="+page+"&callback=JSON_CALLBACK")
+									return $http.jsonp("http://localhost:9000/pls?page="+page+"&callback=JSON_CALLBACK")
 										.then(function(laws) {
 											var transform = _.map(laws.data.content,
-																  function(law) {
-																	  law.ano = moment(law.data).year();
-																	  law.id = law.tipo+law.numero+"-"+law.ano;
-																	  var votes = $http.jsonp("http://localhost:9000/pl/"+law.id+"/votes?callback=JSON_CALLBACK")
-																			  .then(function(votes) { return votes.data;},
-																					function() {return [];});
-																	  return [law.id,
-																			  {
-																				  id: law.id,
-																				  data: law.data,
-																				  title: law.tipo+" "+law.numero+"/"+law.ano,
-																				  summary: law.ementa.toLowerCase(),
-																				  status: votes.then(voteStatus),
-																				  yourvote: 0, //todo
-																				  rawvotes: votes,
-																				  votes: votes.then(aggregateVotes),
-																				  comissoes: law.comissoes,
-																				  tags: law.tags
-																			  }];
-																  }).sort(function(lawa, lawb) {
-																	  return lawa[1].data-lawb[1].data;
-																  });
+																  lawTransform)
+													.sort(function(lawa, lawb) {
+														return lawa[1].data-lawb[1].data;
+													});
 											laws.data.content = _.object(transform);
 											return laws.data;
 										});
 								}
+								var memLaws = _.memoize(fetchLaws);
 
 								function getLaw(lawId) {
-									if(knownLei == undefined) {
-										fetchLaws();
-									}
-									return knownLei.then(function(law) {
-										return law[lawId];
-									});
+									return $http.jsonp("http://localhost:9000/pl?id="+lawId+"&callback=JSON_CALLBACK")
+										.then(function(law) {
+											var transform = lawTransform(law.data);
+											law.data = transform[1];
+											return law.data;
+										});
 								}
 
 								// Public API here
 								return {
-									getLaws: _.memoize(fetchLaws),
-									getLaw: getLaw,
+									getLaws: memLaws,
+									getLaw: _.memoize(getLaw),
 									getTags: getTags,
 									getDetails: function(lawId, category, level) {
 										return getLaw(lawId)
