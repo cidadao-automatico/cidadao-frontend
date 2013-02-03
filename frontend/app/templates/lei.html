@@ -6,7 +6,7 @@
 		{{lei.title}}
 		</a>
 	  </h1>
-	  <p class="abstract"><span ng-bind-html-unsafe="lei.ementa | short | capitalize"></span><a href="#/pl/{{lei.id}}" ng-show="lei.ementa.length >= 200">&nbsp;(veja mais)</a></p>
+	  <p class="abstract"><span ng-bind-html-unsafe="lei.summary | short | capitalize"></span><a href="#/pl/{{lei.id}}" ng-show="lei.summary.length >= 200">&nbsp;(veja mais)</a></p>
 	  <ul class="actions">
 		<li class="status">
 		  status <span ng-bind-html-unsafe="lei.status | status"></span>
@@ -37,12 +37,13 @@
 		</ul>
 	  </div>
 
+	  <h4 ng-show="lei.votes.predicted">Predictions:</h4>
+
 	  <div class="ratingResults representativesChoice {{detailed('representantes')}}">
 		<label class="grid_2">
 		  representantes
 		</label>
-		<span class="grid_6" ng-show="lei.status == 0">Not Voted Yet</span>
-		<ul class="grid_6" ng-hide="lei.status == 0">
+		<ul class="grid_6"  ng-class="{'predicted': lei.votes.predicted}">
 		  <li class="opposite {{selectedVote('representantes', 1)}}" style="width:{{lei.votes.representantes.contra|number}}%;"
 			  ng-click="show('representantes', 1)">
 			&nbsp;{{lei.votes.representantes.contra|number:2}}%
@@ -71,8 +72,7 @@
 		<label class="grid_2">
 		  amigos
 		</label>
-		<span class="grid_6" ng-show="lei.votes.amigos == undefined">Get them to vote</span>
-		<ul class="grid_6" ng-show="lei.votes.amigos != undefined">
+		<ul class="grid_6" ng-show="lei.votes.amigos != undefined"  ng-class="{'predicted': lei.votes.predicted}">
 		  <li class="opposite {{selectedVote('amigos', 1)}}" style="width:{{lei.votes.amigos.contra|number}}%;"
 			  ng-click="show('amigos', 1)">
 			&nbsp;{{lei.votes.amigos.contra|number:2}}%
@@ -97,12 +97,11 @@
 		<choice-details category="amigos"/>
 	  </div>
 
-	  <div class="ratingResults partiesChoice  {{detailed('partidos')}}">
+	  <div class="ratingResults partiesChoice  {{detailed('partidos')}}" >
 		<label class="grid_2">
 		  partidos
 		</label>
-				<span class="grid_6" ng-show="lei.status == 0">Not Voted Yet</span>
-		<ul class="grid_6" ng-hide="lei.status == 0">
+		<ul class="grid_6" ng-class="{'predicted': lei.votes.predicted}">
 		  <li class="opposite {{selectedVote('partidos', 1)}}" style="width:{{lei.votes.partidos.contra|number}}%;"
 			  ng-click="show('partidos', 1)">
 			&nbsp;{{lei.votes.partidos.contra|number:2}}%

@@ -7,6 +7,24 @@ cidadoAutomaticoApp.factory('cidadolei',
 									else return 0;
 								}
 
+								function random() {
+									var h1 = Math.random();
+									var h2 = Math.random();
+									var h3 = Math.random();
+									var c = h1*h2*100;
+									var hc = h1*100-c;
+									var hf = (100-(c+hc))*h3;
+									var f = 100-(c+hc)-hf;
+									return {
+										contra: c,
+										halfContra: hc,
+										abstention: 0,
+										halfFavorable: hf,
+										favorable: f
+									};
+
+								}
+
 								function aggregateVotes(votes) {
 									if(votes && votes.length) {
 										var perVote = _.groupBy(votes, function(vote) {return vote.voto;});
@@ -48,28 +66,13 @@ cidadoAutomaticoApp.factory('cidadolei',
 										};
 										return toRet;
 									} else {
-										//TODO currently returns
-										if(Math.random() > 0.5)
-											return {};
-										else {
-											var h1 = Math.random();
-											var h2 = Math.random();
-											var h3 = Math.random();
-											var c = h1*h2*100;
-											var hc = h1*100-c;
-											var hf = (100-(c+hc))*h3;
-											var f = 100-(c+hc)-hf;
-											return {
-												amigos: {
-													contra: c,
-													halfContra: hc,
-													abstention: 0,
-													halfFavorable: hf,
-													favorable: f
-												}
-											};
-										}
-
+										//TODO currently returns fake predictions
+										return {
+											predicted: true,
+											amigos: random(),
+											partidos: random(),
+											representantes: random()
+										};
 									}
 									return {};
 								}

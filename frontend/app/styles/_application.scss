@@ -409,6 +409,26 @@ div.ratingResults {
 	  background: $favorable_color;
 	}
   }
+
+  ul.predicted {
+      	li.opposite {
+          background: lighten($opposite_color, 30%);
+        }
+        li.halfOpposite {
+          background: lighten($halfOpposite_color, 20%);
+        }
+        li.abstention {
+          background: lighten($abstention_color, 30%);
+        }
+        li.halfFavorable {
+          background: lighten($halfFavorable_color, 20%);
+        }
+        li.favorable {
+          background: lighten($favorable_color, 30%);
+        }
+    }
+
+
   .choiceDetails.opposite ul, .choiceDetails.opposite ul li {
 	outline-color: $opposite_color;
   }
