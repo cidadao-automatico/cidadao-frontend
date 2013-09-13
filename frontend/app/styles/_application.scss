@@ -469,12 +469,28 @@ div.ratingResults.userChoice ul li:hover {
 /*tagger widget*/
 
 div.tagsinput {
-  border:1px solid #CCC; background: #FFF; padding:5px; width:300px; height:100px; overflow-y: auto;
+  background: #FFF; 
+  padding:5px; 
+  width:300px; 
+  height:100px; 
+  overflow-y: auto;
 
   span.tag {
-    border: 1px solid #a5d24a; -moz-border-radius:2px; -webkit-border-radius:2px; display: block; float: left; padding: 5px; text-decoration:none; background: #cde69c; color: #638421; margin-right: 5px; margin-bottom:5px;font-family: helvetica;  font-size:13px;
+    font-size: $baseFontSize * .846;
+  font-weight: bold;
+  line-height: 14px; // ensure proper line-height if floated
+  color: $white;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+  background-color: #555;
+  padding: 1px 4px 2px;
+  @include border-radius(3px);
+  margin: 2px;
 
-    a { font-weight: bold; color: #82ad2b; text-decoration:none; font-size: 11px;  }
+  float: left;
+
+    a { font-weight: bold; color: #fff; text-decoration:none; font-size: 11px;  }
   }
 
   input { width:80px; margin:0px; font-family: helvetica; font-size: 13px; border:1px solid transparent; padding:5px; background: transparent; color: #000; outline:0px;  margin-right:5px; margin-bottom:5px; }

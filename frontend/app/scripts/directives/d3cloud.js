@@ -57,7 +57,7 @@ cidadoAutomaticoApp.directive('d3cloud', function() {
 					max = max_tot[0],
 					nodes = _.filter(
 						_.map($scope.tags, function(t) {
-							t.radius=Math.min(w/10, 6*Math.log(Math.pow(t.count,2)));
+							t.radius=Math.min(w/10, Math.log(Math.pow(t.count,2)));
 							return t;
 						}),
 						function(t) {
@@ -87,6 +87,9 @@ cidadoAutomaticoApp.directive('d3cloud', function() {
 					.style("fill", '#CCC');
 				node.append("title")
 					.text(function(d) { return d.tag; });
+			    node.each(function(d,i) {
+				jQuery(this).tooltip({title: d.tag});
+			    });
 
 				var label = labCont.selectAll(".label-cloud")
 						.data(_.filter(nodes, function(d) {return d.radius > 15;}))
@@ -106,7 +109,7 @@ cidadoAutomaticoApp.directive('d3cloud', function() {
 
 				var as = label.append("a")
 					.style("text-anchor", "middle")
-					.style("font-size", function(d) { return Math.min(11,Math.max(8, 5*d.radius / d.dx)) + "px"; })
+					.style("font-size", function(d) { return Math.min(11,Math.max(8, 15*d.radius / d.dx)) + "px"; })
 					.text(function(t) {return shorten(t);});
 
 

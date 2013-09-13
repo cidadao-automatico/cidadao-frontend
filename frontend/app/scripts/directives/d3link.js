@@ -76,7 +76,7 @@ cidadoAutomaticoApp.directive('d3link', function() {
 
 					var line = d3.svg.line.radial()
 							.interpolate("bundle")
-							.tension(0.7)
+							.tension(1)
 							.radius(function(d) { return d.y; })
 							.angle(function(d) { return d.x / 180 * Math.PI; });
 
@@ -166,11 +166,11 @@ cidadoAutomaticoApp.directive('d3link', function() {
 					var nodes_cluster = cluster.nodes(nodes[rootIndex]),
 						splines = bundle(links);
 
-					var path = svg.selectAll("path.link")
+/*					var path = svg.selectAll("path.link")
 							.data(links)
 							.enter().append("svg:path")
 							.attr("class", function(d) { return d.vote+" link source-" + d.source.key + " target-" + d.target.key; })
-							.attr("d", function(d, i) { return line(splines[i]); });
+							.attr("d", function(d, i) { return line(splines[i]); });*/
 
 
 					var nameNode = svg.selectAll("g.node")
