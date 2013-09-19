@@ -5,15 +5,17 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
   <head>
     <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>-->
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>cidadão automático</title>
 	<meta name="author" content="nu[nudesign.com.br]">
 
     <meta name="description" content=""/>
-    <meta name="viewport" content="width=device-width"/>
+    <!--<meta name="viewport" content="width=device-width"/>-->
 	<!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css"/>
+    <!--<link rel="stylesheet" href="styles/structure.css"/>
+    <link rel="stylesheet" href="styles/application.css"/>    -->
 	<!-- endbuild -->
   </head>
   <body ng-app="cidadoAutomaticoApp">
@@ -27,7 +29,7 @@
         <script src="scripts/vendor/json3.min.js"></script>
         <![endif]-->
 
-	<header class="container_16 clearfix">
+	<!--<header class="container_16 clearfix">
 	  <a href="index.html">
 		<img src="images/cidadao-automatico.png" alt="cidadão automático">
 	  </a>
@@ -48,7 +50,399 @@
 	  </div>
 	  <div class="view" ng-view>
 	  </div>
-</div>
+</div>-->
+
+<header class="container_16 clearfix">
+  <a href="index.html">
+    <img src="images/cidadao-automatico.png" alt="cidadão automático">
+  </a>
+  <nav class="mainNav">
+    <ul>
+      <li><a href="selecionar_convidar.html">selecionar representantes</a></li>
+      <li><a href="">escondidos</a></li>
+      <li><a href="">cadastro</a></li>
+      <li><a href="selecionar_convidar.html">convidar amigos</a></li>
+    </ul>
+  </nav>
+</header>
+<section class="mainContent container_16 clearfix">
+  <div class="alert alert-info">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <strong>Vote!</strong> Agora vote nas leis para que o sistema aprenda suas posições e possa compará-las com as de seu(s) representante(s) através de inteligência artificial.
+  </div>
+  
+  <nav class="reorganizers clearfix">
+    <div class="filterby grid_4">
+      <label>
+        filtro
+      </label>
+      <div class="filterbyItenstype clearfix">
+        <a href="">
+          selecionar tipo
+        </a>
+        <ul>
+          <li><a href="#">leis</a></li>
+          <li><a href="#">tópicos</a></li>
+        </ul>
+      </div>
+      <div class="filterbyStatus clearfix">
+        <a href="">
+          status
+        </a>
+        <ul>
+          <li><a href="#">em tramitação</a></li>
+          <li><a href="#">votado</a></li>
+        </ul>
+      </div>  
+    </div>
+    <div class="orderby grid_8">
+      <label>ordenar por</label>
+      <div class="orderbyType">
+        <a href="">
+          votante
+        </a>  
+        <ul>
+          <li><a href="#">representantes</a></li>
+          <li><a href="#">amigos</a></li>
+        </ul>
+      </div>
+      <div class="orderbyOpinion">
+        <a href="">
+          opinião
+        </a>
+        <ul>
+          <li><a href="#">a favor</a></li>
+          <li><a href="#">contra</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <ul class="itensList">
+    <li class="listHeader">
+      <div class="grid_4">
+        lei / resumo
+      </div>
+      <div class="grid_8">
+        opiniões
+      </div>
+    </li>
+    <li class="listIten">
+      <div class="grid_4 itenInfos">
+        <h1>
+          <span>000000</span>
+          título da lei
+        </h1>
+        <p class="abstract">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut consectetur adipisicing elit, sedlabore et dolore magna aliqua... (veja mais)
+        </p>
+        <ul class="actions">
+          <li class="status">
+            status <span>em votação</span>
+          </li>
+          <li class="emailIten">
+            escreva para seu(s) representantes(s)
+          </li>
+          <li class="blockIten">
+            retirar da minha inbox
+          </li>
+          <li class="shareIten">
+            publicar na minha timeline
+          </li>
+        </ul>
+      </div>
+      <div class="grid_8 itenRates clearfix">
+        <div class="ratingResults userChoice">
+          <label class="grid_2">
+            você 
+            <span class="rateLabel"><b class="icon-screenshot icon-white"></b></span>
+          </label>
+          <ul class="grid_6">
+            <li class="opposite">contra</li>
+            <li class="halfOpposite">parc. contra</li>
+            <li class="abstention">abstenção</li>
+            <li class="halfFavorable">parc. favor</li>
+            <li class="favorable">a favor</li>
+          </ul>
+        </div>
+        
+        <div class="ratingResults representativesChoice detailed">
+          <label class="grid_2">
+            representantes 
+          </label>
+          <ul class="grid_6">
+            <li class="opposite selected" style="width:12%;">—%</li>
+            <li class="halfOpposite" style="width:24%;">—%</li>
+            <li class="abstention" style="width:36%;">—%</li>
+            <li class="halfFavorable" style="width:8%;">—%</li>
+            <li class="favorable" style="width:20%;">—%</li>
+          </ul>
+          <div class="choiceDetails opposite">
+            <span>
+              <label>representantes contra</label>
+            </span>
+            <ul class="membersList">
+              <li class="memberContainer">
+                <img class="memberAvatar" src="images/icon-member.jpg" alt="">
+                <hgroup>
+                  <h1>nome da pessoa</h1>
+                  <h2>partido</h2>
+                </hgroup>
+              </li>
+              <li class="memberContainer">
+                <img class="memberAvatar" src="images/icon-member.jpg" alt="">
+                <hgroup>
+                  <h1>nome da pessoa</h1>
+                  <h2>partido</h2>
+                </hgroup>
+              </li>
+              <li class="memberContainer">
+                <img class="memberAvatar" src="images/icon-member.jpg" alt="">
+                <hgroup>
+                  <h1>nome da pessoa</h1>
+                  <h2>partido</h2>
+                </hgroup>
+              </li>
+              <li class="memberContainer">
+                <img class="memberAvatar" src="images/icon-member.jpg" alt="">
+                <hgroup>
+                  <h1>nome da pessoa</h1>
+                  <h2>partido</h2>
+                </hgroup>
+              </li>
+              <li class="memberContainer">
+                <img class="memberAvatar" src="images/icon-member.jpg" alt="">
+                <hgroup>
+                  <h1>nome da pessoa</h1>
+                  <h2>partido</h2>
+                </hgroup>
+              </li>
+              <li class="memberContainer">
+                <img class="memberAvatar" src="images/icon-member.jpg" alt="">
+                <hgroup>
+                  <h1>nome da pessoa</h1>
+                  <h2>partido</h2>
+                </hgroup>
+              </li>
+              <li class="callMore clearfix">
+                <a href="#">carregar todos (30)</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="ratingResults friendsChoice">
+          <label class="grid_2">
+            amigos 
+          </label>
+          <ul class="grid_6">
+            <li class="opposite" style="width:36%;">—%</li>
+            <li class="halfOpposite" style="width:12%;">—%</li>
+            <li class="abstention" style="width:20%;">—%</li>
+            <li class="halfFavorable" style="width:8%;">—%</li>
+            <li class="favorable" style="width:24%;">—%</li>
+          </ul>
+        </div>
+        
+        <div class="ratingResults partiesChoice detailed">
+          <label class="grid_2">
+            partidos 
+          </label>
+          <ul class="grid_6">
+            <li class="opposite selected" style="width:20%;">—%</li>
+            <li class="halfOpposite" style="width:12%;">—%</li>
+            <li class="abstention" style="width:24%;">—%</li>
+            <li class="halfFavorable" style="width:8%;">—%</li>
+            <li class="favorable" style="width:36%;">—%</li>
+          </ul>
+          <div class="choiceDetails opposite">
+            <span>
+              <label>partidos contra</label> 
+            </span>
+            <ul class="grid_6 opposite partiesList">
+              <li class="" style="width:12%;">
+                <p>AAA</p>
+              </li>
+              <li class="" style="width:24%;">
+                <p>AAA</p>
+              </li>
+              <li class="" style="width:8%;">
+                <p>AAA</p>
+              </li>
+              <li class="" style="width:36%;">
+                <p>AAA</p>
+              </li>
+              <li class="" style="width:20%;">
+                <p>AAA</p>
+              </li>
+            </ul>
+          </div>  
+        </div>
+      </div>
+    </li>
+    
+    <!-- lei votada -->
+    <li class="listIten estimated">
+      <div class="grid_4 itenInfos">
+        <h1>
+          <span>000000</span>
+          título da lei
+        </h1>
+        <p class="abstract">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua... (veja mais)
+        </p>
+        <ul class="actions">
+          <li class="status">
+            status <span>em votação</span>
+          </li>
+          <li class="emailIten">
+            escreva para seu(s) representantes(s)
+          </li>
+          <li class="blockIten">
+            retirar da minha inbox
+          </li>
+          <li class="shareIten">
+            publicar na minha timeline
+          </li>
+        </ul> 
+      </div>
+      <div class="grid_8 itenRates clearfix">
+        <div class="ratingResults userChoice">
+          <label class="grid_2">
+            você 
+            <span class="rateLabel"><b class=" icon-question-sign icon-white"></b></span>
+          </label>
+          <ul class="grid_6">
+            <li class="opposite">contra</li>
+            <li class="halfOpposite">parc. contra</li>
+            <li class="abstention">abstenção</li>
+            <li class="halfFavorable chosen">parc. favor</li>
+            <li class="favorable">a favor</li>
+          </ul>
+        </div>
+        
+        <div class="ratingResults representativesChoice clearfix">
+          <label class="grid_2">
+            representantes 
+          </label>
+          <ul class="grid_6">
+            <li class="opposite" style="width:12%;">—%</li>
+            <li class="halfOpposite" style="width:24%;">—%</li>
+            <li class="abstention" style="width:36%;">—%</li>
+            <li class="halfFavorable" style="width:8%;">—%</li>
+            <li class="favorable" style="width:20%;">—%</li>
+          </ul>
+        </div>
+        
+        <div class="ratingResults friendsChoice">
+          <label class="grid_2">
+            amigos 
+          </label>
+          <ul class="grid_6">
+            <li class="opposite" style="width:36%;">—%</li>
+            <li class="halfOpposite" style="width:12%;">—%</li>
+            <li class="abstention" style="width:20%;">—%</li>
+            <li class="halfFavorable" style="width:8%;">—%</li>
+            <li class="favorable" style="width:24%;">—%</li>
+          </ul>
+        </div>
+        
+        <div class="ratingResults partiesChoice">
+          <label class="grid_2">
+            partidos 
+          </label>
+          <ul class="grid_6">
+            <li class="opposite" style="width:20%;">—%</li>
+            <li class="halfOpposite" style="width:12%;">—%</li>
+            <li class="abstention" style="width:24%;">—%</li>
+            <li class="halfFavorable" style="width:8%;">—%</li>
+            <li class="favorable" style="width:36%;">—%</li>
+          </ul>
+        </div>
+      </div>
+    </li>
+    
+    <!-- voto estimado -->
+    <li class="listIten rated">
+      <div class="grid_4 itenInfos">
+        <h1>
+          <span>000000</span>
+          título da lei
+        </h1>
+        <p class="abstract">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua... (veja mais)
+        </p>
+        <ul class="actions">
+          <li class="status">
+            status <span>em votação</span>
+          </li>
+          <li class="emailIten">
+            escreva para seu(s) representantes(s)
+          </li>
+          <li class="blockIten">
+            retirar da minha inbox
+          </li>
+          <li class="shareIten">
+            publicar na minha timeline
+          </li>
+        </ul> 
+      </div>
+      <div class="grid_8 itenRates clearfix">
+        <div class="ratingResults userChoice">
+          <label class="grid_2">
+            você 
+            <span class="rateLabel"><b class="icon-check icon-white"></b></span>
+          </label>
+          <ul class="grid_6">
+            <li class="opposite chosen">contra</li>
+            <li class="halfOpposite">parc. contra</li>
+            <li class="abstention">abstenção</li>
+            <li class="halfFavorable">parc. favor</li>
+            <li class="favorable">a favor</li>
+          </ul>
+        </div>
+        
+        <div class="ratingResults representativesChoice clearfix">
+          <label class="grid_2">
+            representantes 
+          </label>
+          <ul class="grid_6">
+            <li class="opposite" style="width:12%;">—%</li>
+            <li class="halfOpposite" style="width:24%;">—%</li>
+            <li class="abstention" style="width:36%;">—%</li>
+            <li class="halfFavorable" style="width:8%;">—%</li>
+            <li class="favorable" style="width:20%;">—%</li>
+          </ul>
+        </div>
+        
+        <div class="ratingResults friendsChoice">
+          <label class="grid_2">
+            amigos 
+          </label>
+          <ul class="grid_6">
+            <li class="opposite" style="width:36%;">—%</li>
+            <li class="halfOpposite" style="width:12%;">—%</li>
+            <li class="abstention" style="width:20%;">—%</li>
+            <li class="halfFavorable" style="width:8%;">—%</li>
+            <li class="favorable" style="width:24%;">—%</li>
+          </ul>
+        </div>
+        
+        <div class="ratingResults partiesChoice">
+          <label class="grid_2">
+            partidos 
+          </label>
+          <ul class="grid_6">
+            <li class="opposite" style="width:20%;">—%</li>
+            <li class="halfOpposite" style="width:12%;">—%</li>
+            <li class="abstention" style="width:24%;">—%</li>
+            <li class="halfFavorable" style="width:8%;">—%</li>
+            <li class="favorable" style="width:36%;">—%</li>
+          </ul>
+        </div>
+      </div>
+    </li>
+  <ul>
+</section>
 
 <script src="bower_components/jquery/jquery.js"></script>
 <script src="bower_components/angular/angular.js"></script>
@@ -68,28 +462,28 @@
 <script src="bower_components/bootstrap-sass/js/bootstrap-scrollspy.js"></script>
 <script src="bower_components/bootstrap-sass/js/bootstrap-collapse.js"></script>
 <script src="bower_components/bootstrap-sass/js/bootstrap-tab.js"></script>
-<script src="scripts/d3.js"></script>
-<script src="scripts/d3.layout.js"></script>
-<script src="scripts/moment.min.js"></script>
-<script src="scripts/jquery.tagsinput.min.js"></script>
-<script src="components/lodash/lodash.min.js"></script>
-<script src="scripts/directives/lei.js"></script>
-<script src="scripts/services/cidadaoCMSP.js"></script>
-<script src="scripts/controllers/enviar_mensagem.js"></script>
-<script src="scripts/controllers/selecionar_convidar.js"></script>
-<script src="scripts/directives/choiceDetails.js"></script>
-<script src="scripts/directives/partyDetails.js"></script>
-<script src="scripts/directives/tagger.js"></script>
-<script src="scripts/controllers/showPL.js"></script>
-<script src="scripts/directives/d3link.js"></script>
-<script src="scripts/controllers/tags.js"></script>
-<script src="scripts/directives/d3cloud.js"></script>
-<script src="scripts/directives/paging.js"></script>
+<script src="bower_components/lodash/dist/lodash.min.js"></script>
+
+
 <!-- endbuild -->
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
+		<script src="scripts/moment.min.js"></script>
+		<script src="scripts/jquery.tagsinput.min.js"></script>
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/enviar_mensagem.js"></script>
+		<script src="scripts/controllers/selecionar_convidar.js"></script>
+		<script src="scripts/controllers/showPL.js"></script>
+		<script src="scripts/controllers/tags.js"></script>
+		<script src="scripts/directives/lei.js"></script>
+		<script src="scripts/services/cidadaoCMSP.js"></script>
+		<script src="scripts/directives/choiceDetails.js"></script>
+		<script src="scripts/directives/partyDetails.js"></script>
+		<script src="scripts/directives/tagger.js"></script>
+		<script src="scripts/directives/d3link.js"></script>
+		<script src="scripts/directives/d3cloud.js"></script>
+		<script src="scripts/directives/paging.js"></script>
 <!-- endbuild -->
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
