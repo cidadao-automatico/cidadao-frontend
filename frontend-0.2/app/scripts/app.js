@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('vigiaPoliticoApp', [])
+angular.module('vigiaPoliticoApp', ['ngResource'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {

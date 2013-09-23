@@ -11,9 +11,9 @@ describe('Filter: capitalize', function () {
     capitalize = $filter('capitalize');
   }));
 
-  it('should return the input prefixed with "capitalize filter:"', function () {
+  it('should return capitalized input', function () {
     var text = 'angularjs';
-    expect(capitalize(text)).toBe('capitalize filter: ' + text);
+    expect(capitalize(text)).toBe('Angularjs');
   });
 
 });

@@ -12,8 +12,8 @@ describe('Filter: deputyLogo', function () {
   }));
 
   it('should return the input prefixed with "deputyLogo filter:"', function () {
-    var text = 'angularjs';
-    expect(deputyLogo(text)).toBe('deputyLogo filter: ' + text);
+    var deputy={}
+    expect(deputyLogo(deputy)).toBe('./img/icon-member.jpg');
   });
 
 });

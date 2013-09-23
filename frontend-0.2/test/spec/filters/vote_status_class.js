@@ -11,9 +11,19 @@ describe('Filter: voteStatusClass', function () {
     voteStatusClass = $filter('voteStatusClass');
   }));
 
-  it('should return the input prefixed with "voteStatusClass filter:"', function () {
-    var text = 'angularjs';
-    expect(voteStatusClass(text)).toBe('voteStatusClass filter: ' + text);
+  it('should return "rated" when vote is above 0', function () {
+    var lei = { yourvote: 1}
+    expect(voteStatusClass(lei)).toBe('rated');
+  });
+
+  it('should return "estimated" when vote is below 0', function () {
+    var lei = { yourvote: -1}
+    expect(voteStatusClass(lei)).toBe('estimated');
+  });
+
+  it('should return "" when vote is equal to 0', function () {
+    var lei = { yourvote: 0}
+    expect(voteStatusClass(lei)).toBe('');
   });
 
 });

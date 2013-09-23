@@ -1,16 +1,13 @@
 'use strict';
 
 angular.module('vigiaPoliticoApp')
-  .factory('User', function () {
+  .factory('User', function ($resource) {
     // Service logic
     // ...
 
-    var meaningOfLife = 42;
-
     // Public API here
-    return {
-      someMethod: function () {
-        return meaningOfLife;
-      }
-    };
+    return $resource('user/:userId/:suffix', {}, {
+        query: {responseType: 'json'},
+        recommended_laws: {method: 'GET', params: { suffix: 'recommended_laws'}, isArray: true, responseType: 'json'}
+      });
   });

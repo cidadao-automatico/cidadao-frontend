@@ -11,9 +11,20 @@ describe('Filter: levelString', function () {
     levelString = $filter('levelString');
   }));
 
-  it('should return the input prefixed with "levelString filter:"', function () {
-    var text = 'angularjs';
-    expect(levelString(text)).toBe('levelString filter: ' + text);
+  it('should return the correct string according to input level', function () {
+    var levels={ }
+    levels[1]='contra'
+    levels[2]='parcialmente contra'
+    levels[3]='abstenção'
+    levels[4]='parcialmente a favor'
+    levels[5]='a favor'
+    levels[6]=''
+    var parsedKey=0
+    for (var key in levels)
+    {
+      parsedKey=parseInt(key);
+      expect(levelString(parsedKey)).toBe(levels[key]);  
+    }
   });
 
 });

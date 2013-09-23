@@ -2,7 +2,11 @@
 
 angular.module('vigiaPoliticoApp')
   .filter('status', function () {
-    return function (input) {
-      return 'status filter: ' + input;
-    };
+    return function(status) {
+		switch(status) {
+				case 1: return "votado";
+				case 0: return "em vota&ccedil;&atilde;o";
+			}
+			return "unknown"; //TODO
+	};
   });

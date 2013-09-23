@@ -12,8 +12,18 @@ describe('Filter: status', function () {
   }));
 
   it('should return the input prefixed with "status filter:"', function () {
-    var text = 'angularjs';
-    expect(status(text)).toBe('status filter: ' + text);
+    var levels={ }
+    levels[0]="em vota&ccedil;&atilde;o"
+    levels[1]='votado'    
+    levels[2]='unknown'
+
+    var parsedKey=0
+    for (var key in levels)
+    {
+      parsedKey=parseInt(key);
+      expect(status(parsedKey)).toBe(levels[key]);  
+    }
+
   });
 
 });
