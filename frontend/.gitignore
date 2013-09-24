@@ -1,0 +1,7 @@
+components
+*~
+components
+.sass-cache
+temp
+app/templates/*.html.js
+

@@ -1,0 +1,20 @@
+<div class="show-pl">
+  <lei lei="lei"></lei>
+  <div class="comissoes grid_8">
+	<h2>Comissoes</h2>
+	<ul>
+	  <li ng-repeat="com in lei.comissoes" class="label label-info">
+		{{com.nome}}
+	  </li>
+	</ul>
+  </div>
+  <div class="tags grid_8">
+	<h2>Tags</h2>
+	<tagger tags="lei.tags"></tagger>
+  </div>
+
+  <div class="grid_12" ng-show="lei.votes.representantes">
+	<h2>Voting Groups</h2>
+	<d3link votes="lei.votes"></d3link>
+  </div>
+</div>
