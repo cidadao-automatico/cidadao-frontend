@@ -32,6 +32,10 @@ angular.module('vigiaPoliticoApp', ['ngResource'])
         templateUrl: 'views/step5.html',
         controller: 'RegisterUserCtrl'
       })
+      .when('/user_home', {
+        templateUrl: 'views/user_home.html',
+        controller: 'UserInfoCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

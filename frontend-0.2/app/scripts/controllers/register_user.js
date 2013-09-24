@@ -11,11 +11,13 @@ angular.module('vigiaPoliticoApp')
     $scope.register_with_facebook = function($scope)
     {
       console.log("fb");
+      window.location="#/user_home"
     };
 
     $scope.register_with_twitter = function($scope)
     {
       console.log("twit");
+      window.location="#/user_home"
     };
 
 
