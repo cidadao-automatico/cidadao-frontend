@@ -18,7 +18,7 @@ describe('Controller: LawsDashboardCtrl', function () {
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
+  it('should fetch a list of recommendes laws for a user', function () {
     expect(scope.laws).toEqual([]);
     $httpBackend.flush();
     expect(scope.laws[0].title).toEqual('Projeto de lei 1');
