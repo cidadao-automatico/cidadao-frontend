@@ -9,7 +9,7 @@ set :current_frontend, "frontend-0.2"
 set :user, 'ubuntu'
 set :scm, :git
 set :scm_verbose, false
-set :keep_releases, 5
+set :keep_releases, 2
 
 set :user, 'ubuntu'
 set :use_sudo, true
@@ -26,10 +26,19 @@ role :app, "julgamento.clipesebandas.com.br"                          # This may
 role :db,  "julgamento.clipesebandas.com.br", :primary => true # This is where Rails migrations will run
 
 # if you want to clean up old releases on each deploy uncomment this:
+after "deploy:update_code", "deploy:update_shared_symlinks"
 after "deploy:restart", "deploy:cleanup"
 after "deploy:cleanup", "npm:install"
 after "npm:install", "bower:install"
 after "bower:install", "grunt:build"
+
+
+namespace :deploy do
+  task :update_shared_symlinks do    
+    run "ln -s #{File.join(deploy_to, "shared/node_modules")} #{File.join(release_path, "/frontend-0.2/node_modules")}"
+    run "ln -s #{File.join(deploy_to, "shared/bower_components")} #{File.join(release_path, "/frontend-0.2/app/bower_components")}"    
+  end
+end
 
 namespace :npm do
   desc 'Install npm packages'
