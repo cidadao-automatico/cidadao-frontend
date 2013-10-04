@@ -1,13 +1,34 @@
-<header class="container_16 clearfix" ng-controller="UserInfoCtrl">
-      <a href="index.html">
-        <a href="/" class="logo_url" alt="cidadão automático">
-      </a>
-      <nav class="mainNav">
-        <ul>
-          <li><a href="selecionar_convidar.html">HOME</a></li>
-          <li><a href="">AJUDA</a></li>
-          <li><a href="">CONVIDE AMIGOS</a></li>
-          <li><a href="selecionar_convidar.html">CONTATO</a></li>
-        </ul>
-      </nav>
-    </header>
+<header class="header_style">
+<div class="logo">
+<img src="images/logo_header.jpg" alt="logo">
+<div class="social_logo">
+
+</div>
+
+</div>
+
+<nav id="menu_cima">
+<ul>
+<li><a href="#">HOME</a></li>
+<li><a href="#">AJUDA</a></li>
+<li><a href="#">CONVIDE AMIGOS</a></li>
+<li><a href="#">CONTATO</a></li>
+</ul>
+</nav>
+<div id="header_things">
+
+<div class="search_box">
+<form id="search_top" >
+     <input type="text" ng-model="yourName" placeholder="Busque leis, representantes, temas, partidos, campanhas">
+    </form>
+</div>
+
+<div class="user_in">
+<h3> Olá Usuário</h3>
+    
+<div id="botao_fundopreto">
+SAIR
+</div>
+</div>
+</div>
+</header>

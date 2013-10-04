@@ -1,5 +1,16 @@
-<div class="grid_16" style="border: solid 1px; height: 600px; margin-top: 10px" ng-controller="LawsDashboardCtrl">
-	<div ng-include="'views/laws_dashboard_header.html'"></div>
-	<div ng-include="'views/laws_dashboard_list.html'"></div>
+<div class="main_content">
+	<div id="tab1">
+		<div class="tab_title">
+			<ul>
+				<li>
+					<h1  style="margin-top: -10px;"> Projetos que merecem sua atenção </h1>
+				</li>
+			</div>
+		<div style="width:98%; margin-left: auto;
+margin-right: auto; margin-top: 10px; margin-botton:10px; "> 
+			<ul id="law_tab_titulos" ng-include="'views/laws_dashboard_header.html'"></ul>			
+			<div ng-include="'views/laws_dashboard_list.html'"></div>
+		</div>
+	</div>
 </div>
 
