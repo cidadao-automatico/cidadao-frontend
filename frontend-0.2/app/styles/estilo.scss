@@ -1,0 +1,688 @@
+a {
+    color: inherit;
+    text-decoration: none;
+	font-weight: lighter;
+}
+p
+{
+font-family: Univers 57;
+} 
+
+html, html a {
+    -webkit-font-smoothing: antialiased !important;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+	
+}
+
+
+@font-face {
+font-family: Univers57;
+src: url('fonts/univers57.eot');
+src: url('fonts/univers57.eot?#iefix') format('embedded-opentype'),
+url('fonts/univers57.svg#tall_filmsregular') format('svg'),
+url('fonts/univers57.woff') format('woff'),
+url('fonts/univers57.ttf') format('truetype');
+font-weight: lighter;
+font-style: normal;
+    
+}
+
+@font-face {
+font-family: Univers47;
+src: url('fonts/Univers47.otf');
+font-weight: lighter;
+font-style: normal;
+}
+
+* {
+font-family: Univers47;
+-webkit-font-smoothing: antialiased;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+body
+{width:768px;
+margin-left: auto;
+margin-right: auto;
+font-family:"arial";
+}
+
+#header_things {
+width: 475px;
+}
+
+#menu_cima {
+  list-style-type: none;
+  font-family:"arial";
+  float:right;
+  font-size: 17px;
+}
+
+ #menu_cima  li{
+  border-right: 1px solid #ffffff; 
+  display:inline;
+  float:left;
+  padding-left: 30px;
+  margin-top:10px;
+}
+
+header.header_style {
+position:relative;
+top: 20px;
+font-family:"arial";
+width: 100%;
+height: 75px;
+padding-bottom:50px;
+
+}
+
+header img {
+    float: left}
+
+/*text-decoration:underline;*/
+
+
+#botao_fundopreto {
+top: 45px;
+right:0px;
+background: #2B2828;
+color: white;
+width:50px;
+float:right;
+text-align: center;
+}
+
+#botao_mais_configBox {
+background: #2B2828;
+color: white;
+padding: 3px 5px;
+text-align: center;
+position:absolute;
+font-size: 12px;
+top:100%;
+margin-top:-5px;
+border-width: 4px;
+border-style: solid;
+border-color: white;
+}
+
+#botao_mostrar_mais  h1{
+background: #2B2828;
+color: white;
+padding: 3px 5px;
+text-align: center;
+margin: 0 auto;
+font-size: 15px;
+border-width: 4px;
+border-style: solid;
+width:150px;
+border-color: white;
+}
+
+#botao_mostrar_mais {
+ display: block;
+margin-top:-13px;
+position: absolute;
+    width: 100%
+}
+
+
+.search_box {
+position: absolute;
+float: right;
+right: 0px;
+top: 40px;
+}
+
+.search_box input {
+width:355px;
+}
+
+#configBox_places  {
+padding-left:4px;
+text-transform:uppercase;
+}
+
+#configBox_places   h3{
+font-size: 12px;
+font-family:Univers47;
+background-color: #BCBEC0;
+color: white;
+padding-left: 5px;
+padding-right: 10px;
+padding-top: 6px;
+padding-bottom: 6px;
+margin-right:6px;
+margin-bottom:6px;
+text-align:center;
+}
+
+#configBox_themes  {
+padding-left:4px;
+}
+
+#configBox_themes   h3{
+font-size: 13px;
+font-family:Univers47;
+background-color: #BCBEC0;
+color: black;
+padding-left: 5px;
+padding-right: 10px;
+padding-top: 3px;
+padding-bottom: 3px;
+margin-right:5px;
+margin-bottom:8px;
+text-align:center;
+}
+
+#configBox_representante {
+padding-left: 5px;
+}
+
+#configBox_representante li {
+margin-bottom:8px;
+margin-left:7px;
+width:30px;
+}
+
+#configBox_representante img{
+width:30px;
+}
+
+#configBox_votacoes {
+padding: 5px;
+}
+
+#configBox_votacoes h1 {
+font-size: 18px;
+font-family:Univers47;
+text-align: center;
+color: black;
+text-decoration:underline;
+}
+
+#configBox_votacoes h2 {
+font-size: 13px;
+font-family:Univers47;
+text-align: center;
+color: black;
+padding-top:5px;
+}
+
+#configBox_opcoes {
+padding: 5px;
+}
+
+#configBox_opcoes h1 {
+font-size: 12px;
+font-family:Univers47;
+text-align: left;
+color: #2B2828;
+text-decoration:underline;
+}
+
+#configBox_opcoes h2 {
+font-size: 18px;
+font-family:Univers47;
+text-align: center;
+color: black;
+padding-top:2px;
+}
+
+#representante_opinion h1 {
+font-family: Univers47;
+font-size: 12px;
+text-align: center;
+padding-bottom:2px;
+}
+
+#representante_opinion li {
+margin-top:10px;
+margin-left:7px;
+width:50px;
+}
+
+#representante_opinion img{
+width:50px;
+}
+#friends_opinion h1 {
+font-family: Univers47;
+font-size: 12px;
+text-align: center;
+padding-bottom:2px;
+}
+
+#friends_opinion li {
+margin-top:10px;
+margin-left:7px;
+width:50px;
+}
+
+#friends_opinion img{
+width:50px;
+}
+
+#configBox_friends li {
+margin-bottom:10px;
+margin-left:7px;
+width:25px;
+}
+
+#configBox_friends img{
+width:25px;
+padding-bottom:3px;
+}
+
+
+.afavor {
+background: #B1CC41;
+color:white;
+}
+
+.parfavor {
+background: #E5FF75;
+color:black;
+}
+
+.parcontra {
+background: #F4777C;
+color:white;
+}
+
+.abstencao {
+background: #C8C8C8;
+color:white;
+}
+
+.contra {
+background: #CC4141;
+color:white;
+}
+
+#law_icons 
+{ padding-top:10px;
+}
+
+#law_icons li
+{
+   display:block;
+   float:left;
+   padding: 8px 5px;
+}
+
+
+.user_in {
+position: absolute;
+float: right;
+right: 0px;
+top: 78px;
+}
+
+.user_in h3 {
+text-decoration:underline;
+font-size: 15px;
+margin: 0px;
+float: left;
+padding-right: 10px;
+}
+
+.config_box {
+width:100%;
+border-width: 3px;
+border-style: solid;
+border-color: #2B2828;
+margin-top:50px;
+position:relative;
+}
+
+.main_content ul li { display: inline; }
+
+#config_tab_titulos {
+text-transform:uppercase;
+background:solid;
+background-color: #2B2828;
+color: white;
+text-align: center;
+font-size: 13px;
+text-align:center;
+height:30px;
+
+display: table;
+table-layout: fixed;
+width:100%;
+}
+
+.config_tab_opcoes li{
+    float:left;
+	position:relative;
+	height:100%;
+	}
+
+.config_tab_opcoes {
+height:90px; 
+margin-top:8px;
+margin-bottom:8px;
+}
+
+.tab_title {
+margin-top:-12px;
+}
+
+.tab_title ul{
+display: inline-block;
+}
+
+.tab_title h1{
+margin-left:5px;
+padding: 5px 10px;
+background-color: #DEFF52;
+text-decoration:underline;
+text-transform:uppercase;
+}
+
+#user_opinion h1 {
+font-size: 10px;
+color: black;
+padding-top: 4px;
+text-align:center;
+}
+
+#config_places  h3{
+font-size: 11px;
+background-color: #BCBEC0;
+color: black;
+padding-left: 5px;
+padding-right: 5px;
+padding-top: 3px;
+padding-bottom: 3px;
+margin-right:5px;
+margin-top:5px;
+text-align:center;
+float:left;
+width:100%;
+}
+
+#user_opinion h2 {
+font-size: 14px;
+color: black;
+text-decoration:underline;
+text-align:center;
+}
+#user_opinion {
+position:relative;
+}
+#user_opinion h3 {
+font-size: 9px;
+color: black;
+padding-top: 4px;
+text-align:center;
+font-family: Univers47;
+}
+
+#user_opinion hr {
+color: #BCBEC0;
+width: 90%;
+margin-top:8x;
+margin-bottom:8x;
+
+}
+
+#config_tab_titulos li{
+    padding-bottom: 10px;
+    padding-top: 10px;
+  	float:left;
+}
+
+#law_infos_compact  {
+padding-left:4px;
+position:relative;
+}
+
+#law_infos_compact  h1{
+font-size: 13px;
+text-transform:uppercase;
+text-decoration:underline;
+padding-top: 7px;
+}
+
+#law_infos_compact  h2{
+font-size: 13px;
+text-transform:uppercase;
+color: #58595B;
+padding-top: 4px;
+font-family: Univers47;
+}
+
+#law_infos_compact  h3{
+font-size: 11px;
+background-color: #BCBEC0;
+color: black;
+padding-left: 5px;
+padding-right: 5px;
+padding-top: 3px;
+padding-bottom: 3px;
+margin-right:5px;
+margin-top:5px;
+text-align:center;
+}
+
+#law_infos_full  {
+padding: 0 6px;
+position:relative;
+}
+
+#law_infos_full  h1{
+font-size: 20px;
+text-transform:uppercase;
+text-decoration:underline;
+padding-top: 10px;
+}
+
+#law_infos_full  h2{
+font-size: 17px;
+text-transform:uppercase;
+color: #58595B;
+padding-top: 4px;
+font-family: Univers47;
+}
+
+#law_infos_full  h4{
+font-size: 13px;
+color: black;
+padding-top: 8px;
+font-family: Univers47;
+line-height: 18px;
+}
+
+#law_infos_full  h3{
+font-size: 11px;
+background-color: #BCBEC0;
+color: black;
+padding-left: 5px;
+padding-right: 5px;
+padding-top: 3px;
+padding-bottom: 3px;
+margin-right:5px;
+margin-top:5px;
+text-align:center;
+}
+
+
+#botao_contra {
+background-color: #CC4141;
+color: white;
+text-align:center;
+font-size: 15px;
+width: 50px;
+padding-top:2px;
+padding-bottom:3px;
+margin-left: auto;
+margin-right: auto;
+margin-top:5px;
+}
+
+#config_tab{
+display: table;
+table-layout: fixed;
+width:100%;
+}
+
+#config_tab li{
+    padding-top: 10px;
+	padding-left: 5px;
+	display: table-cell;
+}
+
+
+#law_tab_titulos {
+background:solid;
+background-color: #2B2828;
+color: white;
+text-align: center;
+font-size: 12px;
+text-align:center;
+height:25px;
+}
+
+#law_tab_titulos li{
+    padding-bottom: 5px;
+	padding-top: 5px;
+  	float:left;
+}
+
+.law_box_compact li{
+    float:left;
+	height:100%;
+display: inline-block
+}
+
+.law_box_compact{
+height:100px; 
+border-width: 1px;
+border-style: solid;
+border-color: #BCBEC0;
+margin-bottom:15px;
+}
+
+.law_box_full li{
+    float:left;
+	height:100%;
+display: inline-block
+}
+
+.law_box_full{
+height:230px; 
+border-width: 1px;
+border-style: solid;
+border-color: #BCBEC0;
+margin-bottom:15px;
+}
+
+.main_content {
+position:relative;
+width: 768px;
+margin-left: auto;
+margin-right: auto;
+margin-top: 40px;
+border-width: 2px;
+border-style: solid;
+border-color: #BCBEC0;
+}
+
+
+
+footer  {
+position:relative;
+width: 768px;
+margin-left: auto;
+margin-right: auto; 
+margin-top: 20px;
+background-color: #2B2828;
+height: 125px;
+}
+
+.menu_footer {
+  list-style-type: none;
+  text-decoration:none;
+  display:inline;
+padding-right: 40px;
+float:right;
+margin-top: 55px;
+  }
+  
+.menu_footer li {
+padding-right: 40px;
+font-size: 20px;
+
+color: white;
+  display:inline;
+  float:left;
+}
+
+.menu_footer h2 {
+font-size: 11px;
+font-family:Univers47;
+text-decoration:underline;
+padding: 7px 6px;
+color: #DEFF52;
+display:inline;
+}
+
+.plus_button {
+background: url('../images/plus_button.png') no-repeat;
+}
+
+.grid_6 {
+    width: 364px;
+	position:relative;
+	float:right;
+	}
+
+.law_userRating li {
+text-align:center;
+font-size:0.8em;
+margin: 1px white;
+}
+
+.user_action_full {
+margin-top:20px;
+display: inline-block;
+}
+
+.user_action_full h1 {
+padding-left:5px;
+display:inline-block;
+}
+
+.user_action_full li {
+margin-bottom:10px;
+font-size:15px;
+}
+
+.law_userRating {
+display: inline-block;
+float: left;
+width:100%;
+margin-top:10px;
+}
+
+.law_userRating ul{
+    float: right;
+    position: relative;
+    width: 364px;
+	margin-top:-3px;
+}
+
+.law_userRating li{
+padding: 3px 0px;
+}
+
+.ratingResults{
+display: inline-block;
+float: left;
+width:100%;
+margin-top:10px;
+
+}

@@ -3,9 +3,13 @@
 angular.module('vigiaPoliticoApp', ['ngResource'])
   .config(function ($routeProvider) {
     $routeProvider
+      // .when('/', {
+      //   templateUrl: 'views/user_auth.html',
+      //   controller: 'AuthorizationCtrl'
+      // })
       .when('/', {
-        templateUrl: 'views/user_auth.html',
-        controller: 'AuthorizationCtrl'
+        templateUrl: 'views/user_home.html',
+        controller: 'UserInfoCtrl'
       })
       //TODO: Is there any way to match a regex on url?
       .when('/register', {
