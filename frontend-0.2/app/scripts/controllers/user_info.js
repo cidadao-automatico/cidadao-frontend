@@ -1,10 +1,8 @@
 'use strict';
 
 angular.module('vigiaPoliticoApp')
-  .controller('UserInfoCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('UserInfoCtrl', function ($scope, $resource, UserAuthorization, User) {
+    
+    $scope.user = UserAuthorization.get()
+    
+});

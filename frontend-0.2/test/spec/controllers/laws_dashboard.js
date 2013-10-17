@@ -11,15 +11,15 @@ describe('Controller: LawsDashboardCtrl', function () {
   beforeEach(inject(function ($controller, $rootScope, _$httpBackend_) {
     $httpBackend = _$httpBackend_;
     scope = $rootScope.$new();
-    scope.userId=1;
-    $httpBackend.expectGET('user/1/recommended_laws').respond([{title: 'Projeto de lei 1'}]);    
+    $httpBackend.expectGET('user/show').respond({firstName: 'Gustavo', id: 1});
+    $httpBackend.expectGET('user/1/recommend_laws').respond([{title: 'Projeto de lei 1'}]);
     LawsDashboardCtrl = $controller('LawsDashboardCtrl', {
       $scope: scope
     });
   }));
 
   it('should fetch a list of recommendes laws for a user', function () {
-    expect(scope.laws).toEqual([]);
+    expect(scope.laws).toEqual(undefined);
     $httpBackend.flush();
     expect(scope.laws[0].title).toEqual('Projeto de lei 1');
   });
