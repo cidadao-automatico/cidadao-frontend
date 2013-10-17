@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('vigiaPoliticoApp')
-  .service('UserAuthorization', function ($resource) {
+  .factory('UserAuthorization', function ($resource) {
     // Service logic
     // ...
 
     // Public API here
-    return $resource('/user/show', {}, {});
+    
+    return $resource("/user/show");
   });
