@@ -7,5 +7,5 @@ angular.module('vigiaPoliticoApp')
 
     // Public API here
     
-    return $resource("/user/show");
+    return $resource("user/show");
   });
