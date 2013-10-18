@@ -9,11 +9,11 @@ angular.module('vigiaPoliticoApp')
     ];
 
     $scope.login_with_facebook = function($scope){
-    	console.log("fb")
+    	window.location='/authenticate/facebook'
     };
 
     $scope.login_with_twitter = function($scope){
-    	console.log("tw")
+    	window.location='/authenticate/google'
     };
 
     $scope.register = function($scope){
