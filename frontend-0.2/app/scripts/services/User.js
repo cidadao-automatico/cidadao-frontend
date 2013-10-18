@@ -7,7 +7,7 @@ angular.module('vigiaPoliticoApp').
     
 
     // Public API here
-    return $resource('user/:userId/:suffix', {}, {
+    return $resource('user/:suffix', {}, {
         query: {responseType: 'json'},
         recommended_laws: {method: 'GET', params: { suffix: 'recommend_laws'}, isArray: true, responseType: 'json'},
         randow_laws: {method: 'GET', params: { suffix: 'randow_laws'}, isArray: true, responseType: 'json'},    

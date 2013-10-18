@@ -1,13 +1,13 @@
 
-	<ul class="law_box_compact" style="background-color:E6E6E6;">
+	<ul class="law_box_compact" style="background-color:E6E6E6;"  ng-repeat="law in laws">
 
 	<li id="law_infos_compact"  style="width: 17%; border-width: 1px;
 border-style: solid;
 border-color: #BCBEC0;">
-		<h1>titulo da lei</h1>
-		<h2>nº 1234-56/13</h2>
+		<h1>{{law.description | words:5}}</h1>
+		<h2>{{law.typeId}}{{law.stdCode}}/{{law.year}}</h2>
 		
-		<ul style="padding-top:5px;">
+		<ul style="padding-top:5px;">		
 		<li><h3>arvore</h3></li>
 		<li><h3>parques</h3></li>
 		<li><h3>reforma</h3></li>

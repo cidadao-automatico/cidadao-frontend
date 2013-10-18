@@ -4,6 +4,7 @@
   "dependencies": {
     "angular": "~1.0.7",
     "angular-resource": "~1.0.7",
+    "angular-truncate": "master",
     "json3": "~3.2.4",
     "jquery": "~1.9.1",
     "bootstrap-sass": "2.1.0",
