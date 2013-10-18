@@ -1,6 +1,5 @@
-
-<ul class="law_box_compact" style="background-color:E6E6E6;" ng-repeat="(lawIndex, law) in laws">
-	<span class="law_container_{{law.stdCode}}" ng-show="showNormalLaw(lawIndex)">
+<span class="law_container" ng-repeat="(lawIndex, law) in laws">
+	<ul id="law_container_{{law.stdCode}}_normal" class="law_box_compact" style="background-color:E6E6E6;">	
 		<li id="law_infos_compact"  style="width: 17%; border-width: 1px;
 		border-style: solid;
 		border-color: #BCBEC0;">
@@ -16,7 +15,7 @@
 
 			<div style="position:absolute; left:100%; top:100%;  margin-left: -20px;
 				margin-top: -20px;">
-				<a href ng-click="showExtendedLaw(lawIndex)"><i class="icone-mais_small"> </i></a>
+				<a href ng-click="showExtendedLaw(law.stdCode)"><i class="icone-mais_small"> </i></a>
 			</div>
 		</li>
 		
@@ -46,7 +45,7 @@
 		</a>
 		<div style="position:absolute; left:100%; top:100%;  margin-left: -20px;
 		margin-top: -20px;">
-		<i class="icone-mais_small"> </i></div>
+			<a href ng-click="showExtendedLaw(law.stdCode)"><i class="icone-mais_small"> </i></a>
 		</li>
 		<li id="friends_opinion" c style="width: 32%; border-width: 1px;
 		border-style: solid;  position:relative;
@@ -62,7 +61,7 @@
 		</ul>
 		<div style="position:absolute; left:100%; top:100%;  margin-left: -20px;
 		margin-top: -20px;">
-		<i class="icone-mais_small"> </i></div>
+		<a href ng-click="showExtendedLaw(law.stdCode)"><i class="icone-mais_small"> </i></a>
 		</li>
 		<li id="user_actions"  style="width: 8%; border-width: 1px;
 		border-style: solid;position:relative;
@@ -74,16 +73,16 @@
 			<li> <i class="icone-fb"></i></li></a>
 		</li>
 		</ul>
-	<span>
+	</ul>
 <!-- extended law -->
 
-	<ul class="law_container_{{law.stdCode}}_full law_box_full" ng-show="showExtendedLaw(lawIndex)">
+	<ul id="law_container_{{law.stdCode}}_extended" class="law_box_full" style="display:none">
 		<li id="law_infos_full" style="width: 33%; border-width: 1px;
 			border-style: solid;position:relative;
 			border-color: #BCBEC0;">
-			<h1>titulo grande da lei</h1>
-			<h2>nº 1234-56/13</h2>
-			<h4>Sumário da lei, lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat nisl ut aliquip quis elit (...)<i style="margin-left:5px;" class="icone-mais_small"></i></h4>
+			<h1>{{law.description | characters: 25}}</h1>
+			<h2>Nro. {{law.typeId}} {{law.stdCode}}/{{law.year}}</h2>
+			<h4>{{law.description | characters: 400}}<i style="margin-left:5px;" class="icone-mais_small"></i></h4>
 			
 			<ul style="padding-top:5px;">
 				<li><h3>arvore</h3></li>
@@ -163,7 +162,7 @@
 				</div>
 				<div style="position:absolute; left:100%; top:100%; margin-left:-29px;  margin-top:-29px; ">
 					<a href="#">
-						<i class="icone-menos"></i>
+						<a href ng-click="hideExtendedLaw(law.stdCode)"><i class="icone-menos"></i></a>
 					</a>
 				</div>
 			</div>
