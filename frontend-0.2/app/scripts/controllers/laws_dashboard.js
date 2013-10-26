@@ -2,8 +2,10 @@
 
 angular.module('vigiaPoliticoApp')
   .controller('LawsDashboardCtrl', function ($scope, User, UserAuthorization) {
+    $scope.page = 1;
+    
   	$scope.user = UserAuthorization.get(function(result){
-  		$scope.laws=User.recommended_laws();
+  		$scope.laws=User.recommended_laws({page: $scope.page});
   		console.log($scope.laws)
   	})
     

@@ -12,7 +12,7 @@ describe('Controller: LawsDashboardCtrl', function () {
     $httpBackend = _$httpBackend_;
     scope = $rootScope.$new();
     $httpBackend.expectGET('user/show').respond({firstName: 'Gustavo', id: 1});
-    $httpBackend.expectGET('user/recommend_laws').respond([{title: 'Projeto de lei 1'}]);
+    $httpBackend.expectGET('user/recommend_laws?page=1').respond([{title: 'Projeto de lei 1'}]);
     LawsDashboardCtrl = $controller('LawsDashboardCtrl', {
       $scope: scope
     });
