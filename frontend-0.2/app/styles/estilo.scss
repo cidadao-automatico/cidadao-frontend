@@ -1,7 +1,7 @@
-a {
-    color: inherit;
-    text-decoration: none;
-	font-weight: lighter;
+a  {
+    color: inherit !important; 
+    text-decoration: none !important;
+	font-weight: lighter !important;
 }
 p
 {
@@ -42,6 +42,25 @@ font-family: Univers47;
             box-sizing: border-box;
 }
 
+.search_box button {
+    background: url("/images/glyphicons_027_search.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    cursor: pointer;
+    display: inline-block;
+    height: 17px;
+    line-height: 17px;
+    padding-top: 2px;
+    position: absolute;
+    right: 4px;
+    top: 3px;
+    vertical-align: middle;
+    width: 17px;
+}
+
+.search_box button:hover {
+    opacity: 0.6;
+}
+
 body
 {width:768px;
 margin-left: auto;
@@ -73,7 +92,6 @@ position:relative;
 top: 20px;
 font-family:"arial";
 width: 100%;
-height: 75px;
 padding-bottom:50px;
 
 }
@@ -94,12 +112,12 @@ float:right;
 text-align: center;
 }
 
-#botao_mais_configBox {
+.wrap-center h4{
 background: #2B2828;
 color: white;
 padding: 3px 5px;
 text-align: center;
-position:absolute;
+margin: 0 auto;
 font-size: 12px;
 top:100%;
 margin-top:-5px;
@@ -107,6 +125,22 @@ border-width: 4px;
 border-style: solid;
 border-color: white;
 }
+
+.outer-center {
+    float: right;
+    right: 50%;
+    position: relative;
+}
+.inner-center {
+    float: right;
+    right: -50%;
+    position: relative;
+}
+
+.wrap-center {
+position:absolute; top:100%; width:100%;
+}
+
 
 #botao_mostrar_mais  h1{
 background: #2B2828;
@@ -333,7 +367,7 @@ width:100%;
 border-width: 3px;
 border-style: solid;
 border-color: #2B2828;
-margin-top:50px;
+margin-top:30px;
 position:relative;
 }
 
@@ -685,4 +719,12 @@ float: left;
 width:100%;
 margin-top:10px;
 
+}
+
+.big_title{
+font-size:45px;
+font-family: Oswald;
+font-weight:700;
+text-align:center;
+margin-bottom:20px;
 }

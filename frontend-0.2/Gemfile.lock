@@ -23,6 +23,7 @@ GEM
 
 PLATFORMS
   java
+  x86-mingw32
 
 DEPENDENCIES
   capistrano

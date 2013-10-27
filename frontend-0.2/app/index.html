@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -6,29 +6,39 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
+    <title>Vigia Político</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
         <!-- build:css(.tmp) styles/main.css -->
         <!-- <link rel="stylesheet" href="styles/colors.css"> -->
-        <link rel="stylesheet" href="styles/reset.css">
+        
         <link rel="stylesheet" href="styles/estilo.css">
         <link rel="stylesheet" href="styles/icones.css">
-        <!-- <link rel="stylesheet" href="styles/structure.css"> -->
-        <!-- <link rel="stylesheet" href="styles/compass_twitter_bootstrap_awesome.css">         -->
-        <!-- <link rel="stylesheet" href="styles/application.css"> -->
-        <!-- <link rel="stylesheet" href="styles/showpl.css"> -->
+         <!--  <link rel="stylesheet" href="styles/structure.css"> -->
+        <link rel="stylesheet" href="styles/compass_twitter_bootstrap_awesome.css"> 
+        <link rel="stylesheet" href="styles/application.css">
+        <link rel="stylesheet" href="styles/showpl.css">
         <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap-sass/bootstrap-responsive- 2.1.0.css">
         <link rel="stylesheet" href="styles/social-buttons.css">
         <link rel="stylesheet" href="styles/logo.css">
+		<link rel="stylesheet" href="styles/reset.css">
+		<link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
         <!-- endbuild -->
 </head>
   <body ng-app="vigiaPoliticoApp" style="margin: 0 auto">
+  
+  
     <header class="header_style" ng-include="'views/header.html'"></header>
+	<div ng-view=""></div>
+	<div id="content_wrapper" style="display:inline-block">
+	<div class="grid_6"> </div>
+  <div class="grid_6"><div id="about_wrapper" style="position:relative; display:block; width:100%; height:10" ng-include="'views/home_about.html'"></div></div>
     
-    <div ng-view=""></div>
+   </div>
+	
+	
     <footer ng-include="'views/footer.html'"></footer>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
