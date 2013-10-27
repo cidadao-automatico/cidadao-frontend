@@ -3,10 +3,10 @@
 angular.module('vigiaPoliticoApp')
   .controller('LawsDashboardCtrl', function ($scope, User, UserAuthorization) {
     $scope.page = 1;
-    
+
   	$scope.user = UserAuthorization.get(function(result){
   		$scope.laws=User.recommended_laws({page: $scope.page});
-  		console.log($scope.laws)
+  		  console.log($scope.laws)
   	})
     
     //#FIXME: Seria legal utilizar Angular ngshow e nghide
