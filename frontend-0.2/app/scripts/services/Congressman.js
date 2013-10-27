@@ -1,16 +1,10 @@
 'use strict';
 
 angular.module('vigiaPoliticoApp')
-  .factory('Congressman', function () {
+  .factory('Congressman', function ($resource) {
     // Service logic
     // ...
 
-    var meaningOfLife = 42;
-
     // Public API here
-    return {
-      someMethod: function () {
-        return meaningOfLife;
-      }
-    };
+    return $resource('congressman', {}, {});
   });

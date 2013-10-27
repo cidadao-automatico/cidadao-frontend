@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('vigiaPoliticoApp')
-  .controller('RegisterUserCtrl', function ($scope, UserAuthorization,flash, LawRegion, User, Tag) {
+  .controller('RegisterUserCtrl', function ($scope, UserAuthorization,flash, LawRegion, User, Tag, Congressman) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -58,7 +58,26 @@ angular.module('vigiaPoliticoApp')
     }
 
     $scope.step3 = function(){
-      $scope.allCongressman=[]
+      if(!_.isNull($scope.user) && !_.isUndefined($scope.user))
+      {
+        $scope.allCongressman = Congressman.query(function(allCongressmanResult){
+          console.log(allCongressmanResult)
+          $scope.userRepresentatives = User.representatives(function(userRepresentativesResult){
+            var mappedIds=_.map(userRepresentativesResult, function(value) { return value["user"]["id"] })
+            //FIXME: This should be done at the server, perhaps with a more clever algorithm that takes advantage of id
+            _.each($scope.allCongressman, function(congressman){
+              if (_.contains(mappedIds,congressman["user"]["id"]))
+              {
+                congressman["enabled"]=true
+              }
+              else
+              {
+                congressman["enabled"]=false
+              }
+            })
+          })  
+        })
+      } 
     }
 
     $scope.step4 = function(){
@@ -73,6 +92,11 @@ angular.module('vigiaPoliticoApp')
     $scope.saveTags  = function(allTags)
     {
       User.saveTags({tags: $scope.allTags})
+    }
+
+    $scope.saveCongressman = function(allCongressman)
+    {
+      User.saveRepresentatives({congressmanList: allCongressman})
     }
 
     $scope.register_with_facebook = function($scope)
