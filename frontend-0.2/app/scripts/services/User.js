@@ -12,6 +12,7 @@ angular.module('vigiaPoliticoApp').
         recommended_laws: {method: 'GET', params: { suffix: 'recommend_laws'}, isArray: true, responseType: 'json'},
         randow_laws: {method: 'GET', params: { suffix: 'randow_laws'}, isArray: true, responseType: 'json'},
         regions: {method: 'GET', params: { suffix: 'regions'}, isArray: true, responseType: 'json'},
-        saveRegions: {method: 'POST', params: { suffix: 'regions'}, isArray: true, responseType: 'json'}
+        saveRegions: {method: 'POST', params: { suffix: 'regions'}, isArray: true, responseType: 'json'},
+        saveTags: {method: 'POST', params: { suffix: 'tags'}, isArray: true, responseType: 'json'}
       });
   });

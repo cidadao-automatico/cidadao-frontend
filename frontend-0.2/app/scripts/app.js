@@ -32,10 +32,6 @@ angular.module('vigiaPoliticoApp', ['ngResource','truncate','flash'])
         templateUrl: 'views/step4.html',
         controller: 'RegisterUserCtrl'
       })
-      .when('/step5', {
-        templateUrl: 'views/step5.html',
-        controller: 'RegisterUserCtrl'
-      })
       .when('/user_home', {
         templateUrl: 'views/user_home.html',
         controller: 'UserInfoCtrl'

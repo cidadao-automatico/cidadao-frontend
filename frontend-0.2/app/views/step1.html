@@ -1,4 +1,4 @@
-<div class="main_content" ng-controller="RegisterUserCtrl" style="border: 0px">
+<div class="main_content" ng-controller="RegisterUserCtrl" style="border: 0px" ng-init="step1()">
 	<div>
   		<label ng-repeat="region in allRegions">
       	<input type="checkbox" ng-model="region.enabled" /> {{region.description}} 
