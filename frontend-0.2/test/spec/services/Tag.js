@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: LawTag', function () {
+describe('Service: Tag', function () {
 
   // load the service's module
   beforeEach(module('vigiaPoliticoApp'));
 
   // instantiate service
-  var LawTag;
-  beforeEach(inject(function (_LawTag_) {
-    LawTag = _LawTag_;
+  var Tag;
+  beforeEach(inject(function (_Tag_) {
+    Tag = _Tag_;
   }));
 
   it('should do something', function () {
-    expect(!!LawTag).toBe(true);
+    expect(!!Tag).toBe(true);
   });
 
 });

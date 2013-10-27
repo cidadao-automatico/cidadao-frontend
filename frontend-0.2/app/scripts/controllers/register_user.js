@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('vigiaPoliticoApp')
-  .controller('RegisterUserCtrl', function ($scope, UserAuthorization,flash, LawRegion, User) {
+  .controller('RegisterUserCtrl', function ($scope, UserAuthorization,flash, LawRegion, User, Tag) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -38,7 +38,7 @@ angular.module('vigiaPoliticoApp')
     $scope.step2 = function() {
       if(!_.isNull($scope.user) && !_.isUndefined($scope.user))
       {
-        $scope.allTags = LawTag.query(function(allTagsResult){
+        $scope.allTags = Tag.query(function(allTagsResult){
           $scope.userTags = User.tags(function(userTagResult){
             var mappedIds=_.map(userTagResult, function(value) { return value["id"] })
             //FIXME: This should be done at the server, perhaps with a more clever algorithm that takes advantage of id
@@ -72,7 +72,7 @@ angular.module('vigiaPoliticoApp')
 
     $scope.saveTags  = function(allTags)
     {
-      User.saveTags({regions: $scope.allTags})
+      User.saveTags({tags: $scope.allTags})
     }
 
     $scope.register_with_facebook = function($scope)

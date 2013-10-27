@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('vigiaPoliticoApp')
-  .factory('LawTag', function ($resource) {
+  .factory('Tag', function ($resource) {
     // Service logic
 
     // Public API here
-    return $resource('law_tags', { }, { });
+    return $resource('tags', { }, { });
   });
