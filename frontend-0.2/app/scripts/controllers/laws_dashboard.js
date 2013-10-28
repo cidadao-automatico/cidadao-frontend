@@ -26,4 +26,9 @@ angular.module('vigiaPoliticoApp')
       extended.hide("slow")
     }
 
+    $scope.vote = function(rate, law)
+    {
+      console.log(rate+ " "+law.id)
+    }
+
   });

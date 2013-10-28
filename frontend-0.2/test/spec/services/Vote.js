@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: Voto', function () {
+describe('Service: Vote', function () {
 
   // load the service's module
   beforeEach(module('vigiaPoliticoApp'));
 
   // instantiate service
-  var Voto;
-  beforeEach(inject(function (_Voto_) {
-    Voto = _Voto_;
+  var Vote;
+  beforeEach(inject(function (_Vote_) {
+    Vote = _Vote_;
   }));
 
   it('should do something', function () {
-    expect(!!Voto).toBe(true);
+    expect(!!Vote).toBe(true);
   });
 
 });

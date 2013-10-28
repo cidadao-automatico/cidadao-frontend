@@ -21,12 +21,10 @@
 		
 		<li id="user_opinion"  style="width: 11%; border-width: 1px;
 			border-style: solid;
-			border-color: #BCBEC0;">
-				<a href="#">
+			border-color: #BCBEC0;">				
 					<div id="botao_contra">
 					contra 
-					</div>
-				</a>
+					</div>				
 				<h1>(quer mudar?)</h1>
 				<hr>
 				<h2>18 dias </h2>
@@ -99,11 +97,11 @@
 			<div class="law_userRating">
 				<label style="position:relative; float:left; " class="grid_2"> VOCÊ </label>
 				<ul>
-					<li class="contra" style="width:20%;">contra</li>
-					<li class="parcontra" style="width:20%;">par. contra</li>
-					<li class="abstencao" style="width:20%;">abstenção</li>
-					<li class="parfavor" style="width:20%;">par. a favor</li>
-					<li class="afavor" style="width:20%;">a favor</li>
+					<a href ng-click="vote(1,law)"><li class="contra" style="width:20%;">contra</li></a>
+					<a href ng-click="vote(2,law)"><li class="parcontra" style="width:20%;">par. contra</li></a>
+					<a href ng-click="vote(3,law)"><li class="abstencao" style="width:20%;">abstenção</li></a>
+					<a href ng-click="vote(4,law)"><li class="parfavor" style="width:20%;">par. a favor</li></a>
+					<a href ng-click="vote(5,law)"><li class="afavor" style="width:20%;">a favor</li></a>
 				</ul>
 			</div>
 

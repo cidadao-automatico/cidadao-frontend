@@ -5,5 +5,8 @@ angular.module('vigiaPoliticoApp')
     // Service logic
 
     // Public API here
-    return $resource('law/:lawId', { }, { });
+    return $resource('law_proposal/:suffix', { }, { 
+        laws_for_vote: {method: 'GET', params: { suffix: 'vote_training'}, isArray: true, responseType: 'json'}
+    });
+
   });

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('vigiaPoliticoApp')
-  .controller('RegisterUserCtrl', function ($scope, UserAuthorization,flash, LawRegion, User, Tag, Congressman) {
+  .controller('RegisterUserCtrl', function ($scope, UserAuthorization,flash, LawRegion, User, Tag, Congressman, Law, Vote) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -82,6 +82,37 @@ angular.module('vigiaPoliticoApp')
 
     $scope.step4 = function(){
       $scope.laws=[]
+      if(!_.isNull($scope.user) && !_.isUndefined($scope.user))
+      {
+        $scope.laws = Law.laws_for_vote()
+      } 
+    }
+
+    //#FIXME: Seria legal utilizar Angular ngshow e nghide
+    $scope.showExtendedLaw = function(lawId)
+    {
+      console.log("asda "+lawId)
+      var normal=$("#law_container_"+lawId+"_normal")
+      var extended=$("#law_container_"+lawId+"_extended")
+      normal.hide("slow")
+      extended.show("slow")
+    }
+
+    $scope.hideExtendedLaw = function(lawId)
+    {
+      var normal=$("#law_container_"+lawId+"_normal")
+      var extended=$("#law_container_"+lawId+"_extended")
+      normal.show("slow")
+      extended.hide("slow")
+    }
+
+    $scope.vote = function(rate, law)
+    {
+      var extended=$("#law_container_"+law.stdCode+"_extended")
+      console.log(extended)
+      extended.hide("slow")
+      Vote.save({id: law.id, rate: rate})
+
     }
 
     $scope.saveRegions  = function(allRegions)
