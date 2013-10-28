@@ -1,0 +1,18 @@
+<<<<<<< HEAD
+<div class="main_content" ng-controller="RegisterUserCtrl" style="border: 0px" ng-init="step1()">
+	<div>
+  		<label ng-repeat="region in allRegions">
+      	<input type="checkbox" ng-model="region.enabled" /> {{region.description}} 
+  		</label>
+  	</div>
+<br>
+<a href="#/step2" class="btn btn-success" ><b>Pular</b></a>
+<a href="#/step2" class="btn btn-success" ng-click="saveRegions(allRegions)"><b>Seguinte</b></a>
+=======
+<div class="tab1 steps_box" ng-controller="RegisterUserCtrl">
+<p>Selecione as suas localidades de interesse:</p>
+
+<br>
+<a href="#/step2" class="btn btn-success steps_pularBtn "><b>Pular</b></a>
+>>>>>>> 7f8d3d53e43f0f5baeb89a94e1ac1b6238cbea3a
+</div>

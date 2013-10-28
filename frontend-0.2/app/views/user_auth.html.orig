@@ -1,11 +1,18 @@
+<<<<<<< HEAD
+<div class="main_content" ng-controller="AuthorizationCtrl" style="border: 0px">
+
+<h1 align="center">Bem-vindo ao Vigia Politico.</h1>
+<br>
+<h1 align="center">Faça login com:</h1>
+=======
 <div class="tab1" ng-controller="AuthorizationCtrl">
 
 <div style="float:left; width:50%; padding:10px 5px;">
 <h1>Faça login com:</h1>
+>>>>>>> 7f8d3d53e43f0f5baeb89a94e1ac1b6238cbea3a
 <br>
-<button class="btn btn-facebook" ng-click="login_with_facebook()"><i class="icon-facebook-sign"></i> | Facebook</button>
-<h1>ou:</h1>
-<a href="#/step1" class="btn btn-success">Cadastre-se</a>
+<button style="align: center; margin-left: 350px" class="btn btn-facebook" ng-click="login_with_facebook()"><i class="icon-facebook-sign"></i> | Facebook</button>
+
 </div>
 <div style="float:right; width:50%; padding:10px 15px; border-left:1px solid grey">
 <h1 class="big_title">O QUE É?</h1>

@@ -1,10 +1,11 @@
-<div class="tab1" ng-controller="RegisterUserCtrl" ng-init="step2()">
+<div class="tab1 steps_box" ng-controller="RegisterUserCtrl" ng-init="step2()">
+	<p>Selecione as seus temas de interesse:</p>
 	<div>
   		<label ng-repeat="tag in allTags">
       	<input type="checkbox" ng-model="tag.enabled" /> {{tag.name}} 
   		</label>
   	</div>
-<br>
-<a href="#/step3" class="btn btn-success"><b>Pular</b></a>
+	<br>
+<a href="#/step3" class="btn btn-success steps_pularBtn">Pular</a>
 <a href="#/step3" class="btn btn-success" ng-click="saveTags(allTags)">Seguinte</a>
 </div>

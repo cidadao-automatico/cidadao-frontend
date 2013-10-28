@@ -1,10 +1,11 @@
-<div class="tab1" ng-controller="RegisterUserCtrl" ng-init="step3()">
-	<div>
+<div class="tab1 steps_box" ng-controller="RegisterUserCtrl" ng-init="step3()">
+<p>Selecione os seus representantes:</p>
+<div>
   		<label ng-repeat="congressman in allCongressman">
       	<input type="checkbox" ng-model="congressman.enabled" /> {{congressman.user.firstName}} {{congressman.user.lastName}}
   		</label>
   	</div>
 <br>
-<a href="#/step4" class="btn btn-success">Pular</a>
+<a href="#/step4" class="btn btn-success steps_pularBtn ">Pular</a>
 <a href="#/step4" class="btn btn-success" ng-click="saveCongressman(allCongressman)">Seguinte</a>
 </div>
