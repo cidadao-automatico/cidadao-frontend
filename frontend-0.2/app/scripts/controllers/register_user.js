@@ -8,7 +8,13 @@ angular.module('vigiaPoliticoApp')
       'Karma'
     ];
 
-    $scope.user = UserAuthorization.get(function(userResult){}, function(error){
+    $scope.user = UserAuthorization.get(function(userResult){
+      if (!userResult.configured)
+      {
+        User.updateConfigured()
+        window.location="#/step1"
+      }
+    }, function(error){
       flash("alert","Por favor faça login ou cadastre-se clicando no botão Facebook")
       window.location="#/"
     })
@@ -91,7 +97,6 @@ angular.module('vigiaPoliticoApp')
     //#FIXME: Seria legal utilizar Angular ngshow e nghide
     $scope.showExtendedLaw = function(lawId)
     {
-      console.log("asda "+lawId)
       var normal=$("#law_container_"+lawId+"_normal")
       var extended=$("#law_container_"+lawId+"_extended")
       normal.hide("slow")

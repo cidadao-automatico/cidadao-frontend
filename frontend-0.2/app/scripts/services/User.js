@@ -16,6 +16,7 @@ angular.module('vigiaPoliticoApp').
         saveTags: {method: 'POST', params: { suffix: 'tags'}, isArray: true, responseType: 'json'},
         saveRepresentatives: {method: 'POST', params: { suffix: 'representatives'}, isArray: true, responseType: 'json'},
         tags: {method: 'GET', params: { suffix: 'tags'}, isArray: true, responseType: 'json'},
-        representatives: {method: 'GET', params: { suffix: 'representatives'}, isArray: true, responseType: 'json'}
+        representatives: {method: 'GET', params: { suffix: 'representatives'}, isArray: true, responseType: 'json'},
+        updateConfigured: {method: 'POST', params: { suffix: 'configured'}, isArray: true, responseType: 'json'}
       });
   });
