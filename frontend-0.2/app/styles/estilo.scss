@@ -15,6 +15,7 @@ html, html a {
 }
 
 
+
 @font-face {
 font-family: Univers57;
 src: url('fonts/univers57.eot');
@@ -55,6 +56,26 @@ font-family: Univers47;
     top: 3px;
     vertical-align: middle;
     width: 17px;
+}
+
+
+.steps_box {
+    border-color: #BCBEC0;
+    border-style: solid;
+    border-width: 2px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+	height:300px;
+	padding: 15px;
+}
+
+
+.steps_pularBtn {
+    float: right;
+    position: absolute;
+    right: 5px;
+    top: 260px;
 }
 
 .search_box button:hover {
