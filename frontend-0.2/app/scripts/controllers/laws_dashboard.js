@@ -2,9 +2,11 @@
 
 angular.module('vigiaPoliticoApp')
   .controller('LawsDashboardCtrl', function ($scope, User, UserAuthorization) {
+    $scope.page = 1;
+
   	$scope.user = UserAuthorization.get(function(result){
-  		$scope.laws=User.recommended_laws();
-  		console.log($scope.laws)
+  		$scope.laws=User.recommended_laws({page: $scope.page});
+  		  console.log($scope.laws)
   	})
     
     //#FIXME: Seria legal utilizar Angular ngshow e nghide
@@ -22,6 +24,11 @@ angular.module('vigiaPoliticoApp')
       var extended=$("#law_container_"+lawId+"_extended")
       normal.show("slow")
       extended.hide("slow")
+    }
+
+    $scope.vote = function(rate, law)
+    {
+      console.log(rate+ " "+law.id)
     }
 
   });

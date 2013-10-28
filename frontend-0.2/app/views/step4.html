@@ -1,6 +1,7 @@
-<div class="tab1" ng-controller="RegisterUserCtrl">
+<div class="tab1" ng-controller="RegisterUserCtrl" ng-init="step4()">
 <p>Vote nas suas leis preferidas:</p>
-<div ng-include="'views/laws_dashboard_list.html'"></div>
+<div ng-include="'views/vote_law_proposals.html'"></div>
 <br>
-<a href="#/step5" class="btn btn-success">Pular</a>
+<a href="#/user_home" class="btn btn-success">Pular</a>
+<a href="#/user_home" class="btn btn-success">Seguinte</a>
 </div>

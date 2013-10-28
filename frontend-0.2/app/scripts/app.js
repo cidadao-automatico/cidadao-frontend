@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('vigiaPoliticoApp', ['ngResource','truncate'])
+angular.module('vigiaPoliticoApp', ['ngResource','truncate','flash'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -30,10 +30,6 @@ angular.module('vigiaPoliticoApp', ['ngResource','truncate'])
       })
       .when('/step4', {
         templateUrl: 'views/step4.html',
-        controller: 'RegisterUserCtrl'
-      })
-      .when('/step5', {
-        templateUrl: 'views/step5.html',
         controller: 'RegisterUserCtrl'
       })
       .when('/user_home', {

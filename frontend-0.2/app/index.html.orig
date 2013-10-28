@@ -31,9 +31,7 @@
   
   
     <header class="header_style" ng-include="'views/header.html'"></header>
-	<div class="main_content" style="border: 0px">
-    <flash:messages></flash:messages>
-    </div>
+<<<<<<< HEAD
 	<div ng-view=""></div>
 	<div id="content_wrapper" style="display:inline-block">
 	<div class="grid_6"> </div>
@@ -42,6 +40,12 @@
    </div>
 	
 	
+=======
+    <div class="main_content" style="border: 0px">
+    <flash:messages></flash:messages>
+    </div>
+    <div ng-view=""></div>
+>>>>>>> Fixing welcome page
     <footer ng-include="'views/footer.html'"></footer>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -99,7 +103,7 @@
         <script src="scripts/controllers/selecionar_convidar.js"></script>
         <script src="scripts/controllers/mostrar_lei.js"></script>
         <script src="scripts/controllers/tags.js"></script>        
-        <script src="scripts/services/Vote.js"></script>
+        <script src="scripts/services/Voto.js"></script>
         <script src="scripts/services/User.js"></script>
         <script src="scripts/services/Congressman.js"></script>
         <script src="scripts/filters/level_string.js"></script>
@@ -117,7 +121,6 @@
         <script src="scripts/controllers/register_user.js"></script>        
         <script src="scripts/services/User_Authorization.js"></script>
         <script src="scripts/services/LawRegion.js"></script>
-        <script src="scripts/services/Tag.js"></script>
         <!-- endbuild -->
 </body>
 </html>
