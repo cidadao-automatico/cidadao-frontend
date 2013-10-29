@@ -22,11 +22,8 @@ SAIR
   <li id="configBox_places"  style="width: 18%;border-right: 1px;
 border-style: solid;
 border-color: black;">
-    <ul >
-    <li><h3>Rio de Janeiro</h3></li>
-    <li><h3>São Paulo</h3></li>
-    <li><h3>PR</h3></li>
-    <li><h3>Brasil</h3></li>
+    <ul>
+    <li ng-repeat="(regionIndex, region) in regions.slice(0,4)"><h3>{{region.description}}</h3></li>
     </ul>
     <i class="plus_button">
     </i>
@@ -45,12 +42,7 @@ border-color: black;">
 border-style: solid;
 border-color: black;">
     <ul >
-    <li><h3>arvore</h3></li>
-    <li><h3>parques</h3></li>
-    <li><h3>reforma</h3></li>
-    <li><h3>ambiente</h3></li>
-    <li><h3>saude</h3></li>
-    <li><h3>imposto</h3></li>
+      <li ng-repeat="(tagIndex, tag) in tags.slice(0,4)"><h3>{{tag.name}}</h3></li>
     </ul>
     <i class="plus_button">
     </i>
@@ -122,7 +114,7 @@ border-color: black;">
   <li id="configBox_votacoes"  style="width: 14%; border-right: 1px;
 border-style: solid;
 border-color: black;">
-     <h1><span>XXX</span> leis</h1>
+     <h1><span>{{votes.length}}</span> leis</h1>
      <h2>vote mais e melhores o sistema</h2>
      
      <i style=" margin:0 auto; display:block;" class="icone-interrogacao"></i> 
