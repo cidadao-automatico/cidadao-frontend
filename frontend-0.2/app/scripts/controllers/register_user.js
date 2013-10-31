@@ -66,7 +66,7 @@ angular.module('vigiaPoliticoApp')
           })  
         })
       }
-	   $scope.allTags = [{"name":"Saude"}, {"name":"Saude"}, {"name":"Saude"}]
+	   // $scope.allTags = [{"name":"Saude"}, {"name":"Saude"}, {"name":"Saude"}]
 	  }
 
     $scope.step3 = function(){
@@ -90,6 +90,8 @@ angular.module('vigiaPoliticoApp')
           })  
         })
       }
+    }
+  }
 	  // -----------------------------------------  DADOS FAKES
 	/*
 $scope.allCongressman=[{"congressman":{"photoUrl":"http","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "asdasda"}},{"congressman":{"photoUrl":"http","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "asdasda"}}]
