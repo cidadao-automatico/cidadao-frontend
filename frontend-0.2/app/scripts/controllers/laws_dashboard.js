@@ -12,8 +12,8 @@ angular.module('vigiaPoliticoApp')
 	
 	
 	// -----------------------------------------  DADOS FAKES
-	/*$scope.laws=[{"description":"Acrescenta parágrafos ao art. 17 da Constituição, para definir o caráter nacional como condição para o registro dos partidos políticos no Tribunal Superior Eleitoral.", "typeId":"319", "typePrefix":"PEC", "stdCode":"1111", "year":"2013"}, 
-	{"description":"Acrescenta parágrafos ao art. 17 da Constituição, para definir o caráter nacional como condição para o registro dos partidos políticos no Tribunal Superior Eleitoral.", "typeId":"319", "typePrefix":"PEC", "stdCode":"1311", "year":"2013"}]; */
+	$scope.laws=[{"description":"Acrescenta parágrafos ao art. 17 da Constituição, para definir o caráter nacional como condição para o registro dos partidos políticos no Tribunal Superior Eleitoral.", "typeId":"319", "typePrefix":"PEC", "stdCode":"1111", "year":"2013"}, 
+	{"description":"Acrescenta parágrafos ao art. 17 da Constituição, para definir o caráter nacional como condição para o registro dos partidos políticos no Tribunal Superior Eleitoral.", "typeId":"319", "typePrefix":"PEC", "stdCode":"1311", "year":"2013"}]; 
 	// ------------------------------------
 	
 	
@@ -53,7 +53,7 @@ var hide_element=$(".hd"+law_stdCode)
 	  hide_element.slideDown("slow");
 	  }
 	  
-	  	  	$scope.hide_allText = function(){
+	 $scope.hide_allText = function(){
 var hide_element=$(".hideable")
       hide_element.hide()
 	  	 var std_firstCode = $scope.laws[0]["stdCode"]
@@ -62,7 +62,11 @@ var hide_element=$(".hideable")
 	  }
 	  
 	  $scope.show_firstHeader = function() {
-
+	var hide_element=$(".hd"+law_stdCode)
 	  }
 	  
+	  
+	   $scope.show_congressmanBox = function(){
+	   
+	  }
   });
