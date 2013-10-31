@@ -39,6 +39,7 @@ angular.module('vigiaPoliticoApp')
           })  
         })
       }
+    }
 	  /* AQUI VAI O ARRAY, descomentar ;*/
 	  
 	  // -----------------------------------------  DADOS FAKES
@@ -50,6 +51,7 @@ angular.module('vigiaPoliticoApp')
       if(!_.isNull($scope.user) && !_.isUndefined($scope.user))
       {
         $scope.allTags = Tag.query(function(allTagsResult){
+          console.log(allTagsResult)
           $scope.userTags = User.tags(function(userTagResult){
             var mappedIds=_.map(userTagResult, function(value) { return value["id"] })
             //FIXME: This should be done at the server, perhaps with a more clever algorithm that takes advantage of id
@@ -91,7 +93,7 @@ angular.module('vigiaPoliticoApp')
         })
       }
     }
-  }
+  
 	  // -----------------------------------------  DADOS FAKES
 	/*
 $scope.allCongressman=[{"congressman":{"photoUrl":"http","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "asdasda"}},{"congressman":{"photoUrl":"http","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "asdasda"}}]
