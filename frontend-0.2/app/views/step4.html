@@ -1,7 +1,59 @@
+﻿<ul id="config_tab_titulos">
+<li style="width: 20%;"> LOCAIS</li>
+<li style="width: 20%;"> TEMAS</li>
+<li style="width: 20%;"> REPRESENTANTES</li>
+<li style="width: 20%;"> LEIS</li>
+<li style="width: 20%;"> OPçõES</li>
+</ul >
+
+<ul class="step_box_tabs" style="border: 2px #2B2828 solid">
+
+  <li id="configBox_places"  style="width: 20%; padding-left:0px; border-right: 1px;
+border-style: solid;
+border-color: black;">
+    <ul style="padding:5px">
+    <li ng-repeat="(regionIndex, region) in regions.slice(0,4)"><h3>{{region.description}}</h3></li>
+<!--	<li><h3>São Paulo</h3></li>
+	<li><h3>São Paulo</h3></li> -->
+    </ul>
+<a href="#/step1"><div style="width:100%; top:0px; height:100%; background:gray; opacity:0.5; z-index:100; position:absolute">
+</div></a>
+  </li>
+  
+  <li id="configBox_themes"  style="padding-left:0px; width: 20%; border-right: 1px;
+border-style: solid;
+border-color: black;">
+<div style="width:100%; height:100%; background:gray; opacity:0.5; z-index:100">
+</div>
+  </li>
+  <li id="configBox_representante"  style="width: 20%; border-right: 1px;
+border-style: solid;
+border-color: black; padding-left:0px">
+<div style="width:100%; height:100%; background:gray; opacity:0.5; z-index:100">
+</div>
+
+   </li>
+  <li id="configBox_friends" style="width: 20%; border-right: 1px;
+border-style: solid;
+border-color: black;">
+<div style="width:100%; height:100%;  background:white;  z-index:100; margin-top: 5px">
+</div>
+<div style="text-align:center; font-family: Oswald;  font-weight: 700; font-size:45px; position:absolute; top:30%; width:100%;">
+4
+</div>
+  </li>  
+  <li id="configBox_opcoes"  style="width: 20%; padding: 0px">
+<div style="width:100%; height:100%; background:gray; opacity:0.5; z-index:100">
+</div>
+  </li>
+  
+  </ul>
+  
 <div class="tab1 steps_box" ng-controller="RegisterUserCtrl" ng-init="step4()">
 <p>Vote nas suas leis preferidas:</p>
 <div ng-include="'views/vote_law_proposals.html'"></div>
-<br>
-<a href="#/user_home" class="btn btn-success steps_pularBtn ">Pular</a>
-<a href="#/user_home" class="btn btn-success">Seguinte</a>
+<div class="btn-group" style="bottom:5px; margin-left: -15px; position:absolute; right:5px">
+<a href="#/step3" class="btn btn-default"><i class="icon-white icon-arrow-left"></i> Voltar</a>
+<a href="#/step5" class="btn btn-warning"><i class="icon-white icon-share-alt"></i> Pular</a>
+<a href="#/step5" class="btn btn-success"><b style="color:white">Seguinte</b> <i style="color:white" class="icon-white icon-arrow-right"></i></a>
 </div>

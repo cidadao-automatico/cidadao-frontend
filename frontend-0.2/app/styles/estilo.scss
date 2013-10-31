@@ -58,11 +58,24 @@ font-family: Univers47;
     width: 17px;
 }
 
+.lista_passos li{
+  float:left;
+    display:block;
+    width:140px;
+	margin-top:10px;
+
+}
+
+.lista_passos {
+    height: 220px;
+    overflow: auto;
+    padding-left: 10px;
+    width: 100%;
+}
 
 .steps_box {
-    border-color: #BCBEC0;
-    border-style: solid;
-    border-width: 2px;
+    border: 2px solid black;
+	border-top:0px;
     margin-left: auto;
     margin-right: auto;
     position: relative;
@@ -416,10 +429,19 @@ width:100%;
 	}
 
 .config_tab_opcoes {
-height:90px; 
-margin-top:8px;
-margin-bottom:8px;
+height:110px; 
+padding: 10px 0px;
 }
+
+.step_box_tabs{
+height:90px; 
+}
+
+.step_box_tabs li{
+    float:left;
+	position:relative;
+	height:100%;
+	}
 
 .tab_title {
 margin-top:-12px;
@@ -496,7 +518,7 @@ position:relative;
 }
 
 #law_infos_compact  h1{
-font-size: 13px;
+font-size: 10px;
 text-transform:uppercase;
 text-decoration:underline;
 padding-top: 7px;
@@ -549,6 +571,8 @@ color: black;
 padding-top: 8px;
 font-family: Univers47;
 line-height: 18px;
+max-height:150px;
+overflow:auto;
 }
 
 #law_infos_full  h3{

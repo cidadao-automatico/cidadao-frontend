@@ -22,7 +22,7 @@ angular.module('vigiaPoliticoApp')
     $scope.step1 = function(){
       if(!_.isNull($scope.user) && !_.isUndefined($scope.user))
       {
-        $scope.allRegions = LawRegion.query(function(allRegionsResult){
+        $scope.allRegions = LawRegion.query(function(allRegionsResult){ // aqui pego o array  e crio um fake
           $scope.userRegions = User.regions(function(userRegionResult){
             var mappedIds=_.map(userRegionResult, function(value) { return value["id"] })
             //FIXME: This should be done at the server, perhaps with a more clever algorithm that takes advantage of id
@@ -39,7 +39,12 @@ angular.module('vigiaPoliticoApp')
           })  
         })
       }
-    }
+	  /* AQUI VAI O ARRAY, descomentar ;*/
+	  
+	  // -----------------------------------------  DADOS FAKES
+	/*
+	  $scope.allRegions = [{"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}]
+    }*/
 
     $scope.step2 = function() {
       if(!_.isNull($scope.user) && !_.isUndefined($scope.user))
@@ -60,11 +65,12 @@ angular.module('vigiaPoliticoApp')
             })
           })  
         })
-      } 
-    }
+      }
+	   $scope.allTags = [{"name":"Saude"}, {"name":"Saude"}, {"name":"Saude"}]
+	  }
 
     $scope.step3 = function(){
-      if(!_.isNull($scope.user) && !_.isUndefined($scope.user))
+     if(!_.isNull($scope.user) && !_.isUndefined($scope.user))
       {
         $scope.allCongressman = Congressman.query(function(allCongressmanResult){
           console.log(allCongressmanResult)
@@ -83,9 +89,11 @@ angular.module('vigiaPoliticoApp')
             })
           })  
         })
-      } 
-    }
-
+      }
+	  // -----------------------------------------  DADOS FAKES
+	/*
+$scope.allCongressman=[{"congressman":{"photoUrl":"http","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "asdasda"}},{"congressman":{"photoUrl":"http","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "asdasda"}}]
+}*/
     $scope.step4 = function(){
       $scope.laws=[]
       if(!_.isNull($scope.user) && !_.isUndefined($scope.user))
