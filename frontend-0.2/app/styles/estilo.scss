@@ -1,3 +1,19 @@
+/*
+// Copyright 2012/2013 de Gustavo Steinberg, Flavio Soares, Pierre Andrews, Gustavo Salazar Torres, Thomaz Abramo
+//
+// Este arquivo é parte do programa Vigia Político. O projeto Vigia
+// Político é um software livre; você pode redistribuí-lo e/ou
+// modificá-lo dentro dos termos da GNU Affero General Public License
+// como publicada pela Fundação do Software Livre (FSF); na versão 3 da
+// Licença. Este programa é distribuído na esperança que possa ser útil,
+// mas SEM NENHUMA GARANTIA; sem uma garantia implícita de ADEQUAÇÃO a
+// qualquer MERCADO ou APLICAÇÃO EM PARTICULAR. Veja a licença para
+// maiores detalhes. Você deve ter recebido uma cópia da GNU Affero
+// General Public License, sob o título "LICENCA.txt", junto com este
+// programa, se não, acesse http://www.gnu.org/licenses/
+*/
+
+
 a  {
     color: inherit !important; 
     text-decoration: none !important;
@@ -61,16 +77,37 @@ font-family: Univers47;
 .lista_passos li{
   float:left;
     display:block;
-    width:140px;
+    width:110px;
 	margin-top:10px;
+		margin-right:5px;
+	text-align:center;
+
+}
+
+.lista_lawBox_congressman{
+    overflow: auto;
+    padding-left: 10px;
+    width: 100%;
+	height: 100%;
+}
+
+
+.lista_lawBox_congressman li{
+  float:left;
+    display:block;
+    width:80px;
+	margin-top:10px;
+	margin-right:5px;
+	text-align:center;
+	font-size:10pt;
 
 }
 
 .lista_passos {
-    height: 220px;
     overflow: auto;
     padding-left: 10px;
     width: 100%;
+	height:100%;
 }
 
 .steps_box {
@@ -307,7 +344,7 @@ padding-bottom:2px;
 }
 
 #representante_opinion li {
-margin-top:10px;
+margin-top:2px;
 margin-left:7px;
 width:50px;
 }
@@ -370,13 +407,13 @@ color:white;
 }
 
 #law_icons 
-{ padding-top:10px;
+{ 
 }
 
 #law_icons li
 {
    display:block;
-   float:left;
+   float:right;
    padding: 8px 5px;
 }
 
@@ -425,7 +462,6 @@ width:100%;
 .config_tab_opcoes li{
     float:left;
 	position:relative;
-	height:100%;
 	}
 
 .config_tab_opcoes {
@@ -628,12 +664,11 @@ text-align:center;
     padding-bottom: 5px;
 	padding-top: 5px;
   	float:left;
-	background-color: #2B2828;\	
+	background-color: #2B2828;
 }
 
 .law_box_compact li{
     float:left;
-	height:100%;
 display: inline-block
 }
 
@@ -647,7 +682,7 @@ margin-bottom:15px;
 
 .law_box_full li{
     float:left;
-	height:100%;
+
 display: inline-block
 }
 
@@ -726,7 +761,7 @@ margin: 1px white;
 }
 
 .user_action_full {
-margin-top:20px;
+margin-top:10px;
 display: inline-block;
 }
 
