@@ -1,10 +1,32 @@
+<!--
+// Copyright 2012/2013 de Gustavo Steinberg, Flavio Soares, Pierre Andrews, Gustavo Salazar Torres, Thomaz Abramo
+//
+// Este arquivo é parte do programa Vigia Político. O projeto Vigia
+// Político é um software livre; você pode redistribuí-lo e/ou
+// modificá-lo dentro dos termos da GNU Affero General Public License
+// como publicada pela Fundação do Software Livre (FSF); na versão 3 da
+// Licença. Este programa é distribuído na esperança que possa ser útil,
+// mas SEM NENHUMA GARANTIA; sem uma garantia implícita de ADEQUAÇÃO a
+// qualquer MERCADO ou APLICAÇÃO EM PARTICULAR. Veja a licença para
+// maiores detalhes. Você deve ter recebido uma cópia da GNU Affero
+// General Public License, sob o título "LICENCA.txt", junto com este
+// programa, se não, acesse http://www.gnu.org/licenses/
+-->
+
+
 <div class="tab1" ng-controller="AuthorizationCtrl">
+
+<div style="float:left; width:50%; padding:10px 5px;">
 <h1>Faça login com:</h1>
 <br>
 <button class="btn btn-facebook" ng-click="login_with_facebook()"><i class="icon-facebook-sign"></i> | Facebook</button>
-<button class="btn btn-twitter" ng-click="login_with_twitter()"><i class="icon-twitter-sign"></i> | Twitter</button>
 <h1>ou:</h1>
 <a href="#/step1" class="btn btn-success">Cadastre-se</a>
+</div>
+<div style="float:right; width:50%; padding:10px 15px; border-left:1px solid grey">
+<h1 class="big_title">O QUE É?</h1>
+<h2 style="line-height: 120%;"> Utilizando a mesma tecnologia que o Netflix e a Amazon usam para recomendar filmes, Cidadão Automático é um aplicativo que aprende os “gostos” dos usuários em relação a leis que estão sendo votadas. Com isso, é possível avisar a você quando os representantes provavelmente irão votar contra os seus interesses, ou seja, o aplicativo “chama” quando você precisa se manifestar. Por isso o nome cidadão automático: o aplicativo estará sempre acompanhando os movimentos dos seus representantes e avisando só no momento de necessidade, ou seja, no momento em que há uma provável discordância entre você e eles.</h2>
+</div>
 </div>
 
 

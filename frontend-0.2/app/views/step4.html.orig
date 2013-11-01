@@ -1,0 +1,15 @@
+<<<<<<< HEAD
+<div class="tab1" ng-controller="RegisterUserCtrl" ng-init="step4()">
+=======
+<div class="tab1 steps_box" ng-controller="RegisterUserCtrl">
+>>>>>>> 7f8d3d53e43f0f5baeb89a94e1ac1b6238cbea3a
+<p>Vote nas suas leis preferidas:</p>
+<div ng-include="'views/vote_law_proposals.html'"></div>
+<br>
+<<<<<<< HEAD
+<a href="#/user_home" class="btn btn-success">Pular</a>
+<a href="#/user_home" class="btn btn-success">Seguinte</a>
+=======
+<a href="#/step5" class="btn btn-success steps_pularBtn ">Pular</a>
+>>>>>>> 7f8d3d53e43f0f5baeb89a94e1ac1b6238cbea3a
+</div>

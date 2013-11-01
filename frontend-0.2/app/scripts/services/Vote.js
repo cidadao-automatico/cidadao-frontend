@@ -15,13 +15,13 @@
 'use strict';
 
 angular.module('vigiaPoliticoApp')
-  .filter('voteStatusClass', function () {
-    return function(lei) {
-		if(lei.yourvote > 0) {
-			return "rated";
-		} else if(lei.yourvote < 0) {
-			return "estimated";
-		}
-		return "";
-	};
+  .factory('Vote', function ($resource) {
+    // Service logic
+    // ...
+
+
+    // Public API here
+    return $resource('law_proposal/:id/vote', { }, { 
+        save: {method: 'POST', params: { id: '@id'}, isArray: true, responseType: 'json'}
+    });
   });

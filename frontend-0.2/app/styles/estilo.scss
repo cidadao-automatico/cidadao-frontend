@@ -1,7 +1,23 @@
-a {
-    color: inherit;
-    text-decoration: none;
-	font-weight: lighter;
+/*
+// Copyright 2012/2013 de Gustavo Steinberg, Flavio Soares, Pierre Andrews, Gustavo Salazar Torres, Thomaz Abramo
+//
+// Este arquivo é parte do programa Vigia Político. O projeto Vigia
+// Político é um software livre; você pode redistribuí-lo e/ou
+// modificá-lo dentro dos termos da GNU Affero General Public License
+// como publicada pela Fundação do Software Livre (FSF); na versão 3 da
+// Licença. Este programa é distribuído na esperança que possa ser útil,
+// mas SEM NENHUMA GARANTIA; sem uma garantia implícita de ADEQUAÇÃO a
+// qualquer MERCADO ou APLICAÇÃO EM PARTICULAR. Veja a licença para
+// maiores detalhes. Você deve ter recebido uma cópia da GNU Affero
+// General Public License, sob o título "LICENCA.txt", junto com este
+// programa, se não, acesse http://www.gnu.org/licenses/
+*/
+
+
+a  {
+    color: inherit !important; 
+    text-decoration: none !important;
+	font-weight: lighter !important;
 }
 p
 {
@@ -13,6 +29,7 @@ html, html a {
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
 	
 }
+
 
 
 @font-face {
@@ -40,6 +57,79 @@ font-family: Univers47;
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
             box-sizing: border-box;
+}
+
+.search_box button {
+    background: url("/images/glyphicons_027_search.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    cursor: pointer;
+    display: inline-block;
+    height: 17px;
+    line-height: 17px;
+    padding-top: 2px;
+    position: absolute;
+    right: 4px;
+    top: 3px;
+    vertical-align: middle;
+    width: 17px;
+}
+
+.lista_passos li{
+  float:left;
+    display:block;
+    width:110px;
+	margin-top:10px;
+		margin-right:5px;
+	text-align:center;
+
+}
+
+.lista_lawBox_congressman{
+    overflow: auto;
+    padding-left: 10px;
+    width: 100%;
+	height: 100%;
+}
+
+
+.lista_lawBox_congressman li{
+  float:left;
+    display:block;
+    width:80px;
+	margin-top:10px;
+	margin-right:5px;
+	text-align:center;
+	font-size:10pt;
+
+}
+
+.lista_passos {
+    overflow: auto;
+    padding-left: 10px;
+    width: 100%;
+	height:100%;
+}
+
+.steps_box {
+    border: 2px solid black;
+	border-top:0px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+	height:300px;
+	padding: 15px;
+}
+
+
+.steps_pularBtn {
+    float: right;
+    position: absolute;
+    right: 5px;
+    top: 260px;
+}
+
+.search_box button:hover {
+    opacity: 0.6;
 }
 
 body
@@ -73,7 +163,6 @@ position:relative;
 top: 20px;
 font-family:"arial";
 width: 100%;
-height: 75px;
 padding-bottom:50px;
 
 }
@@ -94,12 +183,12 @@ float:right;
 text-align: center;
 }
 
-#botao_mais_configBox {
+.wrap-center h4{
 background: #2B2828;
 color: white;
 padding: 3px 5px;
 text-align: center;
-position:absolute;
+margin: 0 auto;
 font-size: 12px;
 top:100%;
 margin-top:-5px;
@@ -107,6 +196,22 @@ border-width: 4px;
 border-style: solid;
 border-color: white;
 }
+
+.outer-center {
+    float: right;
+    right: 50%;
+    position: relative;
+}
+.inner-center {
+    float: right;
+    right: -50%;
+    position: relative;
+}
+
+.wrap-center {
+position:absolute; top:100%; width:100%;
+}
+
 
 #botao_mostrar_mais  h1{
 background: #2B2828;
@@ -239,7 +344,7 @@ padding-bottom:2px;
 }
 
 #representante_opinion li {
-margin-top:10px;
+margin-top:2px;
 margin-left:7px;
 width:50px;
 }
@@ -302,13 +407,13 @@ color:white;
 }
 
 #law_icons 
-{ padding-top:10px;
+{ 
 }
 
 #law_icons li
 {
    display:block;
-   float:left;
+   float:right;
    padding: 8px 5px;
 }
 
@@ -333,7 +438,7 @@ width:100%;
 border-width: 3px;
 border-style: solid;
 border-color: #2B2828;
-margin-top:50px;
+margin-top:30px;
 position:relative;
 }
 
@@ -357,14 +462,22 @@ width:100%;
 .config_tab_opcoes li{
     float:left;
 	position:relative;
-	height:100%;
 	}
 
 .config_tab_opcoes {
-height:90px; 
-margin-top:8px;
-margin-bottom:8px;
+height:110px; 
+padding: 10px 0px;
 }
+
+.step_box_tabs{
+height:90px; 
+}
+
+.step_box_tabs li{
+    float:left;
+	position:relative;
+	height:100%;
+	}
 
 .tab_title {
 margin-top:-12px;
@@ -441,7 +554,7 @@ position:relative;
 }
 
 #law_infos_compact  h1{
-font-size: 13px;
+font-size: 10px;
 text-transform:uppercase;
 text-decoration:underline;
 padding-top: 7px;
@@ -494,6 +607,8 @@ color: black;
 padding-top: 8px;
 font-family: Univers47;
 line-height: 18px;
+max-height:150px;
+overflow:auto;
 }
 
 #law_infos_full  h3{
@@ -543,18 +658,17 @@ color: white;
 text-align: center;
 font-size: 12px;
 text-align:center;
-height:25px;
 }
 
 #law_tab_titulos li{
     padding-bottom: 5px;
 	padding-top: 5px;
   	float:left;
+	background-color: #2B2828;
 }
 
 .law_box_compact li{
     float:left;
-	height:100%;
 display: inline-block
 }
 
@@ -568,7 +682,7 @@ margin-bottom:15px;
 
 .law_box_full li{
     float:left;
-	height:100%;
+
 display: inline-block
 }
 
@@ -647,7 +761,7 @@ margin: 1px white;
 }
 
 .user_action_full {
-margin-top:20px;
+margin-top:10px;
 display: inline-block;
 }
 
@@ -685,4 +799,12 @@ float: left;
 width:100%;
 margin-top:10px;
 
+}
+
+.big_title{
+font-size:45px;
+font-family: Oswald;
+font-weight:700;
+text-align:center;
+margin-bottom:20px;
 }

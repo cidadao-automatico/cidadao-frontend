@@ -1,117 +1,185 @@
+<!--
+// Copyright 2012/2013 de Gustavo Steinberg, Flavio Soares, Pierre Andrews, Gustavo Salazar Torres, Thomaz Abramo
+//
+// Este arquivo é parte do programa Vigia Político. O projeto Vigia
+// Político é um software livre; você pode redistribuí-lo e/ou
+// modificá-lo dentro dos termos da GNU Affero General Public License
+// como publicada pela Fundação do Software Livre (FSF); na versão 3 da
+// Licença. Este programa é distribuído na esperança que possa ser útil,
+// mas SEM NENHUMA GARANTIA; sem uma garantia implícita de ADEQUAÇÃO a
+// qualquer MERCADO ou APLICAÇÃO EM PARTICULAR. Veja a licença para
+// maiores detalhes. Você deve ter recebido uma cópia da GNU Affero
+// General Public License, sob o título "LICENCA.txt", junto com este
+// programa, se não, acesse http://www.gnu.org/licenses/
+-->
+
+
 <div class="user_in" style="margin-top: -100px">
 <h3> Olá {{user.firstName}}</h3>
     
+<a href="/logout">
 <div id="botao_fundopreto">
 SAIR
 </div>
+</a>
 </div>
 
 <ul id="config_tab_titulos">
 <li style="width: 18%;"> logado em:</li>
 <li style="width: 18%;"> temas de interesse: </li>
-<li style="width: 18%;"> representantes </li>
-<li style="width: 18%;"> amigos conectados </li>
+<li style="width: 18%;"> representantes: </li>
+<li style="width: 18%;"> amigos conectados: </li>
 <li style="width: 14%;"> votou em: </li>
-<li style="width: 14%;"> opções</li>
+<li style="width: 14%;"> opções:</li>
 </ul >
 
-<ul class="config_tab_opcoes" >
+<ul  class="config_tab_opcoes" >
 
-  <li id="configBox_places"  style="width: 18%;border-right: 1px;
+  <li id="configBox_places" ng-mouseover="show_configBoxButton('locais')" ng-mouseleave="hide_configBoxButton('locais')" style="width: 18%; height:100%; border-right: 1px;
 border-style: solid;
 border-color: black;">
-    <ul >
-    <li><h3>Rio de Janeiro</h3></li>
-    <li><h3>São Paulo</h3></li>
-    <li><h3>PR</h3></li>
-    <li><h3>Brasil</h3></li>
+    <ul>
+    <li ng-repeat="(regionIndex, region) in regions.slice(0,4)"><h3>{{region.description}}</h3></li>
     </ul>
     <i class="plus_button">
     </i>
-    <div id="botao_mais_configBox">
-+ LOCAIS
+	<div class="wrap-center" id="configBoxbtn_locais" style="display:none">
+	<div class="outer-center">
+	<div class="inner-center">
+    <a href="#/step1">
+    <h4 id="botao_mais_configBox" >
++ LOCAIS</h4></a>
+</div>
+</div>
 </div>
   </li>
   
-  <li id="configBox_themes"  style="width: 18%; border-right: 1px;
+  <li id="configBox_themes"  ng-mouseover="show_configBoxButton('temas')" ng-mouseleave="hide_configBoxButton('temas')" style="width: 18%;height:100%;  border-right: 1px;
 border-style: solid;
 border-color: black;">
     <ul >
-    <li><h3>arvore</h3></li>
-    <li><h3>parques</h3></li>
-    <li><h3>reforma</h3></li>
-    <li><h3>ambiente</h3></li>
-    <li><h3>saude</h3></li>
-    <li><h3>imposto</h3></li>
+      <li ng-repeat="(tagIndex, tag) in tags.slice(0,4)"><h3>{{tag.name}}</h3></li>
     </ul>
     <i class="plus_button">
     </i>
-    <div id="botao_mais_configBox">
+	<div class="wrap-center" id="configBoxbtn_temas" style="display:none">
+    <div class="outer-center">
+	<div class="inner-center">
+    <a href="#/step2">
+    <h4 id="botao_mais_configBox" >
 + TEMAS
+    </h4>
+    </a>
+</div>
+</div>
 </div>
   </li>
-  <li id="configBox_representante"  style="width: 18%; border-right: 1px;
+  <li id="configBox_representante"  ng-mouseover="show_configBoxButton('representantes')" ng-mouseleave="hide_configBoxButton('representantes')" style="width: 18%;height:100%;  border-right: 1px;
 border-style: solid;
 border-color: black;">
     <ul>
     <a href="#">
-      <li class="rep_icon_big"> <img src="/representante_big-06.jpg" alt="logo"> </li>
-      <li class="rep_icon_big"> <img src="/representante_big-07.jpg" alt="logo"></li>
-      <li class="rep_icon_big "> <img src="/representante_big-08.jpg" alt="logo"> </li>
-      <li class="rep_icon_big "> <img src="/representante_big-09.jpg" alt="logo"> </li>
-      <li class="rep_icon_big"> <img src="/representante_big-07.jpg" alt="logo"></li>
-      <li class="rep_icon_big"> <img src="/representante_big-06.jpg" alt="logo"> </li>
+      <label ng-repeat="congressman in representatives.slice(0,6)">
+        <li class="rep_icon_big"> <img src="{{congressman.congressmanInfo.photoUrl}}" alt="logo"> </li>
+      </label>
+      
     </ul>
     </a>
-    <div id="botao_mais_configBox">
+	<div class="wrap-center" id="configBoxbtn_representantes" style="display:none">
+	    <div class="outer-center">
+	<div class="inner-center">
+    <a href="#/step3">
+    <h4 id="botao_mais_configBox" >
 + REPRESENTANTES
+</h4>
+    </a>
 </div>
-  </li>
-  <li id="configBox_friends" c style="width: 18%; border-right: 1px;
+</div>
+</div>
+   </li>
+  <li id="configBox_friends" ng-mouseover="show_configBoxButton('amigos')" ng-mouseleave="hide_configBoxButton('amigos')" style="width: 18%;height:100%;  border-right: 1px;
 border-style: solid;
 border-color: black;">
      <ul>
      <a href="#">
-      <li class="amigo_icon_big afavor"> <img src="/amigo1.jpg" alt="logo"> </li>
-      <li class="amigo_icon_big parfavor"> <img src="/amigo2.jpg" alt="logo"> </li>
-      <li class="amigo_icon_big contra"> <img src="/amigo3.jpg" alt="logo"> </li>
-      <li class="amigo_icon_big contra"> <img src="/amigo4.jpg" alt="logo"> </li>
+      <li class=""> <img src="/amigo1.jpg" alt="logo"> </li>
+      <li class=""> <img src="/amigo2.jpg" alt="logo"> </li>
+      <li class=""> <img src="/amigo3.jpg" alt="logo"> </li>
+      <li class=""> <img src="/amigo4.jpg" alt="logo"> </li>
       
-      <li class="amigo_icon_big afavor"> <img src="/amigo1.jpg" alt="logo"> </li>
-      <li class="amigo_icon_big parfavor"> <img src="/amigo2.jpg" alt="logo"> </li>
-      <li class="amigo_icon_big contra"> <img src="/amigo3.jpg" alt="logo"> </li>
-      <li class="amigo_icon_big contra"> <img src="/amigo4.jpg" alt="logo"> </li>
+      <li class=""> <img src="/amigo1.jpg" alt="logo"> </li>
+      <li class=""> <img src="/amigo2.jpg" alt="logo"> </li>
+      <li class=""> <img src="/amigo3.jpg" alt="logo"> </li>
+      <li class=""> <img src="/amigo4.jpg" alt="logo"> </li>
       
       
       </a>
     </ul>
-    <div id="botao_mais_configBox">
+	<div class="wrap-center" id="configBoxbtn_amigos" style="display:none">
+		    <div class="outer-center">
+	<div class="inner-center">
+    <h4 id="botao_mais_configBox" >
 + AMIGOS
+</h4>
+</div>
+</div>
 </div>
   </li>
-  <li id="configBox_votacoes"  style="width: 14%; border-right: 1px;
+  <li id="configBox_votacoes" ng-mouseover="show_configBoxButton('votos')" ng-mouseleave="hide_configBoxButton('votos')" style="width: 14%;height:100%;  border-right: 1px;
 border-style: solid;
 border-color: black;">
-     <h1><span>XXX</span> leis</h1>
+     <h1><span>{{votes.length}}</span> leis</h1>
      <h2>vote mais e melhores o sistema</h2>
      
      <i style=" margin:0 auto; display:block;" class="icone-interrogacao"></i> 
-     <div id="botao_mais_configBox">
+     <div class="wrap-center" id="configBoxbtn_votos" style="display:none" >
+		    <div class="outer-center">
+	<div class="inner-center">
+    <a href="#/step4">
+    <h4 class="botao_mais_configBox" >
 + VOTOS
+</h4>
+</a>
+</div>
+</div>
 </div>
   </li>
   
-  <li id="configBox_opcoes"  style="width: 14%; ">
+  <li id="configBox_opcoes" ng-mouseover="show_configBoxButton('opcoes')" ng-mouseleave="hide_configBoxButton('opcoes')" style="width: 14%;height:100%;  ">
 <h1>email:<h1>
      <h2>semanal<h2>
-     <h1>outra coisa:<h1>
-     <h2>opção 2<h2>
-     <div id="botao_mais_configBox">
+     <h1>Ordenar por:<h1>
+     <h2>contra<h2>
+	 
+<div class="wrap-center" id="configBoxbtn_opcoes" style="display:none" >
+		    <div class="outer-center">
+	<div class="inner-center">
+	<a href="#/step5">
+    <h4 id="botao_mais_configBox" >
 + OPÇÕES
+</h4>
+</a>
+</div>
+</div>
+</div>
+
 </div>
   </li>
   
   </ul>
+
+<div id="style="width:100%; height: 300px; border-top: 3px black solid;">
 <div style="position:absolute; left:768px; margin-left:-15px; margin-top:-9px;">
-<a href="#"><i class="icone-menos-verm"></i></a>
+<a href ng-click=""><i class="icone-menos-verm"></i></a>
+
+</div>
+<!--<div >
+	<ul class="lista_passos" style="height:300px; padding-top:20px">
+  		<label ng-repeat="places in userPlaces"><li>
+		<!-- criar uma array em allRegions com campo enabled e campo description 
+      	<input type="checkbox" ng-model="places.enabled" /> {{places.description}}</li> </label>
+  		
+		</ul>
+		<!-- criar uma funcao, dentro do RegisterUser que vai controlar a variavel region.enable e alterar o que eu quiser de estilo
+  	</div> -->
 </div>

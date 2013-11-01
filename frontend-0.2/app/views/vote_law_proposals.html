@@ -1,0 +1,58 @@
+<!--
+// Copyright 2012/2013 de Gustavo Steinberg, Flavio Soares, Pierre Andrews, Gustavo Salazar Torres, Thomaz Abramo
+//
+// Este arquivo é parte do programa Vigia Político. O projeto Vigia
+// Político é um software livre; você pode redistribuí-lo e/ou
+// modificá-lo dentro dos termos da GNU Affero General Public License
+// como publicada pela Fundação do Software Livre (FSF); na versão 3 da
+// Licença. Este programa é distribuído na esperança que possa ser útil,
+// mas SEM NENHUMA GARANTIA; sem uma garantia implícita de ADEQUAÇÃO a
+// qualquer MERCADO ou APLICAÇÃO EM PARTICULAR. Veja a licença para
+// maiores detalhes. Você deve ter recebido uma cópia da GNU Affero
+// General Public License, sob o título "LICENCA.txt", junto com este
+// programa, se não, acesse http://www.gnu.org/licenses/
+-->
+
+
+<span class="law_container" ng-repeat="(lawIndex, law) in laws">	
+<!-- extended law -->
+<!-- THIS SHOULD BE REFACTORED -->
+
+	<ul id="law_container_{{law.stdCode}}_extended" class="law_box_full" style="height: 180px">
+		<li id="law_infos_full" style="width: 33%; border-width: 1px;
+			border-style: solid;position:relative;
+			border-color: #BCBEC0; height:100%">
+			
+			<h2>{{law.prefix}} {{law.stdCode}}/{{law.year}}</h2>
+			<h4>{{law.description | characters: 400}}<i style="margin-left:5px;" class="icone-mais_small"></i></h4>
+			
+			<ul style="padding-top:5px;">
+				<li><h3>arvore</h3></li>
+				<li><h3>parques</h3></li>
+				<li><h3>reforma</h3></li>
+				<li><h3>ambiente</h3></li>
+			</ul>
+		</li>
+
+		<li id="law_stats_full" style="width: 67%; border-width: 1px;
+			border-style: solid;position:relative; padding: 10px; padding-top:70px;
+			border-color: #BCBEC0; height:100%">
+
+			<div class="law_userRating">
+				<label style="position:relative; float:left; " class="grid_2"> VOCÊ </label>
+				<ul>
+					<a href ng-click="vote(1,law)"><li class="contra" style="width:20%;">contra</li></a>
+					<a href ng-click="vote(2,law)"><li class="parcontra" style="width:20%;">par. contra</li></a>
+					<a href ng-click="vote(3,law)"><li class="abstencao" style="width:20%;">abstenção</li></a>
+					<a href ng-click="vote(4,law)"><li class="parfavor" style="width:20%;">par. a favor</li></a>
+					<a href ng-click="vote(5,law)"><li class="afavor" style="width:20%;">a favor</li></a>
+				</ul>
+			</div>
+
+			<hr style="width:100%; display:inline-block; margin: 10px 0px 0px; padding: 0px 10px;">
+
+			
+		</li>
+	</ul>
+</ul>
+</span>
