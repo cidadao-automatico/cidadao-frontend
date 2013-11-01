@@ -22,21 +22,21 @@ angular.module('vigiaPoliticoApp')
       'Karma'
     ];
 
-    // $scope.user = UserAuthorization.get(function(userResult){
-      // if (!userResult.configured)
-      // {
-        // User.updateConfigured()
-        // window.location="#/step1"
-      // }
-    // }, function(error){
-      // flash("alert","Por favor faça login ou cadastre-se clicando no botão Facebook")
-      // window.location="#/"
-    // })
+    $scope.user = UserAuthorization.get(function(userResult){
+      if (!userResult.configured)
+      {
+        User.updateConfigured()
+        window.location="#/step1"
+      }
+    }, function(error){
+      flash("alert","Por favor faça login ou cadastre-se clicando no botão Facebook")
+      window.location="#/"
+    })
 	
 	
 
     $scope.step1 = function(){
-      /*if(!_.isNull($scope.user) && !_.isUndefined($scope.user))
+      if(!_.isNull($scope.user) && !_.isUndefined($scope.user))
       {
         $scope.allRegions = LawRegion.query(function(allRegionsResult){ // aqui pego o array  e crio um fake
           $scope.userRegions = User.regions(function(userRegionResult){
@@ -55,66 +55,66 @@ angular.module('vigiaPoliticoApp')
           })  
         })
       }
-    }*/
+    }
 	  /* AQUI VAI O ARRAY, descomentar ;*/
 	  
 	  // -----------------------------------------  DADOS FAKES
 	
-	  $scope.allRegions = [{"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}]
-    }
+	  // $scope.allRegions = [{"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}]
+    // }
 
     $scope.step2 = function() {
-      // if(!_.isNull($scope.user) && !_.isUndefined($scope.user))
-      // {
-        // $scope.allTags = Tag.query(function(allTagsResult){
-          // console.log(allTagsResult)
-          // $scope.userTags = User.tags(function(userTagResult){
-            // var mappedIds=_.map(userTagResult, function(value) { return value["id"] })
-            //FIXME: This should be done at the server, perhaps with a more clever algorithm that takes advantage of id
-            // _.each($scope.allTags, function(tag){
-              // if (_.contains(mappedIds,tag["id"]))
-              // {
-                // tag["enabled"]=true
-              // }
-              // else
-              // {
-                // tag["enabled"]=false
-              // }
-            // })
-          // })  
-        // })
-      // }
-	   $scope.allTags = [{"name":"Saude"}, {"name":"Saude"}, {"name":"Saude"}]
+      if(!_.isNull($scope.user) && !_.isUndefined($scope.user))
+      {
+        $scope.allTags = Tag.query(function(allTagsResult){
+          console.log(allTagsResult)
+          $scope.userTags = User.tags(function(userTagResult){
+            var mappedIds=_.map(userTagResult, function(value) { return value["id"] })
+            // FIXME: This should be done at the server, perhaps with a more clever algorithm that takes advantage of id
+            _.each($scope.allTags, function(tag){
+              if (_.contains(mappedIds,tag["id"]))
+              {
+                tag["enabled"]=true
+              }
+              else
+              {
+                tag["enabled"]=false
+              }
+            })
+          })  
+        })
+      }
+	   // $scope.allTags = [{"name":"Saude"}, {"name":"Saude"}, {"name":"Saude"}]
 	  }
 
     $scope.step3 = function(){
-     // if(!_.isNull($scope.user) && !_.isUndefined($scope.user))
-      // {
-        // $scope.allCongressman = Congressman.query(function(allCongressmanResult){
-          // console.log(allCongressmanResult)
-          // $scope.userRepresentatives = User.representatives(function(userRepresentativesResult){
-            // var mappedIds=_.map(userRepresentativesResult, function(value) { return value["user"]["id"] })
-            //FIXME: This should be done at the server, perhaps with a more clever algorithm that takes advantage of id
-            // _.each($scope.allCongressman, function(congressman){
-              // if (_.contains(mappedIds,congressman["user"]["id"]))
-              // {
-                // congressman["enabled"]=true
-              // }
-              // else
-              // {
-                // congressman["enabled"]=false
-              // }
-            // })
-          // })  
-        // })
-      // }
-    // }
+     if(!_.isNull($scope.user) && !_.isUndefined($scope.user))
+      {
+        $scope.allCongressman = Congressman.query(function(allCongressmanResult){
+          console.log(allCongressmanResult)
+          $scope.userRepresentatives = User.representatives(function(userRepresentativesResult){
+            var mappedIds=_.map(userRepresentativesResult, function(value) { return value["user"]["id"] })
+            // FIXME: This should be done at the server, perhaps with a more clever algorithm that takes advantage of id
+            _.each($scope.allCongressman, function(congressman){
+              if (_.contains(mappedIds,congressman["user"]["id"]))
+              {
+                congressman["enabled"]=true
+              }
+              else
+              {
+                congressman["enabled"]=false
+              }
+            })
+          })  
+        })
+      }
+    }
   
 	  // -----------------------------------------  DADOS FAKES
 	
-$scope.allCongressman=[{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}},{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}}
-]
-}
+// $scope.allCongressman=[{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}},{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}}
+// ]
+// }
 // 0
 
     $scope.step4 = function(){

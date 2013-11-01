@@ -38,8 +38,8 @@
 		<li id="law_infos_compact"  style="width: 23%; height:100%; border-width: 1px;
 		border-style: solid;
 		border-color: #BCBEC0;">
-		<h2 style="font-size:16px; padding-bottom:4px">Nro. {{law.typeId}} {{law.stdCode}}/{{law.year}}</h2>
-			<h4 style="font-size:11px; font-height:105%;">{{law.prefix}}{{law.description | characters: 100}}</h4>
+		<h2 style="font-size:16px; padding-bottom:4px">{{law.prefix}} {{law.stdCode}}/{{law.year}}</h2>
+			<h4 style="font-size:11px; font-height:105%;">{{law.description | characters: 100}}</h4>
 			<ul  style="padding-top:0px;">		
 				<li><h3 >arvore</h3></li> 
 				<li><h3>parques</h3></li>
@@ -67,9 +67,9 @@
 		border-color: #BCBEC0;">
 		<div>
 			<ul>
-			<label ng-repeat="congressman in CongressmanContra">
+			<label ng-repeat="congressman in representatives.slice(0,4)">
 			<li class="contra">
-		<img src="{{congressman.congressman.photoUrl}}" alt="{{congressman.user.firstName}} {{congressman.user.lastName}}" style="width: 100%">
+		<img src="{{congressman.congressmanInfo.photoUrl}}" alt="{{congressman.user.firstName}} {{congressman.user.lastName}}" style="width: 100%">
 	 <h1 class="hideable hd{{law.stdCode}}"> contra </h1>
   		</li>
 		</label>

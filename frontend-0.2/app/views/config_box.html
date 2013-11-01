@@ -79,12 +79,10 @@ border-style: solid;
 border-color: black;">
     <ul>
     <a href="#">
-      <li class="rep_icon_big"> <img src="/representante_big-06.jpg" alt="logo"> </li>
-      <li class="rep_icon_big"> <img src="/representante_big-07.jpg" alt="logo"></li>
-      <li class="rep_icon_big "> <img src="/representante_big-08.jpg" alt="logo"> </li>
-      <li class="rep_icon_big "> <img src="/representante_big-09.jpg" alt="logo"> </li>
-      <li class="rep_icon_big"> <img src="/representante_big-07.jpg" alt="logo"></li>
-      <li class="rep_icon_big"> <img src="/representante_big-06.jpg" alt="logo"> </li>
+      <label ng-repeat="congressman in representatives.slice(0,6)">
+        <li class="rep_icon_big"> <img src="{{congressman.congressmanInfo.photoUrl}}" alt="logo"> </li>
+      </label>
+      
     </ul>
     </a>
 	<div class="wrap-center" id="configBoxbtn_representantes" style="display:none">
