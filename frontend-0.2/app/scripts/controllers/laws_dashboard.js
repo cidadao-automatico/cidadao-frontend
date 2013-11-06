@@ -16,21 +16,19 @@
 
 angular.module('vigiaPoliticoApp')
   .controller('LawsDashboardCtrl', function ($scope, User, UserAuthorization) {
+  
     $scope.page = 1;
+	$scope.teste_interface = true;
     
+	if($scope.teste_interface == false){
   	$scope.user = UserAuthorization.get(function(result){
   		$scope.laws=User.recommended_laws({page: $scope.page});
 		  $scope.representatives = User.representatives()
   		  console.log($scope.laws)
   	})
+	}
 	
-	
-	// -----------------------------------------  DADOS FAKES
-	// $scope.laws=[{"description":"Acrescenta parágrafos ao art. 17 da Constituição, para definir o caráter nacional como condição para o registro dos partidos políticos no Tribunal Superior Eleitoral.", "typeId":"319", "typePrefix":"PEC", "stdCode":"1111", "year":"2013"}, 
-	// {"description":"Acrescenta parágrafos ao art. 17 da Constituição, para definir o caráter nacional como condição para o registro dos partidos políticos no Tribunal Superior Eleitoral.", "typeId":"319", "typePrefix":"PEC", "stdCode":"1311", "year":"2013"}]; 
-	// ------------------------------------
-	
-	
+
     //#FIXME: Seria legal utilizar Angular ngshow e nghide
 	
     $scope.showExtendedLaw = function(lawId)
@@ -115,24 +113,29 @@ var hide_element=$(".hideable")
 	 
 	   var show_box=$("#congressmanOpinionBox_"+lawId);
 	   show_box.css({ "display": 'inline-block'});
-	 $( "#law_container_"+(lawId)+"_extended" ).css( "height", "360px" );
+	  $("#law_container_"+(lawId)+"_extended" ).css( "height", "360px" );
 	   show_box.slideDown();
 	  console.log(position);
 	  switch(position){
 	  case "0":
 	  $scope.congressmanByLaw_opinion = $scope.CongressmanContra;
+	  show_box.css({ "border-color": '#CC4141'});
 	  break;
 	  case "1":
 	    $scope.congressmanByLaw_opinion = $scope.CongressmanParContra;
+		show_box.css({ "border-color": '#F4777C'});
 	  break;
 		case "2":
 	    $scope.congressmanByLaw_opinion = $scope.CongressmanAbstenção;
+		show_box.css({ "border-color": '#C8C8C8'});
 	  break;
 	  case "3":
 	    $scope.congressmanByLaw_opinion = $scope.CongressmanParFavor;
+		show_box.css({ "border-color": '#E5FF75'});
 	  break;
 	  case "4":
 	    $scope.congressmanByLaw_opinion = $scope.CongressmanFavor;
+		show_box.css({ "border-color": '#B1CC41'});
 	  break;
 	  }
 	}
@@ -144,8 +147,14 @@ var hide_element=$(".hideable")
 	   show_box.hide();
 	   }
 	   
-	    // ARRAY FAKE DADOS DE DEPUTADO
-	   $scope.CongressmanContra=[{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}},{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}}]
+	   
+	   // dados fakes
+	   if($scope.teste_interface)
+	   {
+	   
+	   $scope.CongressmanContra=[{"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}}, {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}}, {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}}, {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}}]
+	   
+	   $scope.representatives = $scope.CongressmanContra;
 	   
 	   $scope.CongressmanParContra=[{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Antonio ", "lastName" : "Da Conceição Costa Ferreira"}},{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}}]
 	   
@@ -164,8 +173,10 @@ var hide_element=$(".hideable")
 	   {"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}}
 	   ]
 	   $scope.CongressmanFavor=[{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Marcelo", "lastName" : "João Pereira Freire"}},{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Maria", "lastName" : "da Silva"}}]
+	   
+	   $scope.laws=[{"description":"Acrescenta parágrafos ao art. 17 da Constituição, para definir o caráter nacional como condição para o registro dos partidos políticos no Tribunal Superior Eleitoral.", "typeId":"319", "typePrefix":"PEC", "stdCode":"1111", "year":"2013"}, {"description":"Acrescenta parágrafos ao art. 17 da Constituição, para definir o caráter nacional como condição para o registro dos partidos políticos no Tribunal Superior Eleitoral.", "typeId":"319", "typePrefix":"PEC", "stdCode":"1311", "year":"2013"}]; 
 	  
-	   // ---------------------------
+	   }
   });
   
 

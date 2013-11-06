@@ -21,7 +21,9 @@ angular.module('vigiaPoliticoApp')
       'AngularJS',
       'Karma'
     ];
-
+	$scope.teste_interface = true;
+    
+	if($scope.teste_interface == false){
     $scope.user = UserAuthorization.get(function(userResult){
       if (!userResult.configured)
       {
@@ -32,7 +34,7 @@ angular.module('vigiaPoliticoApp')
       flash("alert","Por favor faça login ou cadastre-se clicando no botão Facebook")
       window.location="#/"
     })
-	
+	}
 	
 
     $scope.step1 = function(){
@@ -56,12 +58,9 @@ angular.module('vigiaPoliticoApp')
         })
       }
     }
-	  /* AQUI VAI O ARRAY, descomentar ;*/
-	  
-	  // -----------------------------------------  DADOS FAKES
 	
-	  // $scope.allRegions = [{"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}]
-    // }
+
+  
 
     $scope.step2 = function() {
       if(!_.isNull($scope.user) && !_.isUndefined($scope.user))
@@ -112,10 +111,8 @@ angular.module('vigiaPoliticoApp')
   
 	  // -----------------------------------------  DADOS FAKES
 	
-// $scope.allCongressman=[{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}},{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}}
-// ]
-// }
-// 0
+
+
 
     $scope.step4 = function(){
       $scope.laws=[]
@@ -175,6 +172,11 @@ angular.module('vigiaPoliticoApp')
     {
       window.location="#/user_home"
     };
-
+if($scope.teste_interface){
+		  $scope.allRegions = [{"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}]
+		  
+		  $scope.allCongressman=[{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}},{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}}
+]
+}
 
   });

@@ -17,7 +17,9 @@
 angular.module('vigiaPoliticoApp')
   .controller('UserInfoCtrl', function ($scope, flash, UserAuthorization, User) {
     
-	// - DESCOMENTAR ACIMA
+	$scope.teste_interface = true;
+	
+	if($scope.teste_interface == false){
     $scope.user = UserAuthorization.get(function(result){
     	if (!result.configured)
         {
@@ -34,6 +36,7 @@ angular.module('vigiaPoliticoApp')
       flash("alert","Por favor faça login ou cadastre-se clicando no botão Facebook")
       window.location="#/"
     })
+	}
     
 	
 	 $scope.show_configBoxButton = function(botao)
@@ -53,8 +56,7 @@ angular.module('vigiaPoliticoApp')
 	 
      botao_select.hide();
 	}
-	
-	// - COMENTAR AQUI NA HORA QUE FOR DAR PUSH
-	// $scope.regions = [{"description":"São Paulo", "enabled":"true"}, {"description":"Rio de Janeiro"}]
-    // ---- 
+	if($scope.teste_interface){
+	$scope.regions = [{"description":"São Paulo", "enabled":"true"}, {"description":"Rio de Janeiro"}]
+	}
 });
