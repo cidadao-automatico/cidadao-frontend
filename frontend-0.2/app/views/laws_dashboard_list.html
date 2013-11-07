@@ -56,13 +56,13 @@
 			</div>
 			</li>
 			<li id="user_opinion" style="width: 11%; border-width: 1px; height:100%; border-style: solid; border-color: #BCBEC0">
-			<div id="botao_contra">
-				 contra
+			<div id="compactLaw_userOpinionBtn" class="voteBtn_contra_pr">
+				 contra?
 			</div>
 			<h1>(quer mudar?)</h1>
 			<hr>
-			<h2>18 dias </h2>
-			<h3> para a votação </h3>
+			<h2>Votação: iminente </h2>
+			
 			</li>
 			<li id="representante_opinion" style="width: 33%; border-width: 1px; height:100%; border-style: solid; position:relative; border-color: #BCBEC0;">
 			<div>
@@ -146,21 +146,21 @@
 			<li id="law_stats_full" style="width: 67%; height:100%;border-width: 1px; border-style: solid;position:relative; padding: 10px; border-color: #BCBEC0;">
 			<div class="law_userRating">
 				<label style="position:relative; float:left; " class="grid_2"> VOCÊ</label>
-				<ul>
-					<a href ng-click="vote(1,law)">
-					<li class="contra" style="width:71px; border-color: black;border-radius: 5px; margin-right:2px">contra</li>
+				<ul id="voteBtns_{{law.stdCode}}" class="vote_btns">
+					<a href ng-click="vote('0',law)">
+					<li id="btn_0_{{law.stdCode}}" class="voteBtn_contra_pr progress-striped" >contra</li>
 					</a>
-					<a href ng-click="vote(2,law)">
-					<li class="parcontra" style="width:71px;border-radius: 5px;margin-right:2px">par. contra</li>
+					<a href ng-click="vote('1',law)">
+					<li id="btn_1_{{law.stdCode}}" class="voteBtn_parcontra_pr " >par. contra</li>
 					</a>
-					<a href ng-click="vote(3,law)">
-					<li class="abstencao" style="width:71px;border-radius: 5px;margin-right:2px">abstenção</li>
+					<a href ng-click="vote('2',law)">
+					<li id="btn_2_{{law.stdCode}}" class="voteBtn_abstencao_pr " >abstenção</li>
 					</a>
-					<a href ng-click="vote(4,law)">
-					<li class="parfavor" style="width:71px;border-radius: 5px;margin-right:2px">par. a favor</li>
+					<a href ng-click="vote('3',law)">
+					<li id="btn_3_{{law.stdCode}}" class="voteBtn_parfavor_pr" >par. a favor</li>
 					</a>
-					<a href ng-click="vote(5,law)">
-					<li class="afavor" style="width:71px;border-radius: 5px;">a favor</li>
+					<a href ng-click="vote('4',law)">
+					<li id="btn_4_{{law.stdCode}}" class="voteBtn_afavor_pr " style="margin-right:0px">a favor</li>
 					</a>
 				</ul>
 			</div>
@@ -185,13 +185,14 @@
 					</a>
 				</ul>
 			</div>
-			<div id="congressmanOpinionBox_{{law.stdCode}}" style="height:130px; border-width: 1px; border-style:solid; width:478px; display:none; position:relative;">
+			
+			<div id="congressmanOpinionBox_{{law.stdCode}}" style="height:130px; border-width: 3px; margin-top: -8px;; border-style:solid; width:478px; display:none; position:relative;">
 				<a href ng-click="hide_congressmanBox(law.stdCode)"><i class="icon-red icon-remove" style="position:absolute; right:0px; top:3px;"></i></a>
 				<ul class="lista_lawBox_congressman" style="height:100%">
 					<label ng-repeat="congressman in congressmanByLaw_opinion">
 					<li>
 					<div style=" display: table; margin: 0 auto;">
-						<img src="{{congressman.congressman.photoUrl}}" alt="{{congressman.user.firstName}} {{congressman.user.lastName}}" height="50">
+						<img src="{{congressman.congressmanInfo.photoUrl}}" alt="{{congressman.user.firstName}} {{congressman.user.lastName}}" height="50">
 					</div>
 					<div style=" display: table; margin: 0 auto;">
 						 {{congressman.user.firstName}} {{congressman.user.lastName}}

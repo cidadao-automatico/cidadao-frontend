@@ -21,6 +21,7 @@ angular.module('vigiaPoliticoApp')
       'AngularJS',
       'Karma'
     ];
+	
 	$scope.teste_interface = true;
     
 	if($scope.teste_interface == false){
@@ -38,6 +39,7 @@ angular.module('vigiaPoliticoApp')
 	
 
     $scope.step1 = function(){
+
       if(!_.isNull($scope.user) && !_.isUndefined($scope.user))
       {
         $scope.allRegions = LawRegion.query(function(allRegionsResult){ // aqui pego o array  e crio um fake
@@ -83,7 +85,7 @@ angular.module('vigiaPoliticoApp')
           })  
         })
       }
-	   // $scope.allTags = [{"name":"Saude"}, {"name":"Saude"}, {"name":"Saude"}]
+	   
 	  }
 
     $scope.step3 = function(){
@@ -109,7 +111,7 @@ angular.module('vigiaPoliticoApp')
       }
     }
   
-	  // -----------------------------------------  DADOS FAKES
+
 	
 
 
@@ -175,8 +177,28 @@ angular.module('vigiaPoliticoApp')
 if($scope.teste_interface){
 		  $scope.allRegions = [{"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}]
 		  
-		  $scope.allCongressman=[{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}},{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},{"congressman":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}}
-]
+		  $scope.allCongressman=[
+		  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}},
+		  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/74016.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Antonio", "lastName" : "Da Conceição Costa Ferreira "}},
+		  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},
+		  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},
+		  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},
+		  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}}, 
+		  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}}, 
+		  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}},
+		  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/73474.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Luci", "lastName" : "Teresinha Koswoski Choinacki"}},
+		  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}},
+		  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}},
+		  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}}, 
+		  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}}, 
+		  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}}, 
+		  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}},
+		  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/73474.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Luci", "lastName" : "Teresinha Koswoski Choinacki"}}
+		  ]
+		  ;
+		  $scope.allTags = [{"name":"Saude"}, {"name":"Academia Brasileira De Filosofia "}, {"name":"Academia De Ginática "}];
+		  
+		 
 }
 
   });
