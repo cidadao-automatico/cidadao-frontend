@@ -53,11 +53,12 @@
 	</div>
 	</li>
 </ul>
-<div class="tab1 steps_box" style="overflow:auto" ng-controller="RegisterUserCtrl" ng-init="step4()">
+<div class="tab1 steps_box"  ng-controller="RegisterUserCtrl" ng-init="step4()">
 	<p>
 		Vote em algumas leis para calibrar o sistema de acordo com as suas opiniões e preferências:
 	</p>
-	<div ng-include="'views/vote_law_proposals.html'">
+	<br>
+	<div ng-include="'views/vote_law_proposals.html'" style="overflow:auto; height:230px;" >
 	</div>
 	<div class="btn-group" style="bottom:5px; margin-left: -15px; position:absolute; right:5px">
 		<a href="#/step3" class="btn btn-default"><i class="icon-white icon-arrow-left"></i> Voltar</a>

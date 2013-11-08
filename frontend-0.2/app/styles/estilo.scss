@@ -549,13 +549,14 @@ color:white;
 
 #law_icons 
 { 
+
 }
 
 #law_icons li
 {
    display:block;
    float:right;
-   padding: 8px 5px;
+   padding: 3px 5px;
 }
 
 
@@ -821,6 +822,12 @@ border-color: #BCBEC0;
 }
 
 .law_box_full li{
+    float:left;
+display: inline-block;
+
+}
+
+.law_box_step4 li{
     float:left;
 display: inline-block;
 

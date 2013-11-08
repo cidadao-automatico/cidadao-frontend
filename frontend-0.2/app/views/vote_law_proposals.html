@@ -17,15 +17,13 @@
 <span class="law_container" ng-repeat="(lawIndex, law) in laws">	
 <!-- extended law -->
 <!-- THIS SHOULD BE REFACTORED -->
-
-	<ul id="law_container_{{law.stdCode}}_extended" class="law_box_full" style="height: 180px">
-		<li id="law_infos_full" style="width: 33%; border-width: 1px;
-			border-style: solid;position:relative;
-			border-color: #BCBEC0; height:100%">
+<div class="law_box_step4" id="law_container_{{law.stdCode}}_proposals"   style="border-color: #BCBEC0; border-style: solid; border-width: 1px; margin-bottom:20px; padding:10px 0px; display:inline-block">
+	<ul >
+	
+		<li id="law_infos_full" style="width: 100%; ">
 			
 			<h2>{{law.prefix}} {{law.stdCode}}/{{law.year}}</h2>
-			<h4>{{law.description | characters: 400}}<i style="margin-left:5px;" class="icone-mais_small"></i></h4>
-			
+			<h4>{{law.description | characters: 400}}<a href="{{law.url}}" target="_blank" ><i style="margin-left:5px;" class="icone-mais_small"></i></a></h4>
 			<ul style="padding-top:5px;">
 				<li><h3>arvore</h3></li>
 				<li><h3>parques</h3></li>
@@ -34,25 +32,32 @@
 			</ul>
 		</li>
 
-		<li id="law_stats_full" style="width: 67%; border-width: 1px;
-			border-style: solid;position:relative; padding: 10px; padding-top:70px;
-			border-color: #BCBEC0; height:100%">
-
-			<div class="law_userRating">
-				<label style="position:relative; float:left; " class="grid_2"> VOCÊ </label>
-				<ul>
-					<a href ng-click="vote(1,law)"><li class="contra" style="width:20%;">contra</li></a>
-					<a href ng-click="vote(2,law)"><li class="parcontra" style="width:20%;">par. contra</li></a>
-					<a href ng-click="vote(3,law)"><li class="abstencao" style="width:20%;">abstenção</li></a>
-					<a href ng-click="vote(4,law)"><li class="parfavor" style="width:20%;">par. a favor</li></a>
-					<a href ng-click="vote(5,law)"><li class="afavor" style="width:20%;">a favor</li></a>
+		<li id="law_stats_full" style="width: 100%;  padding-top:20px">
+<div class="law_userRating" style="display: block;float: none;margin: 0 auto; width: 420px;" >
+				<label style="position:relative; float:left; display:inline-block" class="grid_2"> VOCÊ É:</label>
+				<ul id="voteBtns_{{law.stdCode}}" class="vote_btns" style="float:right; display:inline-block">
+					<a href ng-click="vote('0',law)">
+					<li id="btn_0_{{law.stdCode}}" class="voteBtn_contra_pr progress-striped" >contra</li>
+					</a>
+					<a href ng-click="vote('1',law)">
+					<li id="btn_1_{{law.stdCode}}" class="voteBtn_parcontra_pr " >par. contra</li>
+					</a>
+					<a href ng-click="vote('2',law)">
+					<li id="btn_2_{{law.stdCode}}" class="voteBtn_abstencao_pr " >abstenção</li>
+					</a>
+					<a href ng-click="vote('3',law)">
+					<li id="btn_3_{{law.stdCode}}" class="voteBtn_parfavor_pr" >par. a favor</li>
+					</a>
+					<a href ng-click="vote('4',law)">
+					<li id="btn_4_{{law.stdCode}}" class="voteBtn_afavor_pr " style="margin-right:0px">a favor</li>
+					</a>
 				</ul>
 			</div>
 
-			<hr style="width:100%; display:inline-block; margin: 10px 0px 0px; padding: 0px 10px;">
+			
 
 			
 		</li>
 	</ul>
-</ul>
+</div>
 </span>

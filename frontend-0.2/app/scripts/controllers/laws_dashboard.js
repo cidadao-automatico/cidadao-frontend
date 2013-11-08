@@ -110,17 +110,22 @@ angular.module('vigiaPoliticoApp')
 	  
 	  
 	 $scope.hide_allText = function(){
-	var hide_element=$(".hideable")
+	  var hide_element=$(".hideable")
       hide_element.hide() 
 	  $('#example').tooltip();
 	  $("[data-toggle=popover]").popover({
-    html: true, 
-	content: function() {
-          return $('#popover-content').html();
-        }
+      html: true, 
+	  content: function() {
+      return $('#popover-content').html();
+      }
       });
-	  
 	  }
+	  
+	  $scope.changeRate_popover_yes = function(lawId){
+	   console.log("chegou");
+	   //$scope.showExtendedLaw = function(lawId);
+	   //$(object).popover('hide');
+	   }
 	  
 	  $scope.show_firstHeader = function() {
 	var hide_element=$(".hd"+law_stdCode)

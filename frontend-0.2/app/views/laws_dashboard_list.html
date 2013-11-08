@@ -86,7 +86,7 @@
 				</li>
 				<li id="friends_opinion" c style="width: 33%; height:100%; border-width: 1px; border-style: solid; position:relative; border-color: #BCBEC0;">
 				<ul>
-					<a href="#">
+					<a href>
 					<li class="amigo_icon_big afavor"><img src="/amigo1.jpg" alt="logo">
 					<h1 class="hideable hd{{law.stdCode}}"> a favor</li>
 					<li class="amigo_icon_big parfavor"><img src="/amigo2.jpg" alt="logo">
@@ -102,7 +102,7 @@
 				</div>
 				</li>
 				<!-- caixa de ações retratil -->
-				<div id="user_actions_{{law.stdCode}}" style="position:absolute; display:none; left:0px; bottom:0px;background-color: #BCBEC0; opacity:0.8">
+				<div id="user_actions_{{law.stdCode}}" style="position:absolute; display:none; left:5px; bottom:0px; background-color: #BCBEC0; opacity:0.8">
 					<ul id="law_icons">
 						<li><i class="icone-campanha icone20px"></i></li>
 						<a data-toggle="modal" data-target="#mensagemModal" href><li><i class="icone-mensagem"></i></li></a>
@@ -231,7 +231,7 @@
 						<h1>escreva para seu(s) representantes(s)</h1></a>
 						</li>
 						<li><i class="icone-campanha icone20px"></i>
-						<h1> comece uma campanha para esta lei</h1>
+						<h1 > comece uma campanha para esta lei</h1>
 						</li>
 					</div>
 					<div style="width:50%; display:inline-block; float:left; padding-left:10px; border-left: 2px solid #BCBEC0">
@@ -253,18 +253,16 @@
 			</li>
 		</ul>
 	</div>
-</div>
-
-<div id="popover-content" class="hide">
-<div style="position:relative; margin:0px auto;">
-          <button type="submit" class="btn btn-success"><i class="icon-white icon-ok"></i></button>
-<button type="submit" class="btn btn-danger"><i class="icon-white icon-remove"></i></button>	
+	
+	<div id="popover-content" class="hide">
+<div id="popover_{{law.stdCode}}" style="position:relative; margin:0px auto;">
+	<button  class="btn btn-success"><i class="icon-white icon-ok"></i></button>
+	<button type="submit" class="btn btn-danger"><i class="icon-white icon-remove"></i></button>	
 </div>	  
 </div>
-	
-</div>
 
-<div class="modal fade" id="mensagemModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+<div class="modal fade" id="mensagemModal_{{law.stdCode}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -287,3 +285,10 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+	
+</div>
+
+
+</div>
+

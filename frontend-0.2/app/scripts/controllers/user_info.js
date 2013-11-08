@@ -74,6 +74,15 @@ angular.module('vigiaPoliticoApp')
 	 botao_select.hide();
 	}
 	
+	$scope.vote = function(rate, law)
+    {
+      var extended=$("#law_container_"+law.stdCode+"_proposals")
+      console.log(extended)
+      extended.hide("slow")
+      Vote.save({id: law.id, rate: rate})
+
+    }
+	
 	
 	
 	if($scope.teste_interface){
@@ -115,6 +124,8 @@ angular.module('vigiaPoliticoApp')
 	  ]
 	  ;
 	  $scope.allTags = [{"name":"Saude"}, {"name":"Educação"}, {"name":"Árvores"}, {"name":"Meio Ambiente"}]; 
+	  
+	  $scope.laws=[{"description":"Acrescenta parágrafos ao art. 17 da Constituição, para definir o caráter nacional como condição para o registro dos partidos políticos no Tribunal Superior Eleitoral.", "typeId":"319", "url":"http://www.camara.gov.br/proposicoesWeb/prop_mostrarintegra?codteor=533062&filename=PEC+210/2007", "typePrefix":"PEC", "stdCode":"1111", "year":"2013"}, {"description":"Acrescenta parágrafos ao art. 17 da Constituição, para definir o caráter nacional como condição para o registro dos partidos políticos no Tribunal Superior Eleitoral.", "typeId":"319", "typePrefix":"PEC", "stdCode":"1311", "year":"2013"}];
 				  
 	}
 });
