@@ -88,17 +88,18 @@ angular.module('vigiaPoliticoApp')
 	
 	$scope.hide_law_text = function(law_stdCode){
 	
-var hide_element=$(".hd"+law_stdCode)
-       hide_element.slideUp("slow");
-	   var show_actions=$("#user_actions_"+law_stdCode);
-	  show_actions.slideUp();
+	var hide_element=$(".hd"+law_stdCode)
+	var show_actions=$("#user_actions_"+law_stdCode);
+    hide_element.slideUp(10);
+	   
+	  show_actions.slideUp(10);
 	   var show_titles=$("#lawTitles_"+law_stdCode);
 	  show_titles.hide();
 	 }
 	  
-	  	$scope.show_law_text = function(law_stdCode){
+	 $scope.show_law_text = function(law_stdCode){
 		
-var hide_element=$(".hd"+law_stdCode)
+	var hide_element=$(".hd"+law_stdCode)
      // hide_element.show("fast")
 	  hide_element.slideDown("slow");
 	  var show_actions=$("#user_actions_"+law_stdCode);
@@ -109,11 +110,15 @@ var hide_element=$(".hd"+law_stdCode)
 	  
 	  
 	 $scope.hide_allText = function(){
-var hide_element=$(".hideable")
+	var hide_element=$(".hideable")
       hide_element.hide() 
-	  	 var std_firstCode = $scope.laws[0]["stdCode"]
-	  var hide_header=$(".hdHeader"+std_firstCode)
-	  hide_header.show("fast")
+	  $('#example').tooltip();
+	  $("[data-toggle=popover]").popover({
+    html: true, 
+	content: function() {
+          return $('#popover-content').html();
+        }
+      });
 	  
 	  }
 	  
@@ -199,7 +204,7 @@ var hide_element=$(".hideable")
 	   ]
 	   $scope.CongressmanFavor=[{"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Marcelo", "lastName" : "João Pereira Freire"}},{"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},{"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Maria", "lastName" : "da Silva"}}]
 	   
-	   $scope.laws=[{"description":"Acrescenta parágrafos ao art. 17 da Constituição, para definir o caráter nacional como condição para o registro dos partidos políticos no Tribunal Superior Eleitoral.", "typeId":"319", "typePrefix":"PEC", "stdCode":"1111", "year":"2013"}, {"description":"Acrescenta parágrafos ao art. 17 da Constituição, para definir o caráter nacional como condição para o registro dos partidos políticos no Tribunal Superior Eleitoral.", "typeId":"319", "typePrefix":"PEC", "stdCode":"1311", "year":"2013"}]; 
+	   $scope.laws=[{"description":"Acrescenta parágrafos ao art. 17 da Constituição, para definir o caráter nacional como condição para o registro dos partidos políticos no Tribunal Superior Eleitoral.", "typeId":"319", "url":"http://www.camara.gov.br/proposicoesWeb/prop_mostrarintegra?codteor=533062&filename=PEC+210/2007", "typePrefix":"PEC", "stdCode":"1111", "year":"2013"}, {"description":"Acrescenta parágrafos ao art. 17 da Constituição, para definir o caráter nacional como condição para o registro dos partidos políticos no Tribunal Superior Eleitoral.", "typeId":"319", "typePrefix":"PEC", "stdCode":"1311", "year":"2013"}]; 
 	   
 
 	  

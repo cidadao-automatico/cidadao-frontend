@@ -36,6 +36,8 @@ $parfavor:#E5FF75;
 $parcontra:#F4777C;
 $abstencao:#C8C8C8;
 
+$cinzaChumbo:#2B2828;
+
 .nada{
 }
 
@@ -807,7 +809,7 @@ text-align:center;
 }
 
 .law_box_compact li{
-    float:left;
+float:left;
 display: inline-block
 }
 
@@ -820,9 +822,30 @@ border-color: #BCBEC0;
 
 .law_box_full li{
     float:left;
+display: inline-block;
 
-display: inline-block
 }
+
+#configBox_plus{
+height:220px;
+width:100%;
+overflow:auto;
+display:block;
+}
+
+div[class="tooltip-inner"] {
+    max-width: 80px;
+}
+
+h3[class="popover-title"] {
+    padding:2px;
+	text-align:center;
+}
+
+
+.popover {max-width:400px; width:95px !important;}
+
+.popover-content {padding:2px !important;}
 
 .law_box_full{
 height:230px; 

@@ -56,10 +56,14 @@
 			</div>
 			</li>
 			<li id="user_opinion" style="width: 11%; border-width: 1px; height:100%; border-style: solid; border-color: #BCBEC0">
-			<div id="compactLaw_userOpinionBtn" class="voteBtn_contra_pr">
+			<div >
+			<div id="compactLaw_userOpinionBtn" class="voteBtn_contra_pr" >
+			<div data-toggle="tooltip" data-placement="left" title="Opinião prevista pelo sistema" id='example'>
 				 contra?
+				 </div>
 			</div>
-			<h1>(quer mudar?)</h1>
+			<h1><a data-placement="bottom" data-toggle="popover" data-title="Quer mudar?" data-container="body" type="button" data-html="true" href id="login">(quer mudar?)</a></h1>
+			</div>
 			<hr>
 			<h2>Votação: iminente </h2>
 			
@@ -100,13 +104,11 @@
 				<!-- caixa de ações retratil -->
 				<div id="user_actions_{{law.stdCode}}" style="position:absolute; display:none; left:0px; bottom:0px;background-color: #BCBEC0; opacity:0.8">
 					<ul id="law_icons">
-						<a href="#">
 						<li><i class="icone-campanha icone20px"></i></li>
-						<li><i class="icone-mensagem"></i></li>
+						<a data-toggle="modal" data-target="#mensagemModal" href><li><i class="icone-mensagem"></i></li></a>
 						<li><i class="icone-ban"></i></li>
 						<li><i class="icone-fb"></i></li>
-						</a>
-					</ul>
+						</ul>
 				</div>
 				<!--------------------------->
 			</ul>
@@ -121,7 +123,7 @@
 		<ul id="law_container_{{law.stdCode}}_extended" class="law_box_full" style="display:none">
 			<li id="law_infos_full" style="width: 33%; height:100%;border-width: 1px; border-style: solid;position:relative; border-color: #BCBEC0;">
 			<h2>Nro. {{law.typeId}} {{law.stdCode}}/{{law.year}}</h2>
-			<h4>{{law.description | characters: 400}}</h4>
+			<h4>{{law.description | characters: 400}} <a href="{{law.url}}" target="_blank" ><i class="icone-mais_small"></i></a></h4>
 			<ul style="padding-top:5px; overflow:hidden; max-height:70px">
 				<li>
 				<h3>arvore</h3>
@@ -225,8 +227,8 @@
 				<ul>
 					<a href="#">
 					<div style="width:50%; display:inline-block; float:left; padding-left:10px;">
-						<li><i class="icone-mensagem"></i>
-						<h1>escreva para seu(s) representantes(s)</h1>
+						<a data-toggle="modal" data-target="#mensagemModal" href><li><i class="icone-mensagem"></i>
+						<h1>escreva para seu(s) representantes(s)</h1></a>
 						</li>
 						<li><i class="icone-campanha icone20px"></i>
 						<h1> comece uma campanha para esta lei</h1>
@@ -252,4 +254,36 @@
 		</ul>
 	</div>
 </div>
+
+<div id="popover-content" class="hide">
+<div style="position:relative; margin:0px auto;">
+          <button type="submit" class="btn btn-success"><i class="icon-white icon-ok"></i></button>
+<button type="submit" class="btn btn-danger"><i class="icon-white icon-remove"></i></button>	
+</div>	  
 </div>
+	
+</div>
+
+<div class="modal fade" id="mensagemModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel"><i class="icone-mensagem"></i>  Escreva para seus representantes</h4>
+      </div>
+      <div class="modal-body">
+	  Selecione os representantes para quem você deseja enviar esta mensagem:
+	  <div style="height:100px; border: 1px solid #CCCCCC;">
+	  <span ng-repeat="congressman in CongressmanParContra">
+      <h1>{{congressman.user.firstName}} {{congressman.user.lastName}}</h1><br>
+	  </span>
+	  </div>
+            Escreva a sua mensagem:<br><textarea id="textarea" name="textarea">Texto</textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-success">Enviar</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

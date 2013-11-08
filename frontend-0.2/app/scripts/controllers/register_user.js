@@ -175,7 +175,7 @@ angular.module('vigiaPoliticoApp')
       window.location="#/user_home"
     };
 if($scope.teste_interface){
-		  $scope.allRegions = [{"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}, {"description":"São Paulo"}]
+		  $scope.allRegions = [{"description":"São Paulo", "enabled":"true"}, {"description":"Rio de Janeiro"}, {"description":"Brasil"}];
 		  
 		  $scope.allCongressman=[
 		  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}},
@@ -196,7 +196,7 @@ if($scope.teste_interface){
 		  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/73474.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Luci", "lastName" : "Teresinha Koswoski Choinacki"}}
 		  ]
 		  ;
-		  $scope.allTags = [{"name":"Saude"}, {"name":"Academia Brasileira De Filosofia "}, {"name":"Academia De Ginática "}];
+		  $scope.allTags = [{"name":"Saude"}, {"name":"Educação"}, {"name":"Árvores"}, {"name":"Meio Ambiente"}];
 		  
 		 
 }

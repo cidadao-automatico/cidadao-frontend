@@ -46,7 +46,7 @@ border-color: black;">
 	<div class="wrap-center" id="configBoxbtn_locais" style="display:none">
 	<div class="outer-center">
 	<div class="inner-center">
-    <a href="#/step1">
+    <a href ng-click="show_config_plusBox('Places')">
     <h4 id="botao_mais_configBox" >+ LOCAIS</h4></a>
 </div>
 </div>
@@ -64,7 +64,7 @@ border-color: black;">
 	<div class="wrap-center" id="configBoxbtn_temas" style="display:none">
     <div class="outer-center">
 	<div class="inner-center">
-    <a href="#/step2">
+   <a href ng-click="show_config_plusBox('Tags')">
     <h4 id="botao_mais_configBox" >+ TEMAS</h4></a>
 </div>
 </div>
@@ -84,7 +84,7 @@ border-color: black;">
 	<div class="wrap-center" id="configBoxbtn_representantes" style="display:none">
 	    <div class="outer-center">
 	<div class="inner-center">
-    <a href="#/step3">
+    <a href ng-click="show_config_plusBox('Representatives')">
     <h4 id="botao_mais_configBox" >+ REPRESENTANTES</h4></a>
 </div>
 </div>
@@ -128,7 +128,7 @@ border-color: black;">
      <div class="wrap-center" id="configBoxbtn_votos" style="display:none" >
 		    <div class="outer-center">
 	<div class="inner-center">
-    <a href="#/step4">
+    <a href ng-click="show_config_plusBox('Laws')">
     <h4 class="botao_mais_configBox" >
 + VOTOS
 </h4>
@@ -147,7 +147,7 @@ border-color: black;">
 <div class="wrap-center" id="configBoxbtn_opcoes" style="display:none" >
 		    <div class="outer-center">
 	<div class="inner-center">
-	<a href="#/step5">
+	<a href ng-click="show_config_plusBox('Options')">
     <h4 id="botao_mais_configBox" >
 + OPÇÕES
 </h4>
@@ -158,9 +158,99 @@ border-color: black;">
 
 </div>
   </li>
-  
-  </ul>
 
+  </ul>
+  
+<div id="configBox_plus" class="hideable" style="position:relative; border-top">
+   
+<div id="configBox_plus_Places" class="hideable">
+	<p>Selecione os locais de interesse:</p><br>
+	<ul class="lista_passos">
+  		<label ng-repeat="region in allRegions"><li>
+		<!-- criar uma array em allRegions com campo enabled e campo description -->
+      	<input type="checkbox" ng-model="region.enabled" /> {{region.description}}</li> </label>
+  		
+		</ul>
+		<!-- criar uma funcao, dentro do RegisterUser que vai controlar a variavel region.enable e alterar o que eu quiser de estilo -->
+</div>
+
+<div id="configBox_plus_Tags" class="hideable">
+	<div>
+	<ul class="lista_passos">
+  		<label ng-repeat="tag in allTags"><li>
+      	<input type="checkbox" ng-model="tag.enabled" /> {{tag.name}} 
+  		</li></label>
+		</ul>
+  	</div>
+</div>
+
+<div id="configBox_plus_Representatives" class="hideable" style="overflow:auto">
+  		<ul class="lista_passos_rep" style="height:inherit">
+  		<label ng-repeat="congressman in allCongressman"><li>
+		<div style=" display: table; margin: 0 auto;">
+		<img src="{{congressman.congressmanInfo.photoUrl}}" alt="{{congressman.user.firstName}} {{congressman.user.lastName}}" height="50">
+		</div>
+		<div style=" display: table; margin: 0 auto;">
+      	<input type="checkbox" ng-model="congressman.enabled" /> {{congressman.user.firstName}} {{congressman.user.lastName}}
+		</div>
+  		</li></label>
+		</ul>
+</div>
+
+<div id="configBox_plus_Laws" class="hideable" ng-include="'views/vote_law_proposals.html'">
+</div>
+
+<div id="configBox_plus_Options" class="input-group  input-group-lg hideable">
+<form class="form-horizontal">
+<fieldset >
+<br>
+<!-- Text input-->
+<div class="control-group" >
+  <label class="control-label" for="textinput">Text Input</label>
+  <div class="controls">
+    <input id="textinput" name="textinput" placeholder="exemplo@exemplo.com.br" class="input-xlarge" type="text">
+    
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="control-group">
+  <label class="control-label" for="selectbasic">Frequência de emails</label>
+  <div class="controls">
+    <select id="selectbasic" name="selectbasic" class="input-medium">
+      <option>Semanal</option>
+      <option>Diário</option>
+    </select>
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="control-group">
+  <label class="control-label" for="selectbasic">Ordenação padrão</label>
+  <div class="controls">
+    <select id="selectbasic" name="selectbasic" class="input-medium">
+      <option>Projetos contra</option>
+      <option>A favor</option>
+    </select> <div style="display:inline-block">  da sua opinião </div>
+  </div> 
+</div>
+
+<!-- File Button --> 
+<div class="control-group">
+  <label class="control-label" for="filebutton">Selecionar sua foto</label>
+  <div class="controls">
+    <input id="filebutton" name="filebutton" class="input-file" type="file">
+  </div>
+</div>
+
+</fieldset>
+</form>
+</div>
+
+</div> 
+<div id="configBox_plus_fecharBtn" class="hideable" style="display: block; top: 135px; position: absolute; right: 0px;">
+<a href ng-click="hide_config_plusBox()"><i class="icone-menos-verm"></i></a>
+</div>
 <!--<div id="style="width:100%; height: 300px; border-top: 3px black solid;">
 <div style="position:absolute; left:768px; margin-left:-15px; margin-top:-9px;">
 <a href ng-click=""><i class="icone-menos-verm"></i></a>

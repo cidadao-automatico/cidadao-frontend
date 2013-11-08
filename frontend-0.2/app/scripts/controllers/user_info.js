@@ -38,33 +38,83 @@ angular.module('vigiaPoliticoApp')
     })
 	}
     
+	$scope.plusConfigBox_visible = false;
 	
-	 $scope.show_configBoxButton = function(botao)
+	$scope.show_config_plusBox = function(type){
+	var show_box=$("#configBox_plus");
+	var box_selected=$("#configBox_plus_"+type);
+	
+	if ($scope.plusConfigBox_visible==false){
+	show_box.show();
+	}
+	show_box.children().hide()
+	box_selected.show();
+	$("#configBox_plus_fecharBtn").show();
+	$scope.plusConfigBox_visible = true;
+	}
+	
+	$scope.hide_config_plusBox = function(){
+	$scope.plusConfigBox_visible = false;
+	$("#configBox_plus").children().hide();
+	$("#configBox_plus").hide();
+	$("#configBox_plus_fecharBtn").hide();
+	}
+	
+	$scope.show_configBoxButton = function(botao)
     {
 	console.log(botao);
      var botao_select = $("#configBoxbtn_"+ botao)
-	 console.log('teste');
-	 
-     botao_select.show();
+	 botao_select.show();
 	}
 	
-		 $scope.hide_configBoxButton = function(botao)
+	$scope.hide_configBoxButton = function(botao)
     {
 	console.log(botao);
      var botao_select = $("#configBoxbtn_"+ botao)
-	 console.log('teste');
-	 
-     botao_select.hide();
+	 botao_select.hide();
 	}
+	
+	
+	
 	if($scope.teste_interface){
+	
 	$scope.regions = [{"description":"São Paulo", "enabled":"true"}, {"description":"Rio de Janeiro"}];
-	$scope.tags = [{"name":"Saude"}, {"name":"Academia Brasileira De Filosofia "}, {"name":"Academia De Ginática "}];
+	
+	$scope.tags = [{"name":"Saude"}, {"name":"Educação"}, {"name":"Árvores"}, {"name":"Meio Ambiente"}]; 
+	
+	
 	$scope.representatives=[
-		  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}},
-		  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/74016.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Antonio", "lastName" : "Da Conceição Costa Ferreira "}},
-		  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},
-		  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},
-		  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},
-		  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}}];
+	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}},
+	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/74016.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Antonio", "lastName" : "Da Conceição Costa Ferreira "}},
+	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},
+	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},
+	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},
+	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}}];
+	
+////////////////////////// PUXADOS 
+	
+	$scope.allRegions = [{"description":"Brasil"}, {"description":"São Paulo"}, {"description":"Rio de Janeiro"}]
+		  
+	  $scope.allCongressman=[
+	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}},
+	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/74016.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Antonio", "lastName" : "Da Conceição Costa Ferreira "}},
+	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},
+	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},
+	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},
+	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}}, 
+	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}}, 
+	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}},
+	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/73474.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Luci", "lastName" : "Teresinha Koswoski Choinacki"}},
+	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}},
+	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}},
+	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}}, 
+	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}}, 
+	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}}, 
+	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}},
+	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/73474.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Luci", "lastName" : "Teresinha Koswoski Choinacki"}}
+	  ]
+	  ;
+	  $scope.allTags = [{"name":"Saude"}, {"name":"Educação"}, {"name":"Árvores"}, {"name":"Meio Ambiente"}]; 
+				  
 	}
 });
