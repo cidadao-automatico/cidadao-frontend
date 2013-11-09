@@ -14,31 +14,164 @@
 
 'use strict';
 
-angular.module('vigiaPoliticoApp')
-  .controller('UserInfoCtrl', function ($scope, flash, UserAuthorization, User) {
-    
-	$scope.teste_interface = false;
+	angular.module('vigiaPoliticoApp')
+	  .controller('UserInfoCtrl', function ($scope, flash, UserAuthorization, User, LawRegion, Tag, Congressman, Law, Vote) {
+	    
+		$scope.teste_interface = false;
+		
+		if($scope.teste_interface == false){
+	    $scope.user = UserAuthorization.get(function(result){
+	    	if (!result.configured)
+	        {
+	        	User.updateConfigured()        	
+	        	window.location="#/step1"
+	      	}else
+	      	{
+	      		$scope.regions = User.regions()
+	        	$scope.representatives = User.representatives()
+	        	$scope.votes = User.votes()
+	        	$scope.tags=User.tags()
+	      	}
+	    }, function(error){
+	      flash("alert","Por favor faça login ou cadastre-se clicando no botão Facebook")
+	      window.location="#/"
+	    })
+		}
+	    
+		$scope.plusConfigBox_visible = false;
+		
+		$scope.show_config_plusBox = function(type){
+			if (type=="Places")
+			{
+				step1()
+			} else if (type=="Tags")
+			{
+				step2()
+			} else if (type=="Representatives")
+			{
+				step3()
+			} else if (type=="Laws")
+			{
+				step4()
+			}
+
+			var show_box=$("#configBox_plus");
+			var box_selected=$("#configBox_plus_"+type);
+			
+			if ($scope.plusConfigBox_visible==false){
+				show_box.show();
+			}
+
+			show_box.children().hide()
+			box_selected.show();
+			$("#configBox_plus_fecharBtn").show();
+			$scope.plusConfigBox_visible = true;
+		}
+		
+		$scope.hide_config_plusBox = function(){
+			$scope.plusConfigBox_visible = false;
+			$("#configBox_plus").children().hide();
+			$("#configBox_plus").hide();
+			$("#configBox_plus_fecharBtn").hide();
+		}
+		
+		$scope.show_configBoxButton = function(botao)
+	    {
+			// console.log(botao);
+	     	var botao_select = $("#configBoxbtn_"+ botao)
+		 	botao_select.show();
+		}
+		
+		$scope.hide_configBoxButton = function(botao)
+	    {
+			// console.log(botao);
+	     	var botao_select = $("#configBoxbtn_"+ botao)
+		 	botao_select.hide();
+		}
+		
+		$scope.vote = function(rate, law)
+	    {
+	      	var extended=$("#law_container_"+law.stdCode+"_proposals")
+	      	console.log(extended)
+	      	extended.hide("slow")
+	      	Vote.save({id: law.id, rate: rate})
+
+	    }
+		
+		function step1(){
+	      if(!_.isNull($scope.user) && !_.isUndefined($scope.user))
+	      {
+	        $scope.allRegions = LawRegion.query(function(allRegionsResult){ // aqui pego o array  e crio um fake
+	          $scope.userRegions = User.regions(function(userRegionResult){
+	            var mappedIds=_.map(userRegionResult, function(value) { return value["id"] })
+	            console.log(mappedIds)
+	            //FIXME: This should be done at the server, perhaps with a more clever algorithm that takes advantage of id
+	            _.each($scope.allRegions, function(region){
+	              if (_.contains(mappedIds,region["id"]))
+	              {
+	                region["enabled"]=true
+	              }
+	              else
+	              {
+	                region["enabled"]=false
+	              }
+	            })
+	          })  
+	        })
+	      }
+    	}
 	
-	if($scope.teste_interface == false){
-    $scope.user = UserAuthorization.get(function(result){
-    	if (!result.configured)
-        {
-        	User.updateConfigured()        	
-        	window.location="#/step1"
-      	}else
-      	{
-      		$scope.regions = User.regions()
-        	$scope.representatives = User.representatives()
-        	$scope.votes = User.votes()
-        	$scope.tags=User.tags()
-      	}
-    }, function(error){
-      flash("alert","Por favor faça login ou cadastre-se clicando no botão Facebook")
-      window.location="#/"
-    })
-	}
-    
-	$scope.plusConfigBox_visible = false;
+
+  
+
+    function step2() {
+      if(!_.isNull($scope.user) && !_.isUndefined($scope.user))
+      {
+        $scope.allTags = Tag.query(function(allTagsResult){
+          console.log(allTagsResult)
+          $scope.userTags = User.tags(function(userTagResult){
+            var mappedIds=_.map(userTagResult, function(value) { return value["id"] })
+            // FIXME: This should be done at the server, perhaps with a more clever algorithm that takes advantage of id
+            _.each($scope.allTags, function(tag){
+              if (_.contains(mappedIds,tag["id"]))
+              {
+                tag["enabled"]=true
+              }
+              else
+              {
+                tag["enabled"]=false
+              }
+            })
+          })  
+        })
+      }
+	   
+	  }
+
+    function step3(){
+     if(!_.isNull($scope.user) && !_.isUndefined($scope.user))
+      {
+        $scope.allCongressman = Congressman.query(function(allCongressmanResult){
+          console.log("congress "+allCongressmanResult)
+          $scope.userRepresentatives = User.representatives(function(userRepresentativesResult){
+            var mappedIds=_.map(userRepresentativesResult, function(value) { return value["user"]["id"] })
+            // FIXME: This should be done at the server, perhaps with a more clever algorithm that takes advantage of id
+            _.each($scope.allCongressman, function(congressman){
+              if (_.contains(mappedIds,congressman["user"]["id"]))
+              {
+                congressman["enabled"]=true
+              }
+              else
+              {
+                congressman["enabled"]=false
+              }
+            })
+          })  
+        })
+      }
+    }
+  
+
 	
 	$scope.show_config_plusBox = function(type){
 	var show_box=$("#configBox_plus");
@@ -80,6 +213,15 @@ angular.module('vigiaPoliticoApp')
            extended.hide("slow")
       Vote.save({id: law.id, rate: rate})
 
+
+
+    function step4(){
+      
+      if(!_.isNull($scope.user) && !_.isUndefined($scope.user))
+      {
+	  $scope.laws=[]
+        $scope.laws = Law.laws_for_vote()
+      } 
     }
 	
 	

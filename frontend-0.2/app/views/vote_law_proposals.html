@@ -36,19 +36,19 @@
 <div class="law_userRating" style="display: block;float: none;margin: 0 auto; width: 420px;" >
 				<label style="position:relative; float:left; display:inline-block" class="grid_2"> VOCÊ É:</label>
 				<ul id="voteBtns_{{law.stdCode}}" class="vote_btns" style="float:right; display:inline-block">
-					<a href ng-click="vote('0',law)">
+					<a href ng-click="vote(1,law)">
 					<li id="btn_0_{{law.stdCode}}" class="voteBtn_contra_pr progress-striped" >contra</li>
 					</a>
-					<a href ng-click="vote('1',law)">
+					<a href ng-click="vote(2,law)">
 					<li id="btn_1_{{law.stdCode}}" class="voteBtn_parcontra_pr " >par. contra</li>
 					</a>
-					<a href ng-click="vote('2',law)">
+					<a href ng-click="vote(3,law)">
 					<li id="btn_2_{{law.stdCode}}" class="voteBtn_abstencao_pr " >abstenção</li>
 					</a>
-					<a href ng-click="vote('3',law)">
+					<a href ng-click="vote(4,law)">
 					<li id="btn_3_{{law.stdCode}}" class="voteBtn_parfavor_pr" >par. a favor</li>
 					</a>
-					<a href ng-click="vote('4',law)">
+					<a href ng-click="vote(5,law)">
 					<li id="btn_4_{{law.stdCode}}" class="voteBtn_afavor_pr " style="margin-right:0px">a favor</li>
 					</a>
 				</ul>
