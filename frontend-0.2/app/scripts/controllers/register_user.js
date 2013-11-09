@@ -22,7 +22,7 @@ angular.module('vigiaPoliticoApp')
       'Karma'
     ];
 	
-	$scope.teste_interface = true;
+	$scope.teste_interface = false;
     
 	if($scope.teste_interface == false){
     $scope.user = UserAuthorization.get(function(userResult){

@@ -18,17 +18,46 @@ angular.module('vigiaPoliticoApp')
   .controller('LawsDashboardCtrl', function ($scope, User, UserAuthorization) {
      
     $scope.page = 1;
-	$scope.teste_interface = true;
+	$scope.teste_interface = false;
     
 	if($scope.teste_interface == false){
 	
   	$scope.user = UserAuthorization.get(function(result){
-  		$scope.laws=User.recommended_laws({page: $scope.page});
-		  $scope.representatives = User.representatives()
-  		  console.log($scope.laws)
+  		$scope.laws=User.recommended_laws({page: $scope.page}, function(result){
+  			console.log(result)			
+  			$scope.representatives = User.representatives()
+  		  	
+  		});
+		  
   	})
 	}
 	
+	//FIXME: Gambearra total, use filters!
+	$scope.mapRateToClass = function(rate){
+		if (rate==1)
+			return "contra"
+		else if(rate==2)
+			return "parcontra"
+		else if (rate==3)
+			return "abstencao"
+		else if (rate==4)
+			return "parfavor"
+		else if (rate==5)
+			return "afavor"
+	}	
+
+	$scope.mapRateToText = function(rate){
+		if (rate==1)
+			return "contra"
+		else if(rate==2)
+			return "parc. contra"
+		else if (rate==3)
+			return "abstenção"
+		else if (rate==4)
+			return "parc. favor"
+		else if (rate==5)
+			return "a favor"
+	}	
 
     //#FIXME: Seria legal utilizar Angular ngshow e nghide
 	

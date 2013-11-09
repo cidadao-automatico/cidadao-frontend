@@ -17,7 +17,7 @@
 angular.module('vigiaPoliticoApp')
   .controller('UserInfoCtrl', function ($scope, flash, UserAuthorization, User) {
     
-	$scope.teste_interface = true;
+	$scope.teste_interface = false;
 	
 	if($scope.teste_interface == false){
     $scope.user = UserAuthorization.get(function(result){

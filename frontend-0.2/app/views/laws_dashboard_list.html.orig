@@ -15,7 +15,7 @@
 <div style="margin-bottom:20px;" class="law_container" ng-init="hide_allText()" ng-repeat="(lawIndex, law) in laws">
 
 
-<div style="position:relative; ">
+<div style="position:relative; "  >
 
     <!-- titulos da tabela de lei -->
 	
@@ -60,10 +60,14 @@
 			<div >
 			<div id="compactLaw_userOpinionBtn" class="voteBtn_contra_pr" >
 			<div data-toggle="tooltip" data-placement="left" title="Opinião prevista pelo sistema" id='example'>
-				 contra?
+<<<<<<< HEAD
+				 contra
+=======
+				 {{mapRateToText(law.vote.predictedRate)}}?
+>>>>>>> Ajustando respostas JSON para leis recomendadas
 				 </div>
 			</div><i  id="qMark_userOpinionBtn" class="icone-interrogacao" style="position: absolute; right: -3px; top: 0; background-size: 15px auto;"></i>
-			<h1><a type="button" href ng-click="showExtendedLaw(law.lawProposal.stdCode)">(quer mudar?)</a></h1>
+			<h1><a type="button" href ng-click="showExtendedLaw(law.stdCode)">(quer mudar?)</a></h1>
 			</div>
 			<hr>
 			<h2>{{law.lawProposal.priorityStatus}}</h2>
@@ -254,9 +258,15 @@
 			</li>
 		</ul>
 	</div>
+
 	
+<<<<<<< HEAD
+<div id="popover-content" class="hide">
+<div id="popover_{{law.stdCode}}" style="position:relative; margin:0px auto;">
+=======
 	<div id="popover-content" class="hide">
 <div id="popover_{{law.lawProposal.stdCode}}" style="position:relative; margin:0px auto;">
+>>>>>>> Ajustando respostas JSON para leis recomendadas
 	<button  class="btn btn-success"><i class="icon-white icon-ok"></i></button>
 	<button type="submit" class="btn btn-danger"><i class="icon-white icon-remove"></i></button>	
 </div>	  
