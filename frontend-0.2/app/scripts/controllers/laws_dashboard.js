@@ -31,6 +31,12 @@ angular.module('vigiaPoliticoApp')
 		  
   	})
 	}
+
+	$scope.$on('fetchMoreRecommendedLaws', function(eventObj, args){
+		$scope.laws=[]
+		$scope.laws=User.recommended_laws({page: $scope.page})
+		// eventObj.stopPropagation()
+	})
 	
 	//FIXME: Gambearra total, use filters!
 	$scope.mapRateToClass = function(rate){

@@ -57,7 +57,7 @@ border-color: black;">
 border-style: solid;
 border-color: black;">
     <ul >
-      <li ng-repeat="(tagIndex, tag) in tags.slice(0,4)"><h3>{{tag.name}}</h3></li>
+      <li ng-repeat="(tagIndex, tag) in tags.slice(0,4)"><h3>{{tag.name | characters: 10}}</h3></li>
     </ul>
     <i class="plus_button">
     </i>
@@ -168,7 +168,7 @@ border-color: black;">
 	<ul class="lista_passos">
   		<label ng-repeat="region in allRegions"><li>
 		<!-- criar uma array em allRegions com campo enabled e campo description -->
-      	<input type="checkbox" ng-model="region.enabled" /> {{region.description}}</li> </label>
+      	<input type="checkbox" ng-model="region.enabled" ng-change="regionsChanged()" /> {{region.description}}</li> </label>
   		
 		</ul>
 		<!-- criar uma funcao, dentro do RegisterUser que vai controlar a variavel region.enable e alterar o que eu quiser de estilo -->
@@ -178,7 +178,7 @@ border-color: black;">
 	<div>
 	<ul class="lista_passos">
   		<label ng-repeat="tag in allTags"><li>
-      	<input type="checkbox" ng-model="tag.enabled" /> {{tag.name}} 
+      	<input type="checkbox" ng-model="tag.enabled" ng-change="tagsChanged()"/> {{tag.name}} 
   		</li></label>
 		</ul>
   	</div>
@@ -191,7 +191,7 @@ border-color: black;">
 		<img src="{{congressman.congressmanInfo.photoUrl}}" alt="{{congressman.user.firstName}} {{congressman.user.lastName}}" height="50">
 		</div>
 		<div style=" display: table; margin: 0 auto;">
-      	<input type="checkbox" ng-model="congressman.enabled" /> {{congressman.user.firstName}} {{congressman.user.lastName}}
+      	<input type="checkbox" ng-model="congressman.enabled" ng-change="repsChanged()" /> {{congressman.user.firstName}} {{congressman.user.lastName}}
 		</div>
   		</li></label>
 		</ul>

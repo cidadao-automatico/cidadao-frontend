@@ -120,7 +120,6 @@ angular.module('vigiaPoliticoApp')
       
       if(!_.isNull($scope.user) && !_.isUndefined($scope.user))
       {
-	  $scope.laws=[]
         $scope.laws = Law.laws_for_vote()
       } 
     }

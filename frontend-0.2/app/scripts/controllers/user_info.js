@@ -15,8 +15,10 @@
 'use strict';
 
 	angular.module('vigiaPoliticoApp')
-	  .controller('UserInfoCtrl', function ($scope, flash, UserAuthorization, User, LawRegion, Tag, Congressman, Law, Vote) {
+	  .controller('UserInfoCtrl', function ($scope, $rootScope, flash, UserAuthorization, User, LawRegion, Tag, Congressman, Law, Vote) {
 	    
+	  	$scope.configPageChanged=[false,false,false]
+
 		$scope.teste_interface = false;
 		
 		if($scope.teste_interface == false){
@@ -38,6 +40,18 @@
 	    })
 		}
 	    
+		$scope.regionsChanged = function(){
+			$scope.configPageChanged[0]=true
+		}
+
+		$scope.tagsChanged = function(){
+			$scope.configPageChanged[1]=true
+		}
+
+		$scope.repsChanged = function(){
+			$scope.configPageChanged[2]=true
+		}
+
 		$scope.plusConfigBox_visible = false;
 		
 		$scope.show_config_plusBox = function(type){
@@ -69,6 +83,27 @@
 		}
 		
 		$scope.hide_config_plusBox = function(){
+			if ($scope.configPageChanged[0])
+			{
+				saveRegions()
+			}
+			if ($scope.configPageChanged[1])
+			{
+				saveTags()
+			}
+			if ($scope.configPageChanged[2])
+			{
+				saveCongressman()
+			}
+			// var anyPageChanged=_.filter($scope.configPageChanged, function(configPage){
+	  //   		return configPage==true
+	  //   	})
+	  //   	$scope.configPageChanged=[false,false,false]
+	  //   	if (anyPageChanged.length>0)
+	  //   	{
+	  //   		$rootScope.$emit('fetchMoreRecommendedLaws')
+	  //   	}
+	    	// console.log(anyPageChanged.length)
 			$scope.plusConfigBox_visible = false;
 			$("#configBox_plus").children().hide();
 			$("#configBox_plus").hide();
@@ -92,11 +127,41 @@
 		$scope.vote = function(rate, law)
 	    {
 	      	var extended=$("#law_container_"+law.stdCode+"_proposals")
-	      	console.log(extended)
 	      	extended.hide("slow")
 	      	Vote.save({id: law.id, rate: rate})
 
 	    }
+
+	    function saveRegions()
+	    {
+
+	      User.saveRegions({regions: $scope.allRegions}, function(result){
+	      	$scope.regions = User.regions()
+	      	$rootScope.$broadcast('fetchMoreRecommendedLaws')
+	      })
+	    }
+
+	    function saveTags()
+	    {
+	      User.saveTags({tags: $scope.allTags}, function(result){
+	      	$scope.tags=User.tags()
+	      	$rootScope.$broadcast('fetchMoreRecommendedLaws')
+	      })
+	    }
+
+	    function saveCongressman()
+	    {
+	    	var selectedCongressman=_.filter($scope.allCongressman, function(congressman){
+	    		return congressman.enabled==true
+	    	})
+	    
+	      User.saveRepresentatives({congressmanList: selectedCongressman}, function(result){
+	      	$scope.representatives = User.representatives()
+	      	$rootScope.$broadcast('fetchMoreRecommendedLaws')
+	      })
+
+	    }
+
 		
 		function step1(){
 	      if(!_.isNull($scope.user) && !_.isUndefined($scope.user))
@@ -104,7 +169,6 @@
 	        $scope.allRegions = LawRegion.query(function(allRegionsResult){ // aqui pego o array  e crio um fake
 	          $scope.userRegions = User.regions(function(userRegionResult){
 	            var mappedIds=_.map(userRegionResult, function(value) { return value["id"] })
-	            console.log(mappedIds)
 	            //FIXME: This should be done at the server, perhaps with a more clever algorithm that takes advantage of id
 	            _.each($scope.allRegions, function(region){
 	              if (_.contains(mappedIds,region["id"]))
@@ -128,7 +192,6 @@
       if(!_.isNull($scope.user) && !_.isUndefined($scope.user))
       {
         $scope.allTags = Tag.query(function(allTagsResult){
-          console.log(allTagsResult)
           $scope.userTags = User.tags(function(userTagResult){
             var mappedIds=_.map(userTagResult, function(value) { return value["id"] })
             // FIXME: This should be done at the server, perhaps with a more clever algorithm that takes advantage of id
@@ -152,7 +215,6 @@
      if(!_.isNull($scope.user) && !_.isUndefined($scope.user))
       {
         $scope.allCongressman = Congressman.query(function(allCongressmanResult){
-          console.log("congress "+allCongressmanResult)
           $scope.userRepresentatives = User.representatives(function(userRepresentativesResult){
             var mappedIds=_.map(userRepresentativesResult, function(value) { return value["user"]["id"] })
             // FIXME: This should be done at the server, perhaps with a more clever algorithm that takes advantage of id
