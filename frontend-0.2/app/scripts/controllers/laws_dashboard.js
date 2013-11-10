@@ -131,38 +131,47 @@ angular.module('vigiaPoliticoApp')
 	
 	$scope.hide_law_text = function(law_stdCode){
 	
-	var hide_element=$(".hd"+law_stdCode)
-	var show_actions=$("#user_actions_"+law_stdCode);
-    hide_element.slideUp(10);
-	   
-	  show_actions.slideUp(10);
-	   var show_titles=$("#lawTitles_"+law_stdCode);
-	  show_titles.hide();
-	 }
+		var show_titles=$("#lawTitles_"+law_stdCode);
+		if (hide_element.is(":visible") ){
+			hide_element.slideUp(10);
+		}
+		if (show_actions.is(":visible") ){
+			show_actions.slideUp(10);
+		}
+		if (hide_titles.is(":visible") ){
+			show_titles.hide();
+		}
+	}
 	  
 	 $scope.show_law_text = function(law_stdCode){
 		
-	var hide_element=$(".hd"+law_stdCode)
-     // hide_element.show("fast")
-	  hide_element.slideDown("slow");
-	  var show_actions=$("#user_actions_"+law_stdCode);
-	  show_actions.slideDown();
-	  var hide_titles=$("#lawTitles_"+law_stdCode);
-	  hide_titles.slideDown();
-	  }
+	 // hide_element.show("fast")
+	 var hide_element=$(".hd"+law_stdCode)
+	 var show_actions=$("#user_actions_"+law_stdCode);
+	 var hide_titles=$("#lawTitles_"+law_stdCode);
+	 if (hide_element.is(":hidden") ){
+	 hide_element.slideDown();
+	 }
+	 if (show_actions.is(":hidden") ){
+	 show_actions.slideDown();
+	 }
+	 if (hide_titles.is(":hidden") ){
+	 hide_titles.slideDown();
+
+	}
 	  
 	  
 	 $scope.hide_allText = function(){
-	  var hide_element=$(".hideable")
-      hide_element.hide() 
-	  $('#example').tooltip();
-	  $("[data-toggle=popover]").popover({
-      html: true, 
-	  content: function() {
-      return $('#popover-content').html();
-      }
-      });
-	  }
+	 	var hide_element=$(".hideable")
+	 	hide_element.hide() 
+	 	$('#example').tooltip();
+	 	$("[data-toggle=popover]").popover({
+	 		html: true, 
+	 		content: function() {
+	 			return $('#popover-content').html();
+	 		}
+	 	});
+	 }
 	  
 	  $scope.changeRate_popover_yes = function(lawId){
 	   console.log("chegou");
@@ -171,7 +180,7 @@ angular.module('vigiaPoliticoApp')
 	   }
 	  
 	  $scope.show_firstHeader = function() {
-	var hide_element=$(".hd"+law_stdCode)
+	//var hide_element=$(".hd"+law_stdCode)
 	  }
 	  
 	   $scope.show_ExtLaw_things = function(law_stdCode){
