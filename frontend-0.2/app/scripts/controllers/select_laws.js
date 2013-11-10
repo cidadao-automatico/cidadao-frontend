@@ -15,10 +15,10 @@
 'use strict';
 
 angular.module('vigiaPoliticoApp')
-  .controller('SelectLawsCtrl', function ($scope) {
+  .controller('SelectLawsCtrl',['$scope',function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
-  });
+  }]);

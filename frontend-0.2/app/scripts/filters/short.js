@@ -15,7 +15,7 @@
 'use strict';
 
 angular.module('vigiaPoliticoApp')
-.filter('short', function () {
+.filter('short', [function () {
 	return function(txt, max) {
 		if(!max) {max = 200;}
 		if(txt && txt.length > max) {
@@ -31,4 +31,4 @@ angular.module('vigiaPoliticoApp')
 		}
 		return txt;
 	};
-});
+}]);

@@ -15,7 +15,7 @@
 'use strict';
 
 angular.module('vigiaPoliticoApp')
-  .factory('Vote', function ($resource) {
+  .factory('Vote',['$resource', function ($resource) {
     // Service logic
     // ...
 
@@ -24,4 +24,4 @@ angular.module('vigiaPoliticoApp')
     return $resource('law_proposal/:id/vote', { }, { 
         save: {method: 'POST', params: { id: '@id'}, isArray: true, responseType: 'json'}
     });
-  });
+  }]);

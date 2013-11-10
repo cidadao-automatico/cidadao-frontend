@@ -1,21 +1,22 @@
-// Copyright 2012/2013 de Gustavo Steinberg, Flavio Soares, Pierre Andrews, Gustavo Salazar Torres, Thomaz Abramo
-//
-// Este arquivo é parte do programa Vigia Político. O projeto Vigia
-// Político é um software livre; você pode redistribuí-lo e/ou
-// modificá-lo dentro dos termos da GNU Affero General Public License
-// como publicada pela Fundação do Software Livre (FSF); na versão 3 da
-// Licença. Este programa é distribuído na esperança que possa ser útil,
-// mas SEM NENHUMA GARANTIA; sem uma garantia implícita de ADEQUAÇÃO a
-// qualquer MERCADO ou APLICAÇÃO EM PARTICULAR. Veja a licença para
-// maiores detalhes. Você deve ter recebido uma cópia da GNU Affero
-// General Public License, sob o título "LICENCA.txt", junto com este
-// programa, se não, acesse http://www.gnu.org/licenses/
+	// Copyright 2012/2013 de Gustavo Steinberg, Flavio Soares, Pierre Andrews, Gustavo Salazar Torres, Thomaz Abramo
+	//
+	// Este arquivo é parte do programa Vigia Político. O projeto Vigia
+	// Político é um software livre; você pode redistribuí-lo e/ou
+	// modificá-lo dentro dos termos da GNU Affero General Public License
+	// como publicada pela Fundação do Software Livre (FSF); na versão 3 da
+	// Licença. Este programa é distribuído na esperança que possa ser útil,
+	// mas SEM NENHUMA GARANTIA; sem uma garantia implícita de ADEQUAÇÃO a
+	// qualquer MERCADO ou APLICAÇÃO EM PARTICULAR. Veja a licença para
+	// maiores detalhes. Você deve ter recebido uma cópia da GNU Affero
+	// General Public License, sob o título "LICENCA.txt", junto com este
+	// programa, se não, acesse http://www.gnu.org/licenses/
 
 
-'use strict';
+	'use strict';
 
 	angular.module('vigiaPoliticoApp')
-	  .controller('UserInfoCtrl', function ($scope, $rootScope, flash, UserAuthorization, User, LawRegion, Tag, Congressman, Law, Vote) {
+	  .controller('UserInfoCtrl',['$scope','$rootScope','flash','UserAuthorization','User','LawRegion', 'Tag','Congressman','Law','Vote',
+	   function ($scope, $rootScope, flash, UserAuthorization, User, LawRegion, Tag, Congressman, Law, Vote) {
 	    
 	  	$scope.configPageChanged=[false,false,false]
 
@@ -137,7 +138,7 @@
 
 	      User.saveRegions({regions: $scope.allRegions}, function(result){
 	      	$scope.regions = User.regions()
-	      	$rootScope.$broadcast('fetchMoreRecommendedLaws')
+	      	$rootScope.$broadcast('reloadRecommendedLaws')
 	      })
 	    }
 
@@ -145,7 +146,7 @@
 	    {
 	      User.saveTags({tags: $scope.allTags}, function(result){
 	      	$scope.tags=User.tags()
-	      	$rootScope.$broadcast('fetchMoreRecommendedLaws')
+	      	$rootScope.$broadcast('reloadRecommendedLaws')
 	      })
 	    }
 
@@ -157,7 +158,7 @@
 	    
 	      User.saveRepresentatives({congressmanList: selectedCongressman}, function(result){
 	      	$scope.representatives = User.representatives()
-	      	$rootScope.$broadcast('fetchMoreRecommendedLaws')
+	      	$rootScope.$broadcast('reloadRecommendedLaws')
 	      })
 
 	    }
@@ -285,50 +286,48 @@
         $scope.laws = Law.laws_for_vote()
       } 
     }
-	
-	
-	
-	if($scope.teste_interface){
-	
-	$scope.regions = [{"description":"São Paulo", "enabled":"true"}, {"description":"Rio de Janeiro"}];
-	
-	$scope.tags = [{"name":"Saude"}, {"name":"Educação"}, {"name":"Árvores"}, {"name":"Meio Ambiente"}]; 
-	
-	
-	$scope.representatives=[
-	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}},
-	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/74016.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Antonio", "lastName" : "Da Conceição Costa Ferreira "}},
-	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},
-	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},
-	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},
-	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}}];
-	
-////////////////////////// PUXADOS 
-	
-	$scope.allRegions = [{"description":"Brasil"}, {"description":"São Paulo"}, {"description":"Rio de Janeiro"}]
-		  
-	  $scope.allCongressman=[
-	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}},
-	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/74016.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Antonio", "lastName" : "Da Conceição Costa Ferreira "}},
-	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},
-	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},
-	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},
-	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}}, 
-	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}}, 
-	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}},
-	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/73474.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Luci", "lastName" : "Teresinha Koswoski Choinacki"}},
-	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}},
-	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}},
-	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}}, 
-	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}}, 
-	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}}, 
-	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}},
-	  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/73474.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Luci", "lastName" : "Teresinha Koswoski Choinacki"}}
-	  ]
-	  ;
-	  $scope.allTags = [{"name":"Saude"}, {"name":"Educação"}, {"name":"Árvores"}, {"name":"Meio Ambiente"}]; 
-	  
-	  $scope.laws=[{"description":"Acrescenta parágrafos ao art. 17 da Constituição, para definir o caráter nacional como condição para o registro dos partidos políticos no Tribunal Superior Eleitoral.", "typeId":"319", "url":"http://www.camara.gov.br/proposicoesWeb/prop_mostrarintegra?codteor=533062&filename=PEC+210/2007", "typePrefix":"PEC", "stdCode":"1111", "year":"2013"}, {"description":"Acrescenta parágrafos ao art. 17 da Constituição, para definir o caráter nacional como condição para o registro dos partidos políticos no Tribunal Superior Eleitoral.", "typeId":"319", "typePrefix":"PEC", "stdCode":"1311", "year":"2013"}];
-				  
-	}
-});
+		
+		if($scope.teste_interface){
+		
+			$scope.regions = [{"description":"São Paulo", "enabled":"true"}, {"description":"Rio de Janeiro"}];
+			
+			$scope.tags = [{"name":"Saude"}, {"name":"Educação"}, {"name":"Árvores"}, {"name":"Meio Ambiente"}]; 
+			
+			
+			$scope.representatives=[
+			  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}},
+			  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/74016.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Antonio", "lastName" : "Da Conceição Costa Ferreira "}},
+			  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},
+			  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},
+			  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},
+			  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}}];
+		
+	////////////////////////// PUXADOS 
+		
+			$scope.allRegions = [{"description":"Brasil"}, {"description":"São Paulo"}, {"description":"Rio de Janeiro"}]
+			  
+		  	$scope.allCongressman=[
+			  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}},
+			  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/74016.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Antonio", "lastName" : "Da Conceição Costa Ferreira "}},
+			  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},
+			  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},
+			  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},
+			  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}}, 
+			  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}}, 
+			  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}},
+			  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/73474.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Luci", "lastName" : "Teresinha Koswoski Choinacki"}},
+			  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}},
+			  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}},
+			  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}}, 
+			  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}}, 
+			  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}}, 
+			  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Roberto", "lastName" : "João Pereira Freire"}},
+			  {"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/73474.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Luci", "lastName" : "Teresinha Koswoski Choinacki"}}
+			  ]
+			  ;
+			$scope.allTags = [{"name":"Saude"}, {"name":"Educação"}, {"name":"Árvores"}, {"name":"Meio Ambiente"}]; 
+			  
+			$scope.laws=[{"description":"Acrescenta parágrafos ao art. 17 da Constituição, para definir o caráter nacional como condição para o registro dos partidos políticos no Tribunal Superior Eleitoral.", "typeId":"319", "url":"http://www.camara.gov.br/proposicoesWeb/prop_mostrarintegra?codteor=533062&filename=PEC+210/2007", "typePrefix":"PEC", "stdCode":"1111", "year":"2013"}, {"description":"Acrescenta parágrafos ao art. 17 da Constituição, para definir o caráter nacional como condição para o registro dos partidos políticos no Tribunal Superior Eleitoral.", "typeId":"319", "typePrefix":"PEC", "stdCode":"1311", "year":"2013"}];
+					  
+		}
+	});

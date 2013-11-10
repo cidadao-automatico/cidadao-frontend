@@ -15,7 +15,7 @@
 'use strict';
 
 angular.module('vigiaPoliticoApp')
-  .filter('deputyLogo', function () {
+  .filter('deputyLogo', [function () {
     return function(deputado) {
 		/*if(deputado != null) {
 			var names = deputado.nome.split(' ');
@@ -24,4 +24,4 @@ angular.module('vigiaPoliticoApp')
 		}*/
 		return "./img/icon-member.jpg";
 	};
-  });
+  }]);

@@ -15,10 +15,10 @@
 'use strict';
 
 angular.module('vigiaPoliticoApp')
-  .factory('Congressman', function ($resource) {
+  .factory('Congressman', ['$resource', function ($resource) {
     // Service logic
     // ...
 
     // Public API here
     return $resource('congressman', {}, {});
-  });
+  }]);

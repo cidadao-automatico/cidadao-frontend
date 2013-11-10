@@ -15,7 +15,7 @@
 'use strict';
 
 angular.module('vigiaPoliticoApp')
-.filter('levelClass', function () {
+.filter('levelClass', [function () {
 	return function(level) {
 		switch(level) {
 			case 1: return "opposite";
@@ -26,4 +26,4 @@ angular.module('vigiaPoliticoApp')
 		}
 		return "";
 	};
-});
+}]);

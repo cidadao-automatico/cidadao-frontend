@@ -15,7 +15,7 @@
 'use strict';
 
 angular.module('vigiaPoliticoApp')
-  .factory('Law', function ($resource) {
+  .factory('Law', ['$resource',function ($resource) {
     // Service logic
 
     // Public API here
@@ -23,4 +23,4 @@ angular.module('vigiaPoliticoApp')
         laws_for_vote: {method: 'GET', params: { suffix: 'vote_training'}, isArray: true, responseType: 'json'}
     });
 
-  });
+  }]);

@@ -15,7 +15,8 @@
 'use strict';
 
 angular.module('vigiaPoliticoApp')
-  .controller('AuthorizationCtrl', function ($scope) {
+  .controller('AuthorizationCtrl', ['$scope', 
+    function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -34,4 +35,4 @@ angular.module('vigiaPoliticoApp')
     	window.location='#/register'
     }
 
-  });
+  }]);

@@ -15,7 +15,7 @@
 'use strict';
 
 angular.module('vigiaPoliticoApp').
-  factory('User', function ($resource) {
+  factory('User', ['$resource',function ($resource) {
     // Service logic
     // ...
     
@@ -34,4 +34,4 @@ angular.module('vigiaPoliticoApp').
         updateConfigured: {method: 'POST', params: { suffix: 'configured'}, isArray: true, responseType: 'json'},
         votes: {method: 'GET', params: { suffix: 'votes'}, isArray: true, responseType: 'json'}
       });
-  });
+  }]);

@@ -15,7 +15,7 @@
 'use strict';
 
 angular.module('vigiaPoliticoApp')
-.filter('levelString', function () {
+.filter('levelString', [function () {
 	return function(level) {
 		switch(level) {
 			case 1: return "contra";
@@ -26,4 +26,4 @@ angular.module('vigiaPoliticoApp')
 		}
 		return "";
 	};
-});
+}]);

@@ -15,7 +15,8 @@
 'use strict';
 
 angular.module('vigiaPoliticoApp')
-  .controller('RegisterUserCtrl', function ($scope, UserAuthorization,flash, LawRegion, User, Tag, Congressman, Law, Vote) {
+  .controller('RegisterUserCtrl',['$scope','UserAuthorization','flash','LawRegion','User','Tag','Congressman','Law','Vote',
+    function ($scope, UserAuthorization,flash, LawRegion, User, Tag, Congressman, Law, Vote) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -207,4 +208,4 @@ if($scope.teste_interface){
 		 $scope.lawIndex=[{}];
 }
 
-  });
+  }]);

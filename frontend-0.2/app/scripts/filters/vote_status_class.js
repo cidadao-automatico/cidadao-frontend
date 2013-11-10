@@ -15,7 +15,7 @@
 'use strict';
 
 angular.module('vigiaPoliticoApp')
-  .filter('voteStatusClass', function () {
+  .filter('voteStatusClass', [function () {
     return function(lei) {
 		if(lei.yourvote > 0) {
 			return "rated";
@@ -24,4 +24,4 @@ angular.module('vigiaPoliticoApp')
 		}
 		return "";
 	};
-  });
+  }]);

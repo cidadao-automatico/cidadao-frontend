@@ -15,7 +15,7 @@
 'use strict';
 
 angular.module('vigiaPoliticoApp')
-  .filter('status', function () {
+  .filter('status', [function () {
     return function(status) {
 		switch(status) {
 				case 1: return "votado";
@@ -23,4 +23,4 @@ angular.module('vigiaPoliticoApp')
 			}
 			return "unknown"; //TODO
 	};
-  });
+  }]);
