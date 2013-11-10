@@ -18,6 +18,7 @@ angular.module('vigiaPoliticoApp')
   .controller('LawsDashboardCtrl',['$scope','$rootScope','User','UserAuthorization', 
   	function ($scope, $rootScope, User, UserAuthorization) {
   
+  
     $scope.page = 1;
 	$scope.teste_interface = false;
     
@@ -37,6 +38,13 @@ angular.module('vigiaPoliticoApp')
 		$scope.laws=User.recommended_laws({page: $scope.page})
 		// eventObj.stopPropagation()
 	})
+	
+	$scope.$on('colorizeVariable', function(eventObj, args){
+		internal_color_extBtn(law);
+		internal_color_btn(law);
+	})
+	
+	
 	
 	//FIXME: Gambearra total, use filters!
 	$scope.mapRateToClass = function(rate){
@@ -76,8 +84,9 @@ angular.module('vigiaPoliticoApp')
 	
     $scope.showExtendedLaw = function(lawId)
     {
-      var normal=$("#law_container_"+lawId+"_normal")
-      var extended=$("#law_container_"+lawId+"_extended")
+	console.log(lawId);
+      var normal=$("#law_container_"+lawId+"_normal");
+      var extended=$("#law_container_"+lawId+"_extended");
       normal.slideToggle("slow");
       extended.slideToggle("slow");
 	  var hide_titles=$("#lawTitles_"+lawId);
@@ -88,58 +97,44 @@ angular.module('vigiaPoliticoApp')
 
     $scope.hideExtendedLaw = function(lawId)
     {
-      var normal=$("#law_container_"+lawId+"_normal")
-      var extended=$("#law_container_"+lawId+"_extended")
+      var normal=$("#law_container_"+lawId+"_normal");
+      var extended=$("#law_container_"+lawId+"_extended");
       normal.slideToggle("slow");
 	  normal.show();
       extended.slideToggle("slow");
-	  var hide_titles=$("#lawTitles_"+lawId);
-	  hide_titles.show();
-	  var show_titles=$("#lawTitlesExt_"+lawId);
-	  show_titles.hide();
-    }
+	  //var hide_titles=$("#lawTitles_"+lawId);
+	 // hide_titles.show();
+	 var show_titles=$("#lawTitlesExt_"+lawId);
+	 if (show_titles.is(":visible") ){
+	    show_titles.hide();
+     }
+	 }
 
+	 
+	 
     $scope.vote = function(rate, law)
     {
-	console.log (law);
-
-	 var btn =$("#btn_"+rate+"_"+law.stdCode);
-	 
-	 console.log ("#btn_"+rate+"_"+law.stdCode);
-	switch(rate){
-	  case "0":
-	  
-	  btn.toggleClass("voteBtn_contra");
-	  
-	   break;
-	  case "1":
-	   btn.toggleClass("voteBtn_parcontra");
-	  break;
-		case "2":
-	   btn.toggleClass("voteBtn_abstencao");
-		
-	  break;
-	  case "3":
-	    btn.toggleClass("voteBtn_parfavor");
-		
-	  break;
-	  case "4":
-	    btn.toggleClass("voteBtn_afavor");
-	 break;
-	  }
+    Vote.save({id:law.lawProposal.id, rate: law.vote.rate}, function(result){
+    $rootScope.$broadcast('colorizeVariable',law) 
+	})
     }
 	
-	$scope.hide_law_text = function(law_stdCode){
 	
-		var show_titles=$("#lawTitles_"+law_stdCode);
+	
+	$scope.hide_law_text = function(law_stdCode){
+	 console.log("aqui");
+		var hide_element=$(".hd"+law_stdCode)
+		var show_actions=$("#user_actions_"+law_stdCode);
+		var hide_titles=$("#lawTitles_"+law_stdCode);
+		
 		if (hide_element.is(":visible") ){
-			hide_element.slideUp(10);
+			hide_element.slideUp();
 		}
 		if (show_actions.is(":visible") ){
-			show_actions.slideUp(10);
+			show_actions.slideUp();
 		}
 		if (hide_titles.is(":visible") ){
-			show_titles.hide();
+			hide_titles.hide();
 		}
 	}
 	  
@@ -156,29 +151,19 @@ angular.module('vigiaPoliticoApp')
 	 show_actions.slideDown();
 	 }
 	 if (hide_titles.is(":hidden") ){
-	 hide_titles.slideDown();
+	 hide_titles.show();
 
+	}
 	}
 	  
 	  
 	 $scope.hide_allText = function(){
+	
 	 	var hide_element=$(".hideable")
 	 	hide_element.hide() 
-	 	$('#example').tooltip();
-	 	$("[data-toggle=popover]").popover({
-	 		html: true, 
-	 		content: function() {
-	 			return $('#popover-content').html();
-	 		}
-	 	});
 	 }
 	  
-	  $scope.changeRate_popover_yes = function(lawId){
-	   console.log("chegou");
-	   //$scope.showExtendedLaw = function(lawId);
-	   //$(object).popover('hide');
-	   }
-	  
+	  	  
 	  $scope.show_firstHeader = function() {
 	//var hide_element=$(".hd"+law_stdCode)
 	  }
@@ -196,13 +181,14 @@ angular.module('vigiaPoliticoApp')
 	  }
 	  
 	  
-	   $scope.show_congressmanBox = function(lawId,position){
+	 $scope.show_congressmanBox = function(lawId,position){
 	 
 	   var show_box=$("#congressmanOpinionBox_"+lawId);
 	   show_box.css({ "display": 'inline-block'});
 	  $("#law_container_"+(lawId)+"_extended" ).css( "height", "360px" );
 	   show_box.slideDown();
 	  console.log(position);
+
 	  switch(position){
 	  case "0":
 	  $scope.congressmanByLaw_opinion = $scope.CongressmanContra;
@@ -226,6 +212,98 @@ angular.module('vigiaPoliticoApp')
 	  break;
 	  }
 	}
+	
+	$scope.color_btn = function(law){
+	internal_color_btn(law);
+	}
+	
+	
+	function internal_color_btn (law){
+	var btn = $("#rateBtn_compact_"+law.lawProposal.stdCode);
+	var pRate = law.vote.predictedRate;
+	var rate = law.vote.predictedRate;
+	console.log(law.vote.rate.lenght);
+	if (law.vote.rate){
+	$("#qMark_userOpinionBtn_"+law.lawProposal.stdCode).hide();
+		if (rate==1){
+			
+			btn.addClass( "voteBtn_contra" );}
+		else if(rate==2){
+			
+			btn.addClass( "voteBtn_parcontra" );}
+		else if (rate==3){
+		btn.addClass( "voteBtn_abstencao" );
+			}
+		else if (rate==4){
+			
+			btn.addClass( "voteBtn_parfavor" );}
+		else if (rate==5){
+			
+			btn.addClass( "voteBtn_afavor" );}
+	}
+	else{
+	if (pRate==1){
+		btn.addClass( "voteBtn_contra_pr" );}
+		else if(pRate==2){
+			
+			btn.addClass( "voteBtn_parcontra_pr" );}
+		else if (pRate==3){
+		btn.addClass( "voteBtn_abstencao_pr" );
+			}
+		else if (pRate==4){
+			
+			btn.addClass( "voteBtn_parfavor_pr" );}
+		else if (pRate==5){
+			
+			btn.addClass( "voteBtn_afavor_pr" );}
+	}	
+	}
+	
+$scope.colorClassName = function(rate){
+		if (rate==1)
+			return "contra"
+		else if(rate==2)
+			return "parcontra"
+		else if (rate==3)
+			return "abstencao"
+		else if (rate==4)
+			return "parfavor"
+		else if (rate==5)
+			return "afavor"
+	}
+	
+	$scope.color_extBtn = function(law){
+   internal_color_extBtn(law);
+}
+	
+	function internal_color_extBtn(law){
+	 var rate = law.vote.rate;
+	 for(var i=0;i<5;i++){
+	 var btn = $("#btn_"+i+("_")+law.lawProposal.stdCode);
+	 btn.removeClass( "voteBtn_contra" )
+	  btn.removeClass( "voteBtn_parcontra" )
+	   btn.removeClass( "voteBtn_abstencao" )
+	    btn.removeClass( "voteBtn_parfavor" )
+		 btn.removeClass( "voteBtn_afavor" );}
+	 
+	if (law.vote.rate){
+		if (rate==1){
+		var btn = $("#btn_"+(rate-1)+("_")+law.lawProposal.stdCode);
+		btn.addClass( "voteBtn_contra" );}
+		else if(rate==2){
+		var btn = $("#btn_"+(rate-1)+("_")+law.lawProposal.stdCode);
+		btn.addClass( "voteBtn_parcontra" );}
+		else if (rate==3){
+		var btn = $("#btn_"+(rate-1)+("_")+law.lawProposal.stdCode);
+		btn.addClass( "voteBtn_abstencao" );}
+		else if (rate==4){
+		var btn = $("#btn_"+(rate-1)+("_")+law.lawProposal.stdCode);
+		btn.addClass( "voteBtn_parfavor" );}
+		else if (rate==5){
+		var btn = $("#btn_"+(rate-1)+("_")+law.lawProposal.stdCode);
+		btn.addClass( "voteBtn_afavor" );}
+	}
+	}
 	  
 	 $scope.hide_congressmanBox = function(lawId){
 	  var show_box=$("#congressmanOpinionBox_"+lawId);
@@ -234,6 +312,7 @@ angular.module('vigiaPoliticoApp')
 	   show_box.hide();
 	   }
 	   
+
 	   
 	   // dados fakes
 	   if($scope.teste_interface)
@@ -261,7 +340,9 @@ angular.module('vigiaPoliticoApp')
 	   ]
 	   $scope.CongressmanFavor=[{"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Marcelo", "lastName" : "João Pereira Freire"}},{"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},{"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Maria", "lastName" : "da Silva"}}]
 	   
-	   $scope.laws=[{"description":"Acrescenta parágrafos ao art. 17 da Constituição, para definir o caráter nacional como condição para o registro dos partidos políticos no Tribunal Superior Eleitoral.", "typeId":"319", "url":"http://www.camara.gov.br/proposicoesWeb/prop_mostrarintegra?codteor=533062&filename=PEC+210/2007", "typePrefix":"PEC", "stdCode":"1111", "year":"2013"}, {"description":"Acrescenta parágrafos ao art. 17 da Constituição, para definir o caráter nacional como condição para o registro dos partidos políticos no Tribunal Superior Eleitoral.", "typeId":"319", "typePrefix":"PEC", "stdCode":"1311", "year":"2013"}]; 
+	   $scope.laws=[{lawProposal: { description: "Regulamenta o art. 146-A da Constituição Federal, estabelecendo critérios especiais de tributação destinados a prevenir desequilíbrios da concorrência.", id: '30251', prefix: 'PLP', priorityStatus: 'Votação a médio prazo',regionId: 1, stdCode: "121", url: "http://www.camara.gov.br/proposicoesWeb/prop_mostrarintegra?codteor=952353", year: 2011}, representatives:[{congressmanInfo: {congressId: 522008,email: "",homePageUrl: "",partyId: 27,phoneNumber: "3215-5648",photoUrl: "http://www.camara.gov.br/internet/deputado/bandep/74319.jpg",shortName: "Paes Landim ",userId: 1381}, vote:{predictedRate:2, rate:"" }}],vote:{predictedRate:1, rate:""}},
+	   
+	   {lawProposal: { description: "Regulamenta o art. 146-A da Constituição Federal, estabelecendo critérios especiais de tributação destinados a prevenir desequilíbrios da concorrência.", id: '30251', prefix: 'PLP', priorityStatus: 'Votação a médio prazo',regionId: 1, stdCode: "1321", url: "http://www.camara.gov.br/proposicoesWeb/prop_mostrarintegra?codteor=952353", year: 2011}, representatives:[{congressmanInfo: {congressId: 522008,email: "",homePageUrl: "",partyId: 27,phoneNumber: "3215-5648",photoUrl: "http://www.camara.gov.br/internet/deputado/bandep/74319.jpg",shortName: "Paes Landim ",userId: 1381}, vote:{predictedRate:2, rate:"" }}],vote:{predictedRate:5, rate:"5"}}]; 
 	   
 
 	  

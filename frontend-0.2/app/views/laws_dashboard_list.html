@@ -53,16 +53,15 @@
 				</li>
 			</ul>
 			<div style="position:absolute; left:100%; top:100%; margin-left: -20px; margin-top: -20px;">
-				<a href ng-click="showExtendedLaw(law.lawProposal.stdCode)"><i class="icone-mais_small"></i></a>
+				<a href ng-click="showExtendedLaw(law.lawProposal.stdCode); color_extBtn(law)"><i class="icone-mais_small"></i></a>
 			</div>
 			</li>
 			<li id="user_opinion" style="width: 11%; border-width: 1px; height:100%; border-style: solid; border-color: #BCBEC0">
-			<div >
-			<div id="compactLaw_userOpinionBtn" class="voteBtn_contra_pr" >
-			<div data-toggle="tooltip" data-placement="left" title="Opinião prevista pelo sistema" id='example'>
-				 contra?
-				 </div>
-			</div><i  id="qMark_userOpinionBtn" class="icone-interrogacao" style="position: absolute; right: -3px; top: 0; background-size: 15px auto;"></i>
+			<div popover="Essa opinião foi prevista pelo sistema" popover-placement="left" popover-trigger="mouseenter">
+			<div  id="rateBtn_compact_{{law.lawProposal.stdCode}}" class="compactLaw_userOpinionBtn voteBtn_{{colorClassName(law.vote.predictedRate)}}_pr" >
+			{{mapRateToText(law.vote.predictedRate)}}
+		    </div>
+			<i  id="qMark_userOpinionBtn_{{law.lawProposal.stdCode}}" class="icone-interrogacao" style="position: absolute; right: -3px; top: 0; background-size: 15px auto;"></i>
 			<h1><a type="button" href ng-click="showExtendedLaw(law.lawProposal.stdCode)">(quer mudar?)</a></h1>
 			</div>
 			<hr>
@@ -73,12 +72,14 @@
 			<div>
 				<ul>
 					<label ng-repeat="congressman in law.representatives.slice(0,4)">
+					
 					<li class="{{mapRateToClass(congressman.vote.predictedRate)}}">
+					<a><span  tooltip-popup-delay='500' tooltip-placement="bottom" tooltip="{{congressman.congressmanInfo.shortName}}">
 					<div style="width:50px; height:50px; overflow:hidden;">
 						<img src="{{congressman.congressmanInfo.photoUrl}}" alt="{{congressman.congressmanInfo.shortName}}" style="width: 100%">
 					</div>
 					<h1 class="hideable hd{{law.lawProposal.stdCode}}"> {{mapRateToText(congressman.vote.predictedRate)}} </h1>
-					</li>
+					</a></span></li>
 					</label>
 				</ul>
 			</div>
@@ -151,7 +152,7 @@
 				<label style="position:relative; float:left; " class="grid_2"> VOCÊ</label>
 				<ul id="voteBtns_{{law.lawProposal.stdCode}}" class="vote_btns">
 					<a href ng-click="vote('0',law)">
-					<li id="btn_0_{{law.lawProposal.stdCode}}" class="voteBtn_contra_pr progress-striped" >contra</li>
+					<li id="btn_0_{{law.lawProposal.stdCode}}" class="voteBtn_contra_pr" >contra</li>
 					</a>
 					<a href ng-click="vote('1',law)">
 					<li id="btn_1_{{law.lawProposal.stdCode}}" class="voteBtn_parcontra_pr " >par. contra</li>

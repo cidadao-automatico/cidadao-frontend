@@ -767,7 +767,7 @@ text-align:center;
 }
 
 
-#compactLaw_userOpinionBtn {
+.compactLaw_userOpinionBtn {
 text-align:center;
 font-size: 12px; 
 max-width: 65px;
@@ -840,20 +840,14 @@ width:100%;
 overflow:auto;
 display:block;
 }
-
-div[class="tooltip-inner"] {
-    max-width: 80px;
-}
-
-h3[class="popover-title"] {
-    padding:2px;
+.popover {
+    font-size: 12px;
 	text-align:center;
+	max-width:100px;
+	min-width:30px;
 }
 
 
-.popover {max-width:400px; width:95px !important;}
-
-.popover-content {padding:2px !important;}
 
 .law_box_full{
 height:230px; 
