@@ -30,6 +30,7 @@ module.exports = function(config) {
       'app/bower_components/angular-flash-messages/angular-flash.js',
       'app/bower_components/angular-resource/angular-resource.js',
       'app/bower_components/angular-mocks/angular-mocks.js',
+      "app/bower_components/angular-bootstrap/ui-bootstrap.min.js",
       'app/scripts/*.js',
       'app/scripts/**/*.js',
       'test/mock/**/*.js',

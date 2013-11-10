@@ -257,6 +257,6 @@ angular.module('vigiaPoliticoApp')
 
 	  
 	   }
-  });
+  }]);
   
 
