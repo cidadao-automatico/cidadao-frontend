@@ -16,11 +16,12 @@
 
 angular.module('vigiaPoliticoApp')
   .controller('LawsDashboardCtrl', function ($scope, User, UserAuthorization) {
-  
+     
     $scope.page = 1;
 	$scope.teste_interface = true;
     
 	if($scope.teste_interface == false){
+	
   	$scope.user = UserAuthorization.get(function(result){
   		$scope.laws=User.recommended_laws({page: $scope.page});
 		  $scope.representatives = User.representatives()
@@ -33,6 +34,7 @@ angular.module('vigiaPoliticoApp')
 	
     $scope.showExtendedLaw = function(lawId)
     {
+	
       var normal=$("#law_container_"+lawId+"_normal")
       var extended=$("#law_container_"+lawId+"_extended")
       normal.slideToggle("slow");
@@ -86,7 +88,8 @@ angular.module('vigiaPoliticoApp')
 	  }
     }
 	
-	$scope.hide_law_text = function(law_stdCode){
+	$scope.hide_law_text = function(law_stdCode)
+	{
 	
 	var hide_element=$(".hd"+law_stdCode)
 	var show_actions=$("#user_actions_"+law_stdCode);
@@ -97,7 +100,8 @@ angular.module('vigiaPoliticoApp')
 	  show_titles.hide();
 	 }
 	  
-	 $scope.show_law_text = function(law_stdCode){
+	 $scope.show_law_text = function(law_stdCode)
+	 {
 		
 	var hide_element=$(".hd"+law_stdCode)
      // hide_element.show("fast")
@@ -109,7 +113,8 @@ angular.module('vigiaPoliticoApp')
 	  }
 	  
 	  
-	 $scope.hide_allText = function(){
+	 $scope.hide_allText = function()
+	 {
 	  var hide_element=$(".hideable")
       hide_element.hide() 
 	  $('#example').tooltip();
@@ -121,7 +126,8 @@ angular.module('vigiaPoliticoApp')
       });
 	  }
 	  
-	  $scope.changeRate_popover_yes = function(lawId){
+	  $scope.changeRate_popover_yes = function(lawId)
+	  {
 	   console.log("chegou");
 	   //$scope.showExtendedLaw = function(lawId);
 	   //$(object).popover('hide');
@@ -129,6 +135,7 @@ angular.module('vigiaPoliticoApp')
 	  
 	  $scope.show_firstHeader = function() {
 	var hide_element=$(".hd"+law_stdCode)
+	
 	  }
 	  
 	   $scope.show_ExtLaw_things = function(law_stdCode){

@@ -14,6 +14,8 @@
 
 'use strict';
 
+// to use Angular 1.2, add 'ngRoute' to angular.module array
+
 angular.module('vigiaPoliticoApp', ['ngResource','truncate','flash'])
   .config(function ($routeProvider) {
     $routeProvider

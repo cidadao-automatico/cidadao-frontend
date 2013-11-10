@@ -62,14 +62,14 @@ angular.module('vigiaPoliticoApp')
 	
 	$scope.show_configBoxButton = function(botao)
     {
-	console.log(botao);
+	
      var botao_select = $("#configBoxbtn_"+ botao)
 	 botao_select.show();
 	}
 	
 	$scope.hide_configBoxButton = function(botao)
     {
-	console.log(botao);
+	
      var botao_select = $("#configBoxbtn_"+ botao)
 	 botao_select.hide();
 	}
@@ -77,8 +77,7 @@ angular.module('vigiaPoliticoApp')
 	$scope.vote = function(rate, law)
     {
       var extended=$("#law_container_"+law.stdCode+"_proposals")
-      console.log(extended)
-      extended.hide("slow")
+           extended.hide("slow")
       Vote.save({id: law.id, rate: rate})
 
     }

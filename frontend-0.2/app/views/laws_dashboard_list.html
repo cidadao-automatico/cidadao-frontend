@@ -15,13 +15,14 @@
 <div style="margin-bottom:20px;" class="law_container" ng-init="hide_allText()" ng-repeat="(lawIndex, law) in laws">
 
 
-<div style="position:relative; ">
+<div style="position:relative; "  >
 
     <!-- titulos da tabela de lei -->
 	
 	<div id="lawTitles_{{law.stdCode}}" style="height:20px; position:absolute; display:none; width:100%; top:-20px;">
 		<ul id="law_tab_titulos">
-			<li style="width: 34%; border-right:1px solid white; background-color: #2B2828;"> lei ou projeto</li>
+			<li style="width: 23%; border-right:1px solid white; background-color: #2B2828;"> lei ou projeto</li>
+			<li style="width: 11%; border-right:1px solid white; background-color: #2B2828;"> sua opinião</li>
 			<li style="width: 33%; border-right:1px solid white;"> opinião de seus representantes </li>
 			<li style="width: 33%"> opinião de seus amigos </li>
 		</ul>
@@ -59,10 +60,10 @@
 			<div >
 			<div id="compactLaw_userOpinionBtn" class="voteBtn_contra_pr" >
 			<div data-toggle="tooltip" data-placement="left" title="Opinião prevista pelo sistema" id='example'>
-				 contra?
+				 contra
 				 </div>
-			</div>
-			<h1><a data-placement="bottom" data-toggle="popover" data-title="Quer mudar?" data-container="body" type="button" data-html="true" href id="login">(quer mudar?)</a></h1>
+			</div><i  id="qMark_userOpinionBtn" class="icone-interrogacao" style="position: absolute; right: -3px; top: 0; background-size: 15px auto;"></i>
+			<h1><a type="button" href ng-click="showExtendedLaw(law.stdCode)">(quer mudar?)</a></h1>
 			</div>
 			<hr>
 			<h2>Votação: iminente </h2>
@@ -192,7 +193,7 @@
 				<a href ng-click="hide_congressmanBox(law.stdCode)"><i class="icon-red icon-remove" style="position:absolute; right:0px; top:3px;"></i></a>
 				<ul class="lista_lawBox_congressman" style="height:100%">
 					<label ng-repeat="congressman in congressmanByLaw_opinion">
-					<li>
+					<li class="bouncy-slide-left">
 					<div style=" display: table; margin: 0 auto;">
 						<img src="{{congressman.congressmanInfo.photoUrl}}" alt="{{congressman.user.firstName}} {{congressman.user.lastName}}" height="50">
 					</div>
@@ -253,8 +254,9 @@
 			</li>
 		</ul>
 	</div>
+
 	
-	<div id="popover-content" class="hide">
+<div id="popover-content" class="hide">
 <div id="popover_{{law.stdCode}}" style="position:relative; margin:0px auto;">
 	<button  class="btn btn-success"><i class="icon-white icon-ok"></i></button>
 	<button type="submit" class="btn btn-danger"><i class="icon-white icon-remove"></i></button>	
