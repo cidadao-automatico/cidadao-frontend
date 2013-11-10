@@ -1,3 +1,19 @@
+<!--
+// Copyright 2012/2013 de Gustavo Steinberg, Flavio Soares, Pierre Andrews, Gustavo Salazar Torres, Thomaz Abramo
+//
+// Este arquivo é parte do programa Vigia Político. O projeto Vigia
+// Político é um software livre; você pode redistribuí-lo e/ou
+// modificá-lo dentro dos termos da GNU Affero General Public License
+// como publicada pela Fundação do Software Livre (FSF); na versão 3 da
+// Licença. Este programa é distribuído na esperança que possa ser útil,
+// mas SEM NENHUMA GARANTIA; sem uma garantia implícita de ADEQUAÇÃO a
+// qualquer MERCADO ou APLICAÇÃO EM PARTICULAR. Veja a licença para
+// maiores detalhes. Você deve ter recebido uma cópia da GNU Affero
+// General Public License, sob o título "LICENCA.txt", junto com este
+// programa, se não, acesse http://www.gnu.org/licenses/
+-->
+
+
 ﻿<!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -21,7 +37,8 @@
         <link rel="stylesheet" href="styles/application.css">
         <link rel="stylesheet" href="styles/showpl.css">
         <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap-sass/bootstrap-responsive- 2.1.0.css">
-        <link rel="stylesheet" href="styles/social-buttons.css">
+		 <link rel="stylesheet" href="bower_components/angular-animate/ng-animation.css">
+		<link rel="stylesheet" href="styles/social-buttons.css">
         <link rel="stylesheet" href="styles/logo.css">
 		<link rel="stylesheet" href="styles/reset.css">
 		<link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
@@ -31,7 +48,9 @@
   
   
     <header class="header_style" ng-include="'views/header.html'"></header>
-<<<<<<< HEAD
+	<div class="main_content" style="border: 0px">
+    <flash:messages></flash:messages>
+    </div>
 	<div ng-view=""></div>
 	<div id="content_wrapper" style="display:inline-block">
 	<div class="grid_6"> </div>
@@ -40,12 +59,6 @@
    </div>
 	
 	
-=======
-    <div class="main_content" style="border: 0px">
-    <flash:messages></flash:messages>
-    </div>
-    <div ng-view=""></div>
->>>>>>> Fixing welcome page
     <footer ng-include="'views/footer.html'"></footer>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -71,11 +84,19 @@
     </script>
 
     <script src="bower_components/jquery/jquery.js"></script>
+<<<<<<< HEAD
+	  <script src="bower_components/angular/angular.js"></script>
+      <script src="bower_components/angular-resource/angular-resource.js"></script>
+	  <script type="text/javascript"  src="http://d3js.org/d3.v3.min.js"></script>
+=======
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
     <script type="text/javascript"  src="http://d3js.org/d3.v3.min.js"></script>
+>>>>>>> Adicionando Angular Bootstrap
 
         <!-- build:js scripts/plugins.js -->
+		<script src="bower_components/angular-animate/angular-animate.min.js"></script>
         <script src="bower_components/angular-truncate/dist/angular-truncate.js"></script>
         <script src="bower_components/angular-flash-messages/angular-flash.js"></script>
         <script src="bower_components/bootstrap-sass/js/bootstrap-affix.js"></script>
@@ -94,6 +115,11 @@
         <script src="bower_components/lodash/dist/lodash.min.js"></script>
         <script src="bower_components/moment/moment.js"></script>
         <script src="scripts/jquery.tagsinput.min.js"></script>
+		
+		
+		<!--<script src="scripts/angular-flash.js"></script>
+		<script src="scripts/truncate.js"></script>-->
+		
         <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -103,7 +129,7 @@
         <script src="scripts/controllers/selecionar_convidar.js"></script>
         <script src="scripts/controllers/mostrar_lei.js"></script>
         <script src="scripts/controllers/tags.js"></script>        
-        <script src="scripts/services/Voto.js"></script>
+        <script src="scripts/services/Vote.js"></script>
         <script src="scripts/services/User.js"></script>
         <script src="scripts/services/Congressman.js"></script>
         <script src="scripts/filters/level_string.js"></script>
@@ -121,6 +147,7 @@
         <script src="scripts/controllers/register_user.js"></script>        
         <script src="scripts/services/User_Authorization.js"></script>
         <script src="scripts/services/LawRegion.js"></script>
+        <script src="scripts/services/Tag.js"></script>
         <!-- endbuild -->
 </body>
 </html>

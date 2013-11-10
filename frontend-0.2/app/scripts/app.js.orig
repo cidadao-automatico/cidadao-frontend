@@ -14,7 +14,13 @@
 
 'use strict';
 
+<<<<<<< HEAD
+// to use Angular 1.2, add 'ngRoute' to angular.module array
+
+angular.module('vigiaPoliticoApp', ['ngResource','truncate','flash'])
+=======
 angular.module('vigiaPoliticoApp', ['ngResource','truncate','flash','ui.bootstrap'])
+>>>>>>> Adicionando Angular Bootstrap
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
