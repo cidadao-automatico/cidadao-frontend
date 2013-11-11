@@ -15,8 +15,8 @@
 'use strict';
 
 angular.module('vigiaPoliticoApp')
-  .controller('LawsDashboardCtrl',['$scope','$rootScope','User','UserAuthorization', 
-  	function ($scope, $rootScope, User, UserAuthorization) {
+  .controller('LawsDashboardCtrl',['$scope','$rootScope','User','UserAuthorization', 'Vote',
+  	function ($scope, $rootScope, User, UserAuthorization,Vote) {
   
   
     $scope.page = 1;
@@ -40,8 +40,9 @@ angular.module('vigiaPoliticoApp')
 	})
 	
 	$scope.$on('colorizeVariable', function(eventObj, args){
-		internal_color_extBtn(law);
-		internal_color_btn(law);
+		console.log(args)
+		internal_color_extBtn(args);
+		internal_color_btn(args);
 	})
 	
 	
@@ -114,7 +115,7 @@ angular.module('vigiaPoliticoApp')
 	 
     $scope.vote = function(rate, law)
     {
-    Vote.save({id:law.lawProposal.id, rate: law.vote.rate}, function(result){
+    Vote.save({id:law.lawProposal.id, rate: parseInt(rate)}, function(result){
     $rootScope.$broadcast('colorizeVariable',law) 
 	})
     }
