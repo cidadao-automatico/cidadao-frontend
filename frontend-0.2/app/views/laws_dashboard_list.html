@@ -42,7 +42,7 @@
 			<h2 style="font-size:16px; padding-bottom:4px">{{law.lawProposal.prefix}} {{law.lawProposal.stdCode}}/{{law.lawProposal.year}}</h2>
 			<h4 style="font-size:11px; font-height:105%;">{{law.lawProposal.description | characters: 100}}</h4>
 			<ul style="padding-top:0px;">
-				<li>
+				<!--<li>
 				<h3>arvore</h3>
 				</li>
 				<li>
@@ -50,7 +50,7 @@
 				</li>
 				<li>
 				<h3>reforma</h3>
-				</li>
+				</li>-->
 			</ul>
 			<div style="position:absolute; left:100%; top:100%; margin-left: -20px; margin-top: -20px;">
 				<a href ng-click="showExtendedLaw(law.lawProposal.stdCode); color_extBtn(law)"><i class="icone-mais_small"></i></a>
@@ -86,16 +86,16 @@
 			<div style="position:absolute; left:100%; bottom:20px; margin-left: -20px;">
 				<a href ng-click="show_congressmanBox(law.lawProposal.stdCode, '0'); showExtendedLaw(law.lawProposal.stdCode) "><i class="icone-mais_small"></i></a>
 				</li>
-				<li id="friends_opinion" c style="width: 33%; height:100%; border-width: 1px; border-style: solid; position:relative; border-color: #BCBEC0;">
+				<li id="friends_opinion" style="width: 33%; height:100%; border-width: 1px; border-style: solid; position:relative; border-color: #BCBEC0;" popover="em desenvolvimento" popover-placement="top" popover-trigger="mouseenter">
 				<ul>
 					<a href>
-					<li class="amigo_icon_big afavor"><img src="/amigo1.jpg" alt="logo">
+					<li class="amigo_icon_big afavor"><img src="/amigo.jpg" alt="logo">
 					<h1 class="hideable hd{{law.lawProposal.stdCode}}"> a favor</li>
-					<li class="amigo_icon_big parfavor"><img src="/amigo2.jpg" alt="logo">
+					<li class="amigo_icon_big parfavor"><img src="/amigo.jpg" alt="logo">
 					<h1 class="hideable hd{{law.lawProposal.stdCode}}"> parc. favor </li>
-					<li class="amigo_icon_big contra"><img src="/amigo3.jpg" alt="logo">
+					<li class="amigo_icon_big contra"><img src="/amigo.jpg" alt="logo">
 					<h1 class="hideable hd{{law.lawProposal.stdCode}}"> contra </li>
-					<li class="amigo_icon_big contra"><img src="/amigo4.jpg" alt="logo">
+					<li class="amigo_icon_big contra"><img src="/amigo.jpg" alt="logo">
 					<h1 class="hideable hd{{law.lawProposal.stdCode}}"> contra </li>
 					</a>
 				</ul>
@@ -104,12 +104,12 @@
 				</div>
 				</li>
 				<!-- caixa de ações retratil -->
-				<div id="user_actions_{{law.lawProposal.stdCode}}" style="position:absolute; display:none; left:5px; bottom:0px; background-color: #BCBEC0; opacity:0.8">
+				<div id="user_actions_{{law.lawProposal.stdCode}}" style="position:absolute; display:none; left:15px; bottom:0px; background-color: #BCBEC0;">
 					<ul id="law_icons">
-						<li><i class="icone-campanha icone20px"></i></li>
-						<a data-toggle="modal" data-target="#mensagemModal" href><li><i class="icone-mensagem"></i></li></a>
-						<li><i class="icone-ban"></i></li>
-						<li><i class="icone-fb"></i></li>
+					<li popover="Comece uma campanha para esta lei" popover-placement="top" popover-trigger="mouseenter"><i class="icone-campanha icone20px"></i></li></span></a>
+						<a data-toggle="modal" data-target="#mensagemModal" href><li popover="Escreva para seu(s) representante(s)" popover-placement="top" popover-trigger="mouseenter"><a data-toggle="modal" data-target="#myModal" href><i  class="icone-mensagem"></i></a></li></a>
+						<li popover="Não tenho interesse nessa lei" popover-placement="top" popover-trigger="mouseenter"><i class="icone-ban"></i></li>
+						<li  popover="Publicar na minha timeline" popover-placement="top" popover-trigger="mouseenter"><i class="icone-fb"></i></li>
 						</ul>
 				</div>
 				<!--------------------------->
@@ -127,7 +127,7 @@
 			<h2>Nro. {{law.lawProposal.typeId}} {{law.lawProposal.stdCode}}/{{law.lawProposal.year}}</h2>
 			<h4>{{law.lawProposal.description | characters: 400}} <a href="{{law.lawProposal.url}}" target="_blank" ><i class="icone-mais_small"></i></a></h4>
 			<ul style="padding-top:5px; overflow:hidden; max-height:70px">
-				<li>
+				<!--<li>
 				<h3>arvore</h3>
 				</li>
 				<li>
@@ -144,7 +144,7 @@
 				</li>
 				<li>
 				<h3>reforma</h3>
-				</li>
+				</li> -->
 			</ul>
 			</li>
 			<li id="law_stats_full" style="width: 67%; height:100%;border-width: 1px; border-style: solid;position:relative; padding: 10px; border-color: #BCBEC0;">
@@ -192,7 +192,11 @@
 			
 			<div id="congressmanOpinionBox_{{law.lawProposal.stdCode}}" style="height:130px; border-width: 3px; margin-top: -8px;; border-style:solid; width:478px; display:none; position:relative;">
 				<a href ng-click="hide_congressmanBox(law.lawProposal.stdCode)"><i class="icon-red icon-remove" style="position:absolute; right:0px; top:3px;"></i></a>
-				<ul class="lista_lawBox_congressman" style="height:100%">
+				<div style=" padding:10px;">
+				<h2 style="text-align: center;"> EM DESENVOLVIMENTO </h2><br>
+				<h1 te>Essa tela mostrará a divisão da votação de todos os deputados contra e a favor do projeto.<br> Nas linhas abaixo, mostrará essa informação para amigos e para partidos</h1>
+				</div>
+				<!--<ul class="lista_lawBox_congressman" style="height:100%">
 					<label ng-repeat="congressman in congressmanByLaw_opinion">
 					<li class="bouncy-slide-left">
 					<div style=" display: table; margin: 0 auto;">
@@ -203,11 +207,11 @@
 					</div>
 					</li>
 					</label>
-				</ul>
+				</ul>-->
 			</div>
 			<div class="ratingResults rating_Friends">
 				<label style="position:relative; float:left; width:114px; background-color: #D1D3D4; padding-left:10px;" class="grid_2"> amigos </label>
-				<ul class="grid_6">
+				<ul class="grid_6" popover="em desenvolvimento" popover-placement="top" popover-trigger="mouseenter">
 					<li class="contra" style="width:5%;">—%</li>
 					<li class="parcontra" style="width:24%;">—%</li>
 					<li class="abstencao" style="width:43%;">—%</li>
@@ -217,7 +221,7 @@
 			</div>
 			<div class="ratingResults rating_Partidos">
 				<label style="position:relative; float:left; width:114px; background-color: #D1D3D4; padding-left:10px;" class="grid_2"> partidos </label>
-				<ul class="grid_6">
+				<ul class="grid_6" popover="em desenvolvimento" popover-placement="top" popover-trigger="mouseenter">
 					<li class="contra" style="width:12%;">—%</li>
 					<li class="parcontra" style="width:24%;">—%</li>
 					<li class="abstencao" style="width:36%;">—%</li>
@@ -229,18 +233,18 @@
 				<ul>
 					<a href="#">
 					<div style="width:50%; display:inline-block; float:left; padding-left:10px;">
-						<a data-toggle="modal" data-target="#mensagemModal" href><li><i class="icone-mensagem"></i>
+						<a data-toggle="modal" data-target="#myModal" href><li ><i  class="icone-mensagem"></i>
 						<h1>escreva para seu(s) representantes(s)</h1></a>
 						</li>
-						<li><i class="icone-campanha icone20px"></i>
+						<li popover="em desenvolvimento" popover-placement="left" popover-trigger="mouseenter"><i class="icone-campanha icone20px"></i>
 						<h1 > comece uma campanha para esta lei</h1>
 						</li>
 					</div>
 					<div style="width:50%; display:inline-block; float:left; padding-left:10px; border-left: 2px solid #BCBEC0">
-						<li><i class="icone-ban"></i>
+						<li popover="em desenvolvimento" popover-placement="left" popover-trigger="mouseenter"><i class="icone-ban"></i>
 						<h1>não tenho interesse nessa lei</h1>
 						</li>
-						<li><i class="icone-fb"></i>
+						<li popover="em desenvolvimento" popover-placement="left" popover-trigger="mouseenter"><i class="icone-fb"></i>
 						<h1>publicar na minha timeline</h1>
 						</li>
 						</a>
@@ -256,15 +260,9 @@
 		</ul>
 	</div>
 	
-	<div id="popover-content" class="hide">
-<div id="popover_{{law.lawProposal.stdCode}}" style="position:relative; margin:0px auto;">
-	<button  class="btn btn-success"><i class="icon-white icon-ok"></i></button>
-	<button type="submit" class="btn btn-danger"><i class="icon-white icon-remove"></i></button>	
-</div>	  
-</div>
 
 
-<div class="modal fade" id="mensagemModal_{{law.lawProposal.stdCode}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -272,21 +270,63 @@
         <h4 class="modal-title" id="myModalLabel"><i class="icone-mensagem"></i>  Escreva para seus representantes</h4>
       </div>
       <div class="modal-body">
-	  Selecione os representantes para quem você deseja enviar esta mensagem:
-	  <div style="height:100px; border: 1px solid #CCCCCC;">
+	  Selecione os representantes para quem você deseja enviar esta mensagem:<br>
+	  <div style="margin-top:20px; overflow:auto; padding:10px" >
 	  <span ng-repeat="congressman in CongressmanParContra">
-      <h1>{{congressman.user.firstName}} {{congressman.user.lastName}}</h1><br>
+	  <div style="display:inline-block; width:90px;">
+      <div >
+		<img src="{{congressman.congressmanInfo.photoUrl}}" alt="{{congressman.user.firstName}} {{congressman.user.lastName}}" height="50">
+		</div>
+		<div style=" display: table; margin: 0 auto;">
+      	<input type="checkbox" ng-model="congressman.enabled" /> {{congressman.user.firstName}} {{congressman.user.lastName}}
+		</div>
+		</div>
 	  </span>
-	  </div>
-            Escreva a sua mensagem:<br><textarea id="textarea" name="textarea">Texto</textarea>
+	  </div><br>
+            Escreva a sua mensagem:  <p><br>
+			
+			<textarea rows="3" id="description" name="description" class="input-block-level" placeholder="Description">Prezado(s) Deputado(s),
+O sistema Vigia Político identificou uma grande probabilidade de você votar contra o projeto de lei xxxxx/ano. Escrevo para dizer que sou a favor desse projeto. Peço, portanto, que reavalie sua posição.
+Obrigado, Usuário.
+</textarea>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-success">Enviar</button>
+        <button type="button" data-toggle="modal" data-dismiss="modal" class="btn btn-success">Enviar</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel"><i class="icone-mensagem"></i>  Escreva para seus representantes</h4>
+      </div>
+      <div class="modal-body">
+	  As mensagens dos usuários serão consolidadas e enviadas diariamente no seguinte formato:
+<p><br>
+O sistema Vigia Político identificou uma grande probabilidade de você votar [contra] o projeto de lei YYYYYY. 
+3564 pessoas escreveram pedindo que você reavalie essa posição. Essas pessoas são seus eleitores ou cidadãos que acompanham suas votações através do Vigia Político [link para o site].
+2552 pessoas disseram que são [a favor] desse projeto.
+1012 pessoas disseram que são [parcialmente a favor] desse projeto.
+Se responder a este e-mail, enviaremos sua mensagem diretamente para cada uma das 3564 pessoas que se manifestaram.
+Atenciosamente,
+Vigia Político
+www.vigiapolitico.com.br 
+
+	      </div>
+      <div class="modal-footer">
+        <button type="button" ng-click="$("#myModal").modal("hide")" class="btn btn-default" data-dismiss="modal">OK</button>
+       
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
 
 	
 </div>

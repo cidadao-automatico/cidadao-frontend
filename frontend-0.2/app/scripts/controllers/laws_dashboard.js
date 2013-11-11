@@ -115,17 +115,25 @@ angular.module('vigiaPoliticoApp')
 	 
     $scope.vote = function(rate, law)
     {
+	if($scope.teste_interface){
+	law.vote.rate=parseInt(rate)
+	$scope.laws[1] = law;
+	console.log(rate);
+	 $rootScope.$broadcast('colorizeVariable',law) 
+	}
+	else{
     	law.vote.rate=parseInt(rate)
     Vote.save({id:law.lawProposal.id, rate: law.vote.rate+1}, function(result){
     $rootScope.$broadcast('colorizeVariable',law) 
+	
 	})
+	}
     }
 	
 	
 	
 	$scope.hide_law_text = function(law_stdCode){
-	 console.log("aqui");
-		var hide_element=$(".hd"+law_stdCode)
+			var hide_element=$(".hd"+law_stdCode)
 		var show_actions=$("#user_actions_"+law_stdCode);
 		var hide_titles=$("#lawTitles_"+law_stdCode);
 		
@@ -223,32 +231,65 @@ angular.module('vigiaPoliticoApp')
 	function internal_color_btn (law){
 	var btn = $("#rateBtn_compact_"+law.lawProposal.stdCode);
 	var pRate = law.vote.predictedRate;
+	
 	var rate = law.vote.rate;
 	console.log(law.vote.rate);
-	if (law.vote.rate){
+	console.log("pRate= "+pRate);
+	if (law.vote.rate!= 'undefined'){
+	btn.removeClass( "voteBtn_contra_pr" )
+	  btn.removeClass( "voteBtn_parcontra_pr" )
+	   btn.removeClass( "voteBtn_abstencao_pr" )
+	    btn.removeClass( "voteBtn_parfavor_pr" )
+		 btn.removeClass( "voteBtn_afavor_pr" )
+		 btn.removeClass( "voteBtn_contra" )
+	  btn.removeClass( "voteBtn_parcontra" )
+	   btn.removeClass( "voteBtn_abstencao" )
+	    btn.removeClass( "voteBtn_parfavor" )
+		 btn.removeClass( "voteBtn_afavor" )
 	$("#qMark_userOpinionBtn_"+law.lawProposal.stdCode).hide();
-		if (rate==1){
-			
-			btn.addClass( "voteBtn_contra" );}
-		else if(rate==2){
-			
-			btn.addClass( "voteBtn_parcontra" );}
-		else if (rate==3){
-		btn.addClass( "voteBtn_abstencao" );
+		if (rate==0){
+		btn.empty();
+		btn.html("contra");
+		btn.addClass( "voteBtn_contra" );}
+		else if(rate==1){
+		btn.empty();
+		btn.html("parc. contra");
+			btn.addClass( "voteBtn_parcontra" );
+			btn.addClass( "voteBtn_parcontra_pr" );
 			}
+		else if (rate==2){
+		btn.empty();
+		btn.html("abstenção");
+		btn.addClass( "voteBtn_abstencao" );
+		btn.addClass( "voteBtn_abstencao_pr" )
+			}
+		else if (rate==3){
+			btn.empty();
+		btn.html("parc. a favor");
+			btn.addClass( "voteBtn_parfavor" );
+			btn.addClass( "voteBtn_parfavor_pr" );}
 		else if (rate==4){
-			
-			btn.addClass( "voteBtn_parfavor" );}
-		else if (rate==5){
-			
-			btn.addClass( "voteBtn_afavor" );}
+			btn.empty();
+		btn.html("a favor");
+			btn.addClass( "voteBtn_afavor" );
+			btn.addClass( "voteBtn_afavor_pr" );}
 	}
 	else{
-	if (pRate==1){
+	
+	// btn.removeClass( "voteBtn_contra_pr" )
+	  // btn.removeClass( "voteBtn_parcontra_pr" )
+	   // btn.removeClass( "voteBtn_abstencao_pr" )
+	    // btn.removeClass( "voteBtn_parfavor_pr" )
+		 // btn.removeClass( "voteBtn_afavor_pr" )
+		 // btn.removeClass( "voteBtn_contra" )
+	  // btn.removeClass( "voteBtn_parcontra" )
+	   // btn.removeClass( "voteBtn_abstencao" )
+	    // btn.removeClass( "voteBtn_parfavor" )
+		 // btn.removeClass( "voteBtn_afavor" )
+		if (pRate==1){
 		btn.addClass( "voteBtn_contra_pr" );}
 		else if(pRate==2){
-			
-			btn.addClass( "voteBtn_parcontra_pr" );}
+		btn.addClass( "voteBtn_parcontra_pr" );}
 		else if (pRate==3){
 		btn.addClass( "voteBtn_abstencao_pr" );
 			}
@@ -279,6 +320,7 @@ $scope.colorClassName = function(rate){
 }
 	
 	function internal_color_extBtn(law){
+	
 	 var rate = law.vote.rate;
 	 for(var i=0;i<5;i++){
 	 var btn = $("#btn_"+i+("_")+law.lawProposal.stdCode);
@@ -287,8 +329,9 @@ $scope.colorClassName = function(rate){
 	   btn.removeClass( "voteBtn_abstencao" )
 	    btn.removeClass( "voteBtn_parfavor" )
 		 btn.removeClass( "voteBtn_afavor" );}
-	 console.log
-	if (law.vote.rate){
+	 console.log("fora"+law.vote.rate);
+	//if (law.vote.rate){
+	console.log("dentro"+law.vote.rate);
 		if (rate==0){
 		var btn = $("#btn_"+(rate)+("_")+law.lawProposal.stdCode);
 		btn.addClass( "voteBtn_contra" );}
@@ -304,7 +347,7 @@ $scope.colorClassName = function(rate){
 		else if (rate==4){
 		var btn = $("#btn_"+(rate)+("_")+law.lawProposal.stdCode);
 		btn.addClass( "voteBtn_afavor" );}
-	}
+	//}
 	}
 	  
 	 $scope.hide_congressmanBox = function(lawId){
@@ -342,9 +385,9 @@ $scope.colorClassName = function(rate){
 	   ]
 	   $scope.CongressmanFavor=[{"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Marcelo", "lastName" : "João Pereira Freire"}},{"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Fulano", "lastName" : "da Silva"}},{"congressmanInfo":{"photoUrl":"http://www.camara.gov.br/internet/deputado/bandep/172711.jpg","shortName":"asdasdasd"}, "user":{"id":"1","firstName": "Maria", "lastName" : "da Silva"}}]
 	   
-	   $scope.laws=[{lawProposal: { description: "Regulamenta o art. 146-A da Constituição Federal, estabelecendo critérios especiais de tributação destinados a prevenir desequilíbrios da concorrência.", id: '30251', prefix: 'PLP', priorityStatus: 'Votação a médio prazo',regionId: 1, stdCode: "121", url: "http://www.camara.gov.br/proposicoesWeb/prop_mostrarintegra?codteor=952353", year: 2011}, representatives:[{congressmanInfo: {congressId: 522008,email: "",homePageUrl: "",partyId: 27,phoneNumber: "3215-5648",photoUrl: "http://www.camara.gov.br/internet/deputado/bandep/74319.jpg",shortName: "Paes Landim ",userId: 1381}, vote:{predictedRate:2, rate:"" }}],vote:{predictedRate:1, rate:""}},
+	   $scope.laws=[{lawProposal: { description: "Regulamenta o art. 146-A da Constituição Federal, estabelecendo critérios especiais de tributação destinados a prevenir desequilíbrios da concorrência.", id: '1251', prefix: 'PLP', priorityStatus: 'Votação a médio prazo',regionId: 1, stdCode: "121", url: "http://www.camara.gov.br/proposicoesWeb/prop_mostrarintegra?codteor=952353", year: 2011}, representatives:[{congressmanInfo: {congressId: 522008,email: "",homePageUrl: "",partyId: 27,phoneNumber: "3215-5648",photoUrl: "http://www.camara.gov.br/internet/deputado/bandep/74319.jpg",shortName: "Paes Landim ",userId: 1381}, vote:{predictedRate:2, rate:"" }}],vote:{predictedRate:1, rate:""}},
 	   
-	   {lawProposal: { description: "Regulamenta o art. 146-A da Constituição Federal, estabelecendo critérios especiais de tributação destinados a prevenir desequilíbrios da concorrência.", id: '30251', prefix: 'PLP', priorityStatus: 'Votação a médio prazo',regionId: 1, stdCode: "1321", url: "http://www.camara.gov.br/proposicoesWeb/prop_mostrarintegra?codteor=952353", year: 2011}, representatives:[{congressmanInfo: {congressId: 522008,email: "",homePageUrl: "",partyId: 27,phoneNumber: "3215-5648",photoUrl: "http://www.camara.gov.br/internet/deputado/bandep/74319.jpg",shortName: "Paes Landim ",userId: 1381}, vote:{predictedRate:2, rate:"" }}],vote:{predictedRate:5, rate:"5"}}]; 
+	   {lawProposal: { description: "Regulamenta o art. 146-A da Constituição Federal, estabelecendo critérios especiais de tributação destinados a prevenir desequilíbrios da concorrência.", id: '30251', prefix: 'PLP', priorityStatus: 'Votação a médio prazo',regionId: 1, stdCode: "1321", url: "http://www.camara.gov.br/proposicoesWeb/prop_mostrarintegra?codteor=952353", year: 2011}, representatives:[{congressmanInfo: {congressId: 522008,email: "",homePageUrl: "",partyId: 27,phoneNumber: "3215-5648",photoUrl: "http://www.camara.gov.br/internet/deputado/bandep/74319.jpg",shortName: "Paes Landim ",userId: 1381}, vote:{predictedRate:2, rate:"" }}],vote:{predictedRate:1, rate:"4"}}]; 
 	   
 
 	  

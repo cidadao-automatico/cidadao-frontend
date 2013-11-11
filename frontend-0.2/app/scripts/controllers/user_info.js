@@ -23,6 +23,7 @@
 		$scope.teste_interface = false;
 		
 		if($scope.teste_interface == false){
+		
 	    $scope.user = UserAuthorization.get(function(result){
 	    	if (!result.configured)
 	        {
@@ -36,6 +37,7 @@
 	        	$scope.tags=User.tags()
 	      	}
 	    }, function(error){
+		
 	      flash("alert","Por favor faça login ou cadastre-se clicando no botão Facebook")
 	      window.location="#/"
 	    })

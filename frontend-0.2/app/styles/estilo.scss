@@ -843,9 +843,25 @@ display:block;
 .popover {
     font-size: 12px;
 	text-align:center;
-	max-width:100px;
-	min-width:30px;
+	max-width:200px;
+	//min-width:30px;
 }
+.pop-style {
+	&.popover {
+	font-size: 20px;
+	text-align:left;
+	max-width:200px;
+	//min-width:30px;
+	}
+}
+
+.pop-style.popover  
+	{
+	font-size: 20px;
+	text-align:left;
+	max-width:200px;
+	//min-width:30px;
+	}
 
 
 
