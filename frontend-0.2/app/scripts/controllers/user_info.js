@@ -54,38 +54,7 @@
 		}
 
 		$scope.plusConfigBox_visible = false;
-
-		$scope.show_config_plusBox2 = function(arg)
-		{
-			console.log(arg)
-
-			if (arg=="Places")
-			{
-				step1()
-			} else if (arg=="Tags")
-			{
-				step2()
-			} else if (arg=="Representatives")
-			{
-				step3()
-			} else if (arg=="Laws")
-			{
-				step4()
-			}
-
-			var show_box=$("#configBox_plus");
-			var box_selected=$("#configBox_plus_"+arg);
-			
-			if ($scope.plusConfigBox_visible==false){
-				show_box.show();
-			}
-
-			show_box.children().hide()
-			box_selected.show();
-			$("#configBox_plus_fecharBtn").show();
-			$scope.plusConfigBox_visible = true;
-		}
-
+		
 		$scope.show_config_plusBox = function(pageType)
 		{
 				
@@ -117,6 +86,7 @@
 		}
 		
 		$scope.hide_config_plusBox = function(){
+			console.log($scope.configPageChanged)
 			if ($scope.configPageChanged[0])
 			{
 				saveRegions()
@@ -269,47 +239,47 @@
   
 
 	
-	$scope.show_config_plusBox = function(type){
-	var show_box=$("#configBox_plus");
-	var box_selected=$("#configBox_plus_"+type);
+	// $scope.show_config_plusBox = function(type){
+	// var show_box=$("#configBox_plus");
+	// var box_selected=$("#configBox_plus_"+type);
 	
-	if ($scope.plusConfigBox_visible==false){
-	show_box.show();
-	}
-	show_box.children().hide()
-	box_selected.show();
-	$("#configBox_plus_fecharBtn").show();
-	$scope.plusConfigBox_visible = true;
-	}
+	// if ($scope.plusConfigBox_visible==false){
+	// show_box.show();
+	// }
+	// show_box.children().hide()
+	// box_selected.show();
+	// $("#configBox_plus_fecharBtn").show();
+	// $scope.plusConfigBox_visible = true;
+	// }
 	
-	$scope.hide_config_plusBox = function(){
-	$scope.plusConfigBox_visible = false;
-	$("#configBox_plus").children().hide();
-	$("#configBox_plus").hide();
-	$("#configBox_plus_fecharBtn").hide();
-	}
+	// $scope.hide_config_plusBox = function(){
+	// $scope.plusConfigBox_visible = false;
+	// $("#configBox_plus").children().hide();
+	// $("#configBox_plus").hide();
+	// $("#configBox_plus_fecharBtn").hide();
+	// }
 	
-	$scope.show_configBoxButton = function(botao)
-    {
+	// $scope.show_configBoxButton = function(botao)
+ //    {
 	
-     var botao_select = $("#configBoxbtn_"+ botao)
-	 botao_select.show();
-	}
+ //     var botao_select = $("#configBoxbtn_"+ botao)
+	//  botao_select.show();
+	// }
 	
-	$scope.hide_configBoxButton = function(botao)
-    {
+	// $scope.hide_configBoxButton = function(botao)
+ //    {
 	
-     var botao_select = $("#configBoxbtn_"+ botao)
-	 botao_select.hide();
-	}
+ //     var botao_select = $("#configBoxbtn_"+ botao)
+	//  botao_select.hide();
+	// }
 	
-	$scope.vote = function(rate, law)
-    {
-      var extended=$("#law_container_"+law.stdCode+"_proposals")
-           extended.hide("slow")
-      Vote.save({id: law.id, rate: rate})
+	// $scope.vote = function(rate, law)
+ //    {
+ //      var extended=$("#law_container_"+law.stdCode+"_proposals")
+ //           extended.hide("slow")
+ //      Vote.save({id: law.id, rate: rate})
 
-  }
+ //  }
 
     function step4(){
       
