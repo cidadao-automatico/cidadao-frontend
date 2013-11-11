@@ -69,7 +69,6 @@ angular.module('vigiaPoliticoApp')
       if(!_.isNull($scope.user) && !_.isUndefined($scope.user))
       {
         $scope.allTags = Tag.query(function(allTagsResult){
-          console.log(allTagsResult)
           $scope.userTags = User.tags(function(userTagResult){
             var mappedIds=_.map(userTagResult, function(value) { return value["id"] })
             // FIXME: This should be done at the server, perhaps with a more clever algorithm that takes advantage of id
@@ -93,7 +92,6 @@ angular.module('vigiaPoliticoApp')
      if(!_.isNull($scope.user) && !_.isUndefined($scope.user))
       {
         $scope.allCongressman = Congressman.query(function(allCongressmanResult){
-          console.log(allCongressmanResult)
           $scope.userRepresentatives = User.representatives(function(userRepresentativesResult){
             var mappedIds=_.map(userRepresentativesResult, function(value) { return value["user"]["id"] })
             // FIXME: This should be done at the server, perhaps with a more clever algorithm that takes advantage of id
@@ -145,7 +143,7 @@ angular.module('vigiaPoliticoApp')
     $scope.vote = function(rate, law)
     {
       var extended=$("#law_container_"+law.stdCode+"_proposals")
-      console.log(extended)
+      
       extended.hide("slow")
       Vote.save({id: law.id, rate: rate})
 
@@ -163,7 +161,11 @@ angular.module('vigiaPoliticoApp')
 
     $scope.saveCongressman = function(allCongressman)
     {
-      User.saveRepresentatives({congressmanList: allCongressman})
+        var selectedCongressman=_.filter($scope.allCongressman, function(congressman){
+          return congressman.enabled==true
+        })
+      
+        User.saveRepresentatives({congressmanList: selectedCongressman})
     }
 
     $scope.register_with_facebook = function($scope)
