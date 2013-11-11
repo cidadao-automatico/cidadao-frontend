@@ -54,24 +54,57 @@
 		}
 
 		$scope.plusConfigBox_visible = false;
-		
-		$scope.show_config_plusBox = function(type){
-			if (type=="Places")
+
+		$scope.show_config_plusBox2 = function(arg)
+		{
+			console.log(arg)
+
+			if (arg=="Places")
 			{
 				step1()
-			} else if (type=="Tags")
+			} else if (arg=="Tags")
 			{
 				step2()
-			} else if (type=="Representatives")
+			} else if (arg=="Representatives")
 			{
 				step3()
-			} else if (type=="Laws")
+			} else if (arg=="Laws")
 			{
 				step4()
 			}
 
 			var show_box=$("#configBox_plus");
-			var box_selected=$("#configBox_plus_"+type);
+			var box_selected=$("#configBox_plus_"+arg);
+			
+			if ($scope.plusConfigBox_visible==false){
+				show_box.show();
+			}
+
+			show_box.children().hide()
+			box_selected.show();
+			$("#configBox_plus_fecharBtn").show();
+			$scope.plusConfigBox_visible = true;
+		}
+
+		$scope.show_config_plusBox = function(pageType)
+		{
+				
+			if (pageType=="Places")
+			{
+				step1()
+			} else if (pageType=="Tags")
+			{
+				step2()
+			} else if (pageType=="Representatives")
+			{
+				step3()
+			} else if (pageType=="Laws")
+			{
+				step4()
+			}
+
+			var show_box=$("#configBox_plus");
+			var box_selected=$("#configBox_plus_"+pageType);
 			
 			if ($scope.plusConfigBox_visible==false){
 				show_box.show();

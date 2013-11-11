@@ -115,7 +115,8 @@ angular.module('vigiaPoliticoApp')
 	 
     $scope.vote = function(rate, law)
     {
-    Vote.save({id:law.lawProposal.id, rate: parseInt(rate)}, function(result){
+    	law.vote.rate=parseInt(rate)
+    Vote.save({id:law.lawProposal.id, rate: law.vote.rate+1}, function(result){
     $rootScope.$broadcast('colorizeVariable',law) 
 	})
     }
@@ -222,8 +223,8 @@ angular.module('vigiaPoliticoApp')
 	function internal_color_btn (law){
 	var btn = $("#rateBtn_compact_"+law.lawProposal.stdCode);
 	var pRate = law.vote.predictedRate;
-	var rate = law.vote.predictedRate;
-	console.log(law.vote.rate.lenght);
+	var rate = law.vote.rate;
+	console.log(law.vote.rate);
 	if (law.vote.rate){
 	$("#qMark_userOpinionBtn_"+law.lawProposal.stdCode).hide();
 		if (rate==1){
@@ -286,22 +287,22 @@ $scope.colorClassName = function(rate){
 	   btn.removeClass( "voteBtn_abstencao" )
 	    btn.removeClass( "voteBtn_parfavor" )
 		 btn.removeClass( "voteBtn_afavor" );}
-	 
+	 console.log
 	if (law.vote.rate){
-		if (rate==1){
-		var btn = $("#btn_"+(rate-1)+("_")+law.lawProposal.stdCode);
+		if (rate==0){
+		var btn = $("#btn_"+(rate)+("_")+law.lawProposal.stdCode);
 		btn.addClass( "voteBtn_contra" );}
-		else if(rate==2){
-		var btn = $("#btn_"+(rate-1)+("_")+law.lawProposal.stdCode);
+		else if(rate==1){
+		var btn = $("#btn_"+(rate)+("_")+law.lawProposal.stdCode);
 		btn.addClass( "voteBtn_parcontra" );}
-		else if (rate==3){
-		var btn = $("#btn_"+(rate-1)+("_")+law.lawProposal.stdCode);
+		else if (rate==2){
+		var btn = $("#btn_"+(rate)+("_")+law.lawProposal.stdCode);
 		btn.addClass( "voteBtn_abstencao" );}
-		else if (rate==4){
-		var btn = $("#btn_"+(rate-1)+("_")+law.lawProposal.stdCode);
+		else if (rate==3){
+		var btn = $("#btn_"+(rate)+("_")+law.lawProposal.stdCode);
 		btn.addClass( "voteBtn_parfavor" );}
-		else if (rate==5){
-		var btn = $("#btn_"+(rate-1)+("_")+law.lawProposal.stdCode);
+		else if (rate==4){
+		var btn = $("#btn_"+(rate)+("_")+law.lawProposal.stdCode);
 		btn.addClass( "voteBtn_afavor" );}
 	}
 	}
